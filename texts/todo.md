@@ -1,0 +1,2 @@
+- Fő teamek lekérése, 
+- Férőhelyek kiszámítása
