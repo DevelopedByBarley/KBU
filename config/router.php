@@ -12,8 +12,8 @@ function registerRoutes(FastRoute\RouteCollector $router)
     require_once 'routes/home.php';
   });
 
-  $router->addGroup('/api', function (FastRoute\RouteCollector $r) {
-    require_once 'routes/api.php';
+  $router->addGroup('/main-teams', function (FastRoute\RouteCollector $r) {
+    require_once 'routes/main_teams.php';
   });
 
   $router->addGroup('/admin', function (FastRoute\RouteCollector $r) {

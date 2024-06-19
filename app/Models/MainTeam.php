@@ -10,8 +10,9 @@ use PDOException;
 class MainTeam extends Model
 {
 
-    public function getMainTeams() {
+    public function getMainTeams()
+    {
         $main_teams = self::all('main_teams');
+        return $main_teams;
     }
-    
 }
