@@ -97,7 +97,7 @@ function renderMainTeams(mainTeams) {
 
     mainTeams.map(team => {
         mainTeamsTemplate += `
-            <option style="background-color: ${team.color}; color: white;" value="${team.id}">${team.name} csapat (${team.leader})</option>
+            ${team.max !== 0 ? `<option style="background-color: ${team.color}; color: white;" value="${team.id}">${team.name} csapat (${team.leader}) szabad helyek száma: ${team.max}</option>` : ''}
         `;
     });
 

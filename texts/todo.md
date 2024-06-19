@@ -1,4 +1,33 @@
 
+----- 2024.06.19 -------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - User meg akarja tekinteni a fő csapatot,
     - Rendszer lekéri  a fő csapatokat kíírja színét, nevét, szabad helyek számát
