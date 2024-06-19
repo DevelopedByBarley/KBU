@@ -16,8 +16,8 @@ class TeamSportsController extends Controller
         $this->TeamSport = new TeamSport();
     }
 
-    public function getTeamSportsByMainTeam()
+    public function getTeamSportsByMainTeam($vars)
     {
-    
+        $mainTeamId = $vars['mainTeamId'] ?? null;
     }
 }
