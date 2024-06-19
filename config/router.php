@@ -16,6 +16,14 @@ function registerRoutes(FastRoute\RouteCollector $router)
     require_once 'routes/main_teams.php';
   });
 
+  $router->addGroup('/team-sports', function (FastRoute\RouteCollector $r) {
+    require_once 'routes/team_sports.php';
+  });
+
+  $router->addGroup('/duel-sports', function (FastRoute\RouteCollector $r) {
+    require_once 'routes/duel_sports.php';
+  });
+
   $router->addGroup('/admin', function (FastRoute\RouteCollector $r) {
     if (ADMIN_SERVICE_PERM) {
       require_once 'routes/admin.php';
