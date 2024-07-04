@@ -1,5 +1,7 @@
-const mainTeamSelect = document.getElementById('main-team');
+document.addEventListener('DOMContentLoaded', async() => {
+    const mainTeamsSelect = document.getElementById('main-team');
 
-mainTeamSelect.addEventListener('change', (e) => {
-    console.log(e.target);
+    mainTeamsSelect.onchange = (e) => {
+        console.log(e.target);
+    }
 })

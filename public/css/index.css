@@ -11821,10 +11821,10 @@
   padding-inline: 10rem;
 }
 
-nav .theme-switcher .checkbox {
+.theme-switcher .checkbox {
   display: none;
 }
-nav .theme-switcher .checkbox-label {
+.theme-switcher .checkbox-label {
   width: 50px;
   height: 26px;
   border-radius: 50px;
@@ -11835,7 +11835,7 @@ nav .theme-switcher .checkbox-label {
   justify-content: space-between;
   align-items: center;
 }
-nav .theme-switcher .checkbox-label .ball {
+.theme-switcher .checkbox-label .ball {
   background-color: #fff;
   width: 22px;
   height: 22px;
@@ -11845,13 +11845,13 @@ nav .theme-switcher .checkbox-label .ball {
   border-radius: 50%;
   transition: transform 0.2s linear;
 }
-nav .theme-switcher .checkbox-label .fa-moon {
+.theme-switcher .checkbox-label .fa-moon {
   color: #f1c40f;
 }
-nav .theme-switcher .checkbox-label .fa-sun {
+.theme-switcher .checkbox-label .fa-sun {
   color: #f39c12;
 }
-nav .theme-switcher .checkbox:checked + .checkbox-label .ball {
+.theme-switcher .checkbox:checked + .checkbox-label .ball {
   transform: translateX(24px);
 }
 
