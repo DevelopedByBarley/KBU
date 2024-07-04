@@ -25,8 +25,9 @@
         </li>
         <li class="nav-item ">
 
-          <div class="d-flex  align-items-center justify-content-center">
-            <div class="form-check form-switch">
+          <div class="w-100 d-flex justify-content-end align-items-center px-2">
+        
+            <div class="form-check form-switch theme-switcher p-0 mx-3">
               <input type="checkbox" class="form-check-input checkbox text-2xl" role="switch" id="theme-toggle">
               <label for="theme-toggle" class="dark-bg-sky-700 bg-gray-300 checkbox-label">
                 <i class="fas fa-moon"></i>

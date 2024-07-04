@@ -108,9 +108,15 @@ class Controller
     }
   }
 
-  protected function setCookieWithExpiry($name, $value, $expiry) {
+  protected function setCookieWithExpiry($name, $value, $expiry)
+  {
     $expiryTime = time() + ($expiry);
     setcookie($name, $value, $expiryTime, "/");
-}
+  }
 
+  protected function sanitizePost()
+  {
+    $postData = file_get_contents('php://input');
+    parse_str($postData, $_POST);
+  }
 }

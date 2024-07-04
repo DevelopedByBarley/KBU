@@ -11,6 +11,9 @@ function registerRoutes(FastRoute\RouteCollector $router)
   $router->addGroup('/', function (FastRoute\RouteCollector $r) {
     require_once 'routes/home.php';
   });
+  $router->addGroup('/main-teams', function (FastRoute\RouteCollector $r) {
+    require_once 'routes/main_team.php';
+  });
   $router->addGroup('/feedback', function (FastRoute\RouteCollector $r) {
     require_once 'routes/feedback.php';
   });

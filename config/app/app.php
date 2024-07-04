@@ -1,7 +1,7 @@
 <?php
 
 // USER 
-define('USER_SERVICE_PERM', 0);
+define('USER_SERVICE_PERM', 1);
 
 // ADMIN
 define('ADMIN_SERVICE_PERM', 1);
@@ -15,7 +15,7 @@ define('DATABASE_BACKUP_PERM', 0);
 define('COOKIE_MODAL_PERM', 0);
 
 // VISITORS PERMISSION
-define('SAVING_VISITOR_PERM', 0);
+define('SAVING_VISITOR_PERM', 1);
 
 // RATINGS & FEEDBACK PERMISSION
 define('FEEDBACK_PERM', 1);
