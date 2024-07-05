@@ -31,9 +31,10 @@ async function getTeamSportsByMainTeamId(mainTeamId) {
     }
 }
 
-
 function renderSelectsByTeamSports(teamSports) {
-    let temp = '';
+    let temp = `
+        <option value="" selected>Válassza ki a csapat sportot</option>
+    `;
 
     teamSports.forEach(sport => {
         const freeSpots = sport.max;
@@ -43,12 +44,11 @@ function renderSelectsByTeamSports(teamSports) {
 
         temp += `
             <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
-               ${teamName} - ${color} (${freeSpots} szabad hely)
+                ${teamName} - ${color} (${freeSpots} szabad hely)
             </option>
         `;
     });
 
     return temp;
 }
-
 
