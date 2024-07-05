@@ -1,3 +1,5 @@
+<?php $main_teams = $params['main_teams'] ?? []?>
+
 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content dark-bg-main-blue p-lg-5">
@@ -56,7 +58,7 @@
 								<input name="name" type="text" id="form6Example1" class="form-control" data-validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' />
 							</div>
 						</div>
-						
+
 						<div class="col-12 col-lg-6 my-2">
 							<div class="form-outline">
 								<label class="form-label" for="form6Example2">
@@ -96,16 +98,47 @@
 						<div class="col-12">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Főcsapat
+									Főcsapat kiválasztása
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
 								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required>
+
+									<!--Rendering main teams-->
+
 									<option value="" selected>Válassza ki a főcsapatot</option>
-									<option value="1">One</option>
-									<option value="2">Two</option>
-									<option value="3">Three</option>
+
+
+									<?php foreach ($main_teams as $team) : ?>
+										<?php
+										$free_spots = $team['max'];
+										$team_name = htmlspecialchars($team['name']);
+										$team_color = htmlspecialchars($team['color']);
+										$team_leader = htmlspecialchars($team['leader']);
+										$team_id = htmlspecialchars($team['id']);
+										?>
+
+
+										<option value="<?= $team_id ?>" <?= $free_spots > 0 ? '' : 'disabled' ?>>
+											<?= $team_leader ?> - <?= $team_name ?> (<?= $free_spots ?> szabad hely)
+										</option>
+
+									<?php endforeach; ?>
+
+
+								</select>
+							</div>
+						</div>
+						<div class="col-12 d-none" id="main-team-container">
+							<div class="form-outline mb-4">
+								<label class="form-label" for="form6Example6">
+									Csapat sport kiválasztása
+									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+										<i class="fa-solid fa-circle-info text-2xl"></i>
+									</button>
+								</label>
+								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required>
 								</select>
 							</div>
 						</div>

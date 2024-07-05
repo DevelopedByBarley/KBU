@@ -1,6 +1,5 @@
 
 
-
 <div class="container-fluid px-lg-5  mt-5 ">
 	<div class="row d-flex align-items-center justify-content-center min-h-95">
 		<div class="col-12 col-xl-7 col-xxl-6 px-5 d-flex align-items-center justify-content-center justify-content-xl-end">

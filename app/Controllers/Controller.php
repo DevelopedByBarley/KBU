@@ -11,6 +11,7 @@ use App\Helpers\Render;
 use App\Helpers\Toast;
 use App\Helpers\UUID;
 use App\Helpers\XLSX;
+use App\Models\MainTeam;
 use App\Models\Model;
 use App\Models\Visitor;
 
@@ -26,6 +27,7 @@ class Controller
   protected $Toast;
   protected $CSRFToken;
   protected $Mailer;
+  private $MainTeam;
 
 
   public function __construct()
@@ -40,6 +42,7 @@ class Controller
     $this->Toast = new Toast();
     $this->CSRFToken = new CSRFToken();
     $this->Mailer = new Mailer();
+    $this->MainTeam = new MainTeam();
   }
 
 
@@ -68,8 +71,12 @@ class Controller
 
   public function index()
   {
+
+    $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
     echo $this->Render->write("public/Layout.php", [
-      "content" => $this->Render->write("public/pages/Welcome.php", [])
+      "content" => $this->Render->write("public/pages/Welcome.php", [
+        'main_teams' => $main_teams
+      ])
     ]);
   }
   public function cookie()

@@ -2,6 +2,5 @@
 
 use App\Controllers\TeamSportController;
 
-// route_group -> /main-teams
-
-$r->addRoute('GET', '', [TeamSportController::class, '']);
+// route_group -> /team_sports
+$r->addRoute('GET', '/{team-refId}', [TeamSportController::class, 'all']);
