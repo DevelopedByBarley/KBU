@@ -32,6 +32,7 @@
   <script type="module" src="/public/js/uuid.js?v=<?= time() ?>"></script>
   <script type="module" src="/public/js/getCookie.js?v=<?= time() ?>"></script>
   <script type="module" src="/public/js/registration.js?v<?= time() ?>"></script>
+  <script type="module" src="/public/js/popover.js?v=<?= time() ?>"></script>
   <script src="/public/js/colorTheme.js?v=<?= time() ?>"></script>
 
 

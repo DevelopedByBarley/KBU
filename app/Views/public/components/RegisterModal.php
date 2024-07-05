@@ -142,11 +142,23 @@
 								</select>
 							</div>
 						</div>
+						<div class="col-12 d-none" id="duel-team-container">
+							<div class="form-outline mb-4">
+								<label class="form-label" for="form6Example6">
+									Páros sport kiválasztása
+									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+										<i class="fa-solid fa-circle-info text-2xl"></i>
+									</button>
+								</label>
+								<select class="form-select" aria-label="Select main team" id="main-team" name="duel-team" required>
+								</select>
+							</div>
+						</div>
 
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
+							<button type="submit" class="btn btn-primary">Save changes</button>
 						</div>
 				</form>
 			</div>

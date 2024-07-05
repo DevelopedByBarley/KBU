@@ -15,4 +15,24 @@ class DuelSportController extends Controller
         parent::__construct();
         $this->DuelSport = new DuelSport();
     }
+
+    public function all($vars)
+    {
+        try {
+            $duel_sports = $this->Model->selectAllByRecord('duel_sports', 'main_teamRef_id', $vars['team-refId'], PDO::PARAM_INT);
+            foreach ($duel_sports as $index => $duel_sport) {
+                $users = $this->Model->selectAllByRecord('users', 'duel_sportRef_id', $duel_sport['id'], PDO::PARAM_INT);
+                (int)$duel_sports[$index]['max'] -= count($users);
+                $duel_sports[$index]['users'][] = $users;
+            }
+
+
+            http_response_code(200);
+            echo  json_encode($duel_sports);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo "Internal Server Error" . $e->getMessage();
+            exit;
+        }
+    }
 }

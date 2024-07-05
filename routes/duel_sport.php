@@ -2,6 +2,6 @@
 
 use App\Controllers\DuelSportController;
 
-// route_group -> /main-teams
+// route_group -> /duel_sports
 
-$r->addRoute('GET', '', [DuelSportController::class, '']);
+$r->addRoute('GET', '/{team-refId}', [DuelSportController::class, 'all']);
