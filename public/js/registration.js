@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mainTeamsSelect.onchange = async (e) => {
         const mainTeamId = Number(e.target.value);
 
+        // SELECT MAIN TEAM AND RENDER TEAM SPORTS AND DUEL SPORTS
         if (mainTeamId) {
             const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
             const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
@@ -18,38 +19,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const duelTeamSelect = duelTeamsCon.querySelector('select');
             duelTeamSelect.innerHTML = renderSelectsByDuelSports(duelSports);
 
+            // DUEL SPORTS CHANGE EVENT RENDERING
+
             duelTeamSelect.addEventListener('change', (e) => {
-                const pairStatusSelectCon = document.getElementById('select-pair-status-container');
-                pairStatusSelectCon.classList.remove('d-none');
+                const duelTeam = Number(e.target.value);
+                console.log(duelTeam);
+                if (duelTeam === 1) {
 
-                pairStatusSelectCon.addEventListener('change', (e) => {
-                    const pairStatus = Number(e.target.value);
-                    console.log(pairStatus);;
-                    if (pairStatus === 2) {
-                        const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
-                        pairEligibilityCon.classList.remove('d-none');
+                    const pairStatusSelectCon = document.getElementById('select-pair-status-container');
+                    pairStatusSelectCon.classList.remove('d-none');
+                    
+                    pairStatusSelectCon.addEventListener('change', (e) => {
+                        const pairStatus = Number(e.target.value);
+                        console.log(pairStatus);;
+                        if (pairStatus === 2) {
+                            const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
+                            pairEligibilityCon.classList.remove('d-none');
 
-                        pairEligibilityCon.addEventListener('change', (e) => {
-                            const pairEligibility = Number(e.target.value);
+                            pairEligibilityCon.addEventListener('change', (e) => {
+                                const pairEligibility = Number(e.target.value);
 
-                        if (pairEligibility === 2) {
-                            const pairingPwCon = document.getElementById('pairing-password-container');
-                            pairingPwCon.classList.remove('d-none')
-                            const pwGeneratorBtn = document.getElementById('pw-generator-btn');
-                            console.log(pwGeneratorBtn);
-                            pwGeneratorBtn.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                let pwInput = e.target.previousElementSibling;
-                                pwInput.value = generatePassword();
+                                if (pairEligibility === 2) {
+                                    const pairingPwCon = document.getElementById('pairing-password-container');
+                                    pairingPwCon.classList.remove('d-none')
+                                    const pwGeneratorBtn = document.getElementById('pw-generator-btn');
+                                    console.log(pwGeneratorBtn);
+                                    pwGeneratorBtn.addEventListener('click', (e) => {
+                                        e.preventDefault();
+                                        let pwInput = e.target.previousElementSibling;
+                                        pwInput.value = generatePassword();
+                                    })
+                                } else {
+                                    alert('Bárki megjelölhet!');
+                                }
                             })
+
+
+                        } else {
+                            alert('Van párom mutasd a listát!')
                         }
                     })
 
+                }
 
-            } else {
 
-            }
-                })
+
+
             })
 
 
@@ -110,6 +125,7 @@ async function getDuelSportsByMainTeamId(mainTeamId) {
 function renderSelectsByTeamSports(teamSports) {
     let temp = `
         <option value="" selected>Válassza ki a csapat sportot</option>
+        <option value="0">Nem jelentkezem</option>
     `;
 
     teamSports.forEach(sport => {
@@ -130,6 +146,7 @@ function renderSelectsByTeamSports(teamSports) {
 function renderSelectsByDuelSports(teamSports) {
     let temp = `
         <option value="" selected>Válassza ki a csapat sportot</option>
+        <option value="0">Nem jelentkezem</option>
     `;
 
     teamSports.forEach(sport => {
