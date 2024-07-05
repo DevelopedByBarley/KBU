@@ -1,136 +1,167 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const mainTeamsSelect = document.getElementById('main-team');
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const mainTeamsSelect = document.getElementById('main-teams-container');
-    const teamSportContainer = document.getElementById('team-sport-container');
+    mainTeamsSelect.onchange = async (e) => {
+        const mainTeamId = Number(e.target.value);
+
+        // SELECT MAIN TEAM AND RENDER TEAM SPORTS AND DUEL SPORTS
+        if (mainTeamId) {
+            const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
+            const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
+            const mainTeamsCon = document.getElementById('main-team-container');
+            const duelTeamsCon = document.getElementById('duel-team-container');
+            mainTeamsCon.classList.remove('d-none')
+            duelTeamsCon.classList.remove('d-none')
+
+            const mainTeamSelect = mainTeamsCon.querySelector('select');
+            mainTeamSelect.innerHTML = renderSelectsByTeamSports(teamSports);
+
+            const duelTeamSelect = duelTeamsCon.querySelector('select');
+            duelTeamSelect.innerHTML = renderSelectsByDuelSports(duelSports);
+
+            // DUEL SPORTS CHANGE EVENT RENDERING
+
+            duelTeamSelect.addEventListener('change', (e) => {
+                const duelTeam = Number(e.target.value);
+                console.log(duelTeam);
+                if (duelTeam === 1) {
+
+                    const pairStatusSelectCon = document.getElementById('select-pair-status-container');
+                    pairStatusSelectCon.classList.remove('d-none');
+                    
+                    pairStatusSelectCon.addEventListener('change', (e) => {
+                        const pairStatus = Number(e.target.value);
+                        console.log(pairStatus);;
+                        if (pairStatus === 2) {
+                            const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
+                            pairEligibilityCon.classList.remove('d-none');
+
+                            pairEligibilityCon.addEventListener('change', (e) => {
+                                const pairEligibility = Number(e.target.value);
+
+                                if (pairEligibility === 2) {
+                                    const pairingPwCon = document.getElementById('pairing-password-container');
+                                    pairingPwCon.classList.remove('d-none')
+                                    const pwGeneratorBtn = document.getElementById('pw-generator-btn');
+                                    console.log(pwGeneratorBtn);
+                                    pwGeneratorBtn.addEventListener('click', (e) => {
+                                        e.preventDefault();
+                                        let pwInput = e.target.previousElementSibling;
+                                        pwInput.value = generatePassword();
+                                    })
+                                } else {
+                                    alert('Bárki megjelölhet!');
+                                }
+                            })
 
 
-    const password = document.getElementById('password');
-    const pwGenerator = document.getElementById('pw-generator');
+                        } else {
+                            alert('Van párom mutasd a listát!')
+                        }
+                    })
 
-    /**
-     * Main team section
-     *  -----@example Render main Teams
-    */
+                }
 
-    const mainTeams = await getMainTeams();
-    const mainTeamsTemp = renderMainTeams(mainTeams);
-    mainTeamsSelect.innerHTML = mainTeamsTemp;
 
-    /**
-     shows  teamSportContainer if mainTeamsContainer value exist
- */
 
-     mainTeamsSelect.addEventListener('change', (e) => {
-        if (e.target.value !== '') {
-            const currentMainTeam = e.target.value
-            teamSportContainer.classList.remove('d-none')
-            
-            // GET TEAM SPORTS BY CURRENT MAIN TEAM
 
-            axios.get(`/team-sports/${currentMainTeam}`).then(res => console.log(res.data));
+            })
 
-        } else {
-            teamSportContainer.classList.add('d-none')
+
+
         }
-    });
-
-/*     const teamSportSelect = teamSportContainer.querySelector('#team-sport');
-    teamSportSelect.addEventListener('change', (e) => {
-        if (!teamSportContainer.classList.contains('d-none')) {
-            const teamSport = e.target.value;
-
-            if (teamSport && teamSport !== '') {
-               axios.get('/team-sport/1').then(res => console.log(res.data));
-            }
-        }
-    }) */
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     *  -----@example Generate password section
-     */
-
-    pwGenerator.addEventListener('click', (e) => {
-        e.preventDefault();
-        const newPw = generatePassword();
-
-        if (newPw && newPw !== '') {
-            password.value = newPw;
-        }
-
-    })
+    }
 });
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-async function getMainTeams() {
-    const res = await axios.get('/main-teams');
-    return res.data;
+function generatePassword() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
 }
 
 
 
-function renderMainTeams(mainTeams) {
-    let mainTeamsTemplate = '<option value="">Válassz egy csapatot</option >';
 
-    mainTeams.map(team => {
-        mainTeamsTemplate += `
-            ${team.max !== 0 ? `<option style="background-color: ${team.color}; color: white;" value="${team.id}">${team.name} csapat (${team.leader}) szabad helyek száma: ${team.max}</option>` : ''}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function getTeamSportsByMainTeamId(mainTeamId) {
+    try {
+        const res = await axios.get(`/team-sports/${mainTeamId}`);
+        const mainTeams = res.data;
+        return mainTeams;
+    } catch (err) {
+        alert(err);
+    }
+}
+
+async function getDuelSportsByMainTeamId(mainTeamId) {
+    try {
+        const res = await axios.get(`/duel-sports/${mainTeamId}`);
+        const duelTeams = res.data;
+        console.log(duelTeams);
+        return duelTeams;
+    } catch (err) {
+        alert(err);
+    }
+}
+function renderSelectsByTeamSports(teamSports) {
+    let temp = `
+        <option value="" selected>Válassza ki a csapat sportot</option>
+        <option value="0">Nem jelentkezem</option>
+    `;
+
+    teamSports.forEach(sport => {
+        const freeSpots = sport.max;
+        const teamName = sport.name;
+        const teamId = sport.id;
+        const color = sport.color;
+
+        temp += `
+            <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
+                ${teamName} - ${color} (${freeSpots} szabad hely)
+            </option>
         `;
     });
 
-    return mainTeamsTemplate;
+    return temp;
 }
+function renderSelectsByDuelSports(teamSports) {
+    let temp = `
+        <option value="" selected>Válassza ki a csapat sportot</option>
+        <option value="0">Nem jelentkezem</option>
+    `;
 
+    teamSports.forEach(sport => {
+        const freeSpots = sport.max;
+        const teamName = sport.name;
+        const teamId = sport.id;
+        const color = sport.color;
 
+        temp += `
+            <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
+                ${teamName} - ${color} (${freeSpots} szabad hely)
+            </option>
+        `;
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-function generatePassword(length = 12) {
-    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
-    let password = "";
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * charset.length);
-        password += charset[randomIndex];
-    }
-    return password;
+    return temp;
 }
-
-
-
-
-
-
 

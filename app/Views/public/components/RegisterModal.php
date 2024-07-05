@@ -108,8 +108,6 @@
 									<!--Rendering main teams-->
 
 									<option value="" selected>Válassza ki a főcsapatot</option>
-
-
 									<?php foreach ($main_teams as $team) : ?>
 										<?php
 										$free_spots = $team['max'];
@@ -130,7 +128,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-12 d-none" id="main-team-container">
+						<div class="col-12 d-none" id="team-sports-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Csapat sport kiválasztása
@@ -138,11 +136,11 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required>
+								<select class="form-select" aria-label="Select main team" id="team-sports" name="team-sport" required>
 								</select>
 							</div>
 						</div>
-						<div class="col-12 d-none" id="duel-team-container">
+						<div class="col-12 d-none" id="duel-sports-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Páros sport kiválasztása
@@ -150,7 +148,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="main-team" name="duel-team" required>
+								<select class="form-select" aria-label="Select main team" id="duel-sports" name="duel-sport" required>
 								</select>
 							</div>
 						</div>

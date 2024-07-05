@@ -1,77 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mainTeamsSelect = document.getElementById('main-team');
+    const mainTeamSelect = document.getElementById('main-team');
 
-    mainTeamsSelect.onchange = async (e) => {
+    const duelTeamsCon = document.getElementById('duel-sports-container'); // d-none
+    const duelTeamsSelect = duelTeamsCon.querySelector('select');
+
+    const teamSportsCon = document.getElementById('team-sports-container'); // d-none
+    const teamSportsSelect = teamSportsCon.querySelector('select');
+
+    /*  const pairStatusSelectCon = document.getElementById('select-pair-status-container');
+     const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
+     const pairingPwCon = document.getElementById('pairing-password-container');
+     const pwGeneratorBtn = document.getElementById('pw-generator-btn'); */
+
+    mainTeamSelect.onchange = async (e) => {
         const mainTeamId = Number(e.target.value);
-
-        // SELECT MAIN TEAM AND RENDER TEAM SPORTS AND DUEL SPORTS
-        if (mainTeamId) {
-            const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
-            const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
-            const mainTeamsCon = document.getElementById('main-team-container');
-            const duelTeamsCon = document.getElementById('duel-team-container');
-            mainTeamsCon.classList.remove('d-none')
-            duelTeamsCon.classList.remove('d-none')
-
-            const mainTeamSelect = mainTeamsCon.querySelector('select');
-            mainTeamSelect.innerHTML = renderSelectsByTeamSports(teamSports);
-
-            const duelTeamSelect = duelTeamsCon.querySelector('select');
-            duelTeamSelect.innerHTML = renderSelectsByDuelSports(duelSports);
-
-            // DUEL SPORTS CHANGE EVENT RENDERING
-
-            duelTeamSelect.addEventListener('change', (e) => {
-                const duelTeam = Number(e.target.value);
-                console.log(duelTeam);
-                if (duelTeam === 1) {
-
-                    const pairStatusSelectCon = document.getElementById('select-pair-status-container');
-                    pairStatusSelectCon.classList.remove('d-none');
-                    
-                    pairStatusSelectCon.addEventListener('change', (e) => {
-                        const pairStatus = Number(e.target.value);
-                        console.log(pairStatus);;
-                        if (pairStatus === 2) {
-                            const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
-                            pairEligibilityCon.classList.remove('d-none');
-
-                            pairEligibilityCon.addEventListener('change', (e) => {
-                                const pairEligibility = Number(e.target.value);
-
-                                if (pairEligibility === 2) {
-                                    const pairingPwCon = document.getElementById('pairing-password-container');
-                                    pairingPwCon.classList.remove('d-none')
-                                    const pwGeneratorBtn = document.getElementById('pw-generator-btn');
-                                    console.log(pwGeneratorBtn);
-                                    pwGeneratorBtn.addEventListener('click', (e) => {
-                                        e.preventDefault();
-                                        let pwInput = e.target.previousElementSibling;
-                                        pwInput.value = generatePassword();
-                                    })
-                                } else {
-                                    alert('Bárki megjelölhet!');
-                                }
-                            })
-
-
-                        } else {
-                            alert('Van párom mutasd a listát!')
-                        }
-                    })
-
-                }
-
-
-
-
-            })
-
-
-
-        }
+        console.log(mainTeamId);
+        if (mainTeamId === 0) return closeAllTeamInput([duelTeamsCon, teamSportsCon]);
+        showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect);
+        showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect)
     }
+
+
 });
+
+function closeAllTeamInput(elements) {
+    elements.forEach(element => {
+        if (!element.classList.contains('d-none')) element.classList.add('d-none');
+    });
+}
+
+async function showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect) {
+    const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
+    teamSportsCon.classList.remove('d-none')
+    teamSportsSelect.innerHTML = renderSelectsByTeamSports(teamSports);
+}
+
+async function showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect) {
+    const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
+    duelTeamsCon.classList.remove('d-none')
+    duelTeamsSelect.innerHTML = renderSelectsByDuelSports(duelSports);
+
+}
+
+
+
+
+
 
 
 
@@ -111,6 +85,7 @@ async function getTeamSportsByMainTeamId(mainTeamId) {
         alert(err);
     }
 }
+
 
 async function getDuelSportsByMainTeamId(mainTeamId) {
     try {
