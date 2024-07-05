@@ -1,48 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mainTeamsSelect = document.getElementById('main-team');
-
+   
     mainTeamsSelect.onchange = async (e) => {
         const mainTeamId = Number(e.target.value);
 
         // SELECT MAIN TEAM AND RENDER TEAM SPORTS AND DUEL SPORTS
         if (mainTeamId) {
-            const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
-            const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
-            const mainTeamsCon = document.getElementById('main-team-container');
-            const duelTeamsCon = document.getElementById('duel-team-container');
-            mainTeamsCon.classList.remove('d-none')
-            duelTeamsCon.classList.remove('d-none')
-
-            const mainTeamSelect = mainTeamsCon.querySelector('select');
-            mainTeamSelect.innerHTML = renderSelectsByTeamSports(teamSports);
-
-            const duelTeamSelect = duelTeamsCon.querySelector('select');
-            duelTeamSelect.innerHTML = renderSelectsByDuelSports(duelSports);
-
-            // DUEL SPORTS CHANGE EVENT RENDERING
-
             duelTeamSelect.addEventListener('change', (e) => {
-                const duelTeam = Number(e.target.value);
-                console.log(duelTeam);
                 if (duelTeam === 1) {
 
-                    const pairStatusSelectCon = document.getElementById('select-pair-status-container');
                     pairStatusSelectCon.classList.remove('d-none');
                     
                     pairStatusSelectCon.addEventListener('change', (e) => {
                         const pairStatus = Number(e.target.value);
                         console.log(pairStatus);;
                         if (pairStatus === 2) {
-                            const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
                             pairEligibilityCon.classList.remove('d-none');
 
                             pairEligibilityCon.addEventListener('change', (e) => {
                                 const pairEligibility = Number(e.target.value);
 
                                 if (pairEligibility === 2) {
-                                    const pairingPwCon = document.getElementById('pairing-password-container');
                                     pairingPwCon.classList.remove('d-none')
-                                    const pwGeneratorBtn = document.getElementById('pw-generator-btn');
                                     console.log(pwGeneratorBtn);
                                     pwGeneratorBtn.addEventListener('click', (e) => {
                                         e.preventDefault();

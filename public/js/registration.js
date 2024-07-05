@@ -1,44 +1,170 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mainTeamSelect = document.getElementById('main-team');
+	const mainTeamSelect = document.getElementById('main-team');
 
-    const duelTeamsCon = document.getElementById('duel-sports-container'); // d-none
-    const duelTeamsSelect = duelTeamsCon.querySelector('select');
+	const duelTeamsCon = document.getElementById('duel-sports-container'); // d-none
+	const duelTeamsSelect = duelTeamsCon.querySelector('select');
 
-    const teamSportsCon = document.getElementById('team-sports-container'); // d-none
-    const teamSportsSelect = teamSportsCon.querySelector('select');
+	const teamSportsCon = document.getElementById('team-sports-container'); // d-none
+	const teamSportsSelect = teamSportsCon.querySelector('select');
 
-    /*  const pairStatusSelectCon = document.getElementById('select-pair-status-container');
-     const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
-     const pairingPwCon = document.getElementById('pairing-password-container');
-     const pwGeneratorBtn = document.getElementById('pw-generator-btn'); */
 
-    mainTeamSelect.onchange = async (e) => {
-        const mainTeamId = Number(e.target.value);
-        console.log(mainTeamId);
-        if (mainTeamId === 0) return closeAllTeamInput([duelTeamsCon, teamSportsCon]);
-        showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect);
-        showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect)
-    }
+	const pairStatusSelectCon = document.getElementById('select-pair-status-container');
+	const pairStatusSelect = pairStatusSelectCon.querySelector('select')
 
+	const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
+	const pairEligibilityselect = pairEligibilityCon.querySelector('select')
+
+	const pairingPwCon = document.getElementById('pairing-password-container');
+
+	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
+
+
+	mainTeamSelect.onchange = async (e) => {
+		const mainTeamId = Number(e.target.value);
+		if (mainTeamId === 0) {
+			disableElements([
+				duelTeamsSelect, teamSportsSelect, pairStatusSelect,
+				pairEligibilityselect
+			]);
+			hideElements([ // CLOSE ALL INPUT WHEN MAINTEAM ID DOESNT EXIST
+				duelTeamsCon,
+				teamSportsCon,
+				pairStatusSelectCon,
+				pairEligibilityCon
+			])
+			return;
+		};
+
+		enableElements([
+			duelTeamsSelect, teamSportsSelect
+		]);
+
+		showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect);
+		showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect)
+	}
+
+
+
+
+	duelTeamsSelect.onchange = async (e) => {
+		const duelTeam = Number(e.target.value);
+		if (duelTeam === 0) {
+			disableElements([
+				pairStatusSelect
+			]);
+			return hideElements([
+				pairStatusSelectCon,
+				pairEligibilityCon
+			])
+		};
+
+		if (duelTeam > 0) {
+			enableElements([
+				pairStatusSelect,
+			])
+			showPairStatusCon(pairStatusSelectCon, pairEligibilityCon, pairingPwCon);
+		}
+
+
+	}
+
+	pwGeneratorBtn.addEventListener('click', (e) => {
+		e.preventDefault();
+		let pwInput = e.target.previousElementSibling;
+		pwInput.value = generatePassword();
+	})
 
 });
 
-function closeAllTeamInput(elements) {
-    elements.forEach(element => {
-        if (!element.classList.contains('d-none')) element.classList.add('d-none');
-    });
+function showPairStatusCon(pairStatusSelectCon, pairEligibilityCon, pairingPwCon) {
+	pairStatusSelectCon.classList.remove('d-none');
+
+	pairStatusSelectCon.onchange = async (e) => {
+		const pairStatus = Number(e.target.value);
+
+		if (pairStatus === 0) {
+			disableElements([]);
+			return hideElements([pairEligibilityCon])
+		};
+
+		enableElements([])
+
+		if (pairStatus === 1) {
+			hideElements([pairEligibilityCon, pairingPwCon])
+			console.log('VAN PÁROM JÖHET A LISTA		')
+		} else {
+			showPairEligibilityCon(pairEligibilityCon, pairingPwCon);
+		}
+	}
+}
+
+
+function showPairEligibilityCon(pairEligibilityCon, pairingPwCon) {
+	pairEligibilityCon.classList.remove('d-none');
+
+	pairEligibilityCon.onchange = async (e) => {
+		const pairEligibility = Number(e.target.value);
+
+		if (pairEligibility === 0) return hideElements([pairingPwCon]);
+
+		if (pairEligibility === 1) {
+			hideElements([pairingPwCon]);
+			console.log('Bárki megjelölhet!')
+		} else {
+			showPairingPwCon(pairingPwCon);
+		}
+
+	}
+
+
+}
+
+function showPairingPwCon(pairingPwCon) {
+	pairingPwCon.classList.remove('d-none')
+}
+
+
+
+
+
+function enableElements(elements) {
+	elements.forEach(element => {
+		// Ellenőrizzük, hogy az elem még nem disabled
+		if (element.disabled) {
+			// Kapcsoljuk ki az elemet
+			element.disabled = false;
+		}
+	});
+}
+
+function disableElements(elements) {
+	elements.forEach(element => {
+		// Ellenőrizzük, hogy az elem még nem disabled
+		if (!element.disabled) {
+			// Kapcsoljuk ki az elemet
+			element.disabled = true;
+		}
+	});
+}
+
+
+
+function hideElements(elements) {
+	elements.forEach(element => {
+		if (!element.classList.contains('d-none')) element.classList.add('d-none');
+	});
 }
 
 async function showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect) {
-    const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
-    teamSportsCon.classList.remove('d-none')
-    teamSportsSelect.innerHTML = renderSelectsByTeamSports(teamSports);
+	const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
+	teamSportsCon.classList.remove('d-none')
+	teamSportsSelect.innerHTML = renderSelectsByTeamSports(teamSports);
 }
 
 async function showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect) {
-    const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
-    duelTeamsCon.classList.remove('d-none')
-    duelTeamsSelect.innerHTML = renderSelectsByDuelSports(duelSports);
+	const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
+	duelTeamsCon.classList.remove('d-none')
+	duelTeamsSelect.innerHTML = renderSelectsByDuelSports(duelSports);
 
 }
 
@@ -50,13 +176,13 @@ async function showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, due
 
 
 function generatePassword() {
-    var length = 8,
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-        retVal = "";
-    for (var i = 0, n = charset.length; i < length; ++i) {
-        retVal += charset.charAt(Math.floor(Math.random() * n));
-    }
-    return retVal;
+	var length = 8,
+		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+		retVal = "";
+	for (var i = 0, n = charset.length; i < length; ++i) {
+		retVal += charset.charAt(Math.floor(Math.random() * n));
+	}
+	return retVal;
 }
 
 
@@ -77,66 +203,66 @@ function generatePassword() {
 
 
 async function getTeamSportsByMainTeamId(mainTeamId) {
-    try {
-        const res = await axios.get(`/team-sports/${mainTeamId}`);
-        const mainTeams = res.data;
-        return mainTeams;
-    } catch (err) {
-        alert(err);
-    }
+	try {
+		const res = await axios.get(`/team-sports/${mainTeamId}`);
+		const mainTeams = res.data;
+		return mainTeams;
+	} catch (err) {
+		alert(err);
+	}
 }
 
 
 async function getDuelSportsByMainTeamId(mainTeamId) {
-    try {
-        const res = await axios.get(`/duel-sports/${mainTeamId}`);
-        const duelTeams = res.data;
-        console.log(duelTeams);
-        return duelTeams;
-    } catch (err) {
-        alert(err);
-    }
+	try {
+		const res = await axios.get(`/duel-sports/${mainTeamId}`);
+		const duelTeams = res.data;
+		return duelTeams;
+	} catch (err) {
+		alert(err);
+	}
 }
 function renderSelectsByTeamSports(teamSports) {
-    let temp = `
+	let temp = `
         <option value="" selected>Válassza ki a csapat sportot</option>
         <option value="0">Nem jelentkezem</option>
     `;
 
-    teamSports.forEach(sport => {
-        const freeSpots = sport.max;
-        const teamName = sport.name;
-        const teamId = sport.id;
-        const color = sport.color;
+	teamSports.forEach(sport => {
+		const freeSpots = sport.max;
+		const teamName = sport.name;
+		const teamId = sport.id;
+		const color = sport.color;
 
-        temp += `
+		temp += `
             <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
                 ${teamName} - ${color} (${freeSpots} szabad hely)
             </option>
         `;
-    });
+	});
 
-    return temp;
+	return temp;
 }
 function renderSelectsByDuelSports(teamSports) {
-    let temp = `
+	let temp = `
         <option value="" selected>Válassza ki a csapat sportot</option>
         <option value="0">Nem jelentkezem</option>
     `;
 
-    teamSports.forEach(sport => {
-        const freeSpots = sport.max;
-        const teamName = sport.name;
-        const teamId = sport.id;
-        const color = sport.color;
+	teamSports.forEach(sport => {
+		const freeSpots = sport.max;
+		const teamName = sport.name;
+		const teamId = sport.id;
+		const color = sport.color;
 
-        temp += `
+		temp += `
             <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
                 ${teamName} - ${color} (${freeSpots} szabad hely)
             </option>
         `;
-    });
+	});
 
-    return temp;
+	return temp;
 }
+
 

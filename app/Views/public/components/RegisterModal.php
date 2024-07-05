@@ -136,7 +136,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="team-sports" name="team-sport" required>
+								<select class="form-select" aria-label="Select main team" id="team-sports" name="team-sport" required disabled>
 								</select>
 							</div>
 						</div>
@@ -148,7 +148,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="duel-sports" name="duel-sport" required>
+								<select class="form-select" aria-label="Select main team" id="duel-sports" name="duel-sport" required disabled>
 								</select>
 							</div>
 						</div>
@@ -161,7 +161,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select pair status" id="pair-status" name="pair-status" required>
+								<select class="form-select" aria-label="Select pair status" id="pair-status" name="pair-status" required disabled>
 									<option value="" selected>Van párja?</option>
 									<option value="1">Van párom</option>
 									<option value="2">Párnak jelentkezem</option>
@@ -177,7 +177,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select pair eligibility" id="pair-eligibility" name="pair-eligibility" required>
+								<select class="form-select" aria-label="Select pair eligibility" id="pair-eligibility" name="pair-eligibility" required disabled>
 									<option value="" selected>Jelölje be ki jelölheti önt párnak!</option>
 									<option value="1">Bárki megjelölhet</option>
 									<option value="2">Jelszót adok meg amivel megjelölhetnek</option>
