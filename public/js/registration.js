@@ -7,25 +7,51 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mainTeamId) {
             const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
             const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
-            const mainTeamsContainer = document.getElementById('main-team-container');
-            const duelTeamsContainer = document.getElementById('duel-team-container');
-            mainTeamsContainer.classList.remove('d-none')
-            duelTeamsContainer.classList.remove('d-none')
+            const mainTeamsCon = document.getElementById('main-team-container');
+            const duelTeamsCon = document.getElementById('duel-team-container');
+            mainTeamsCon.classList.remove('d-none')
+            duelTeamsCon.classList.remove('d-none')
 
-            const mainTeamSelect = mainTeamsContainer.querySelector('select');
+            const mainTeamSelect = mainTeamsCon.querySelector('select');
             mainTeamSelect.innerHTML = renderSelectsByTeamSports(teamSports);
             
-            const duelTeamSelect = duelTeamsContainer.querySelector('select');
+            const duelTeamSelect = duelTeamsCon.querySelector('select');
             duelTeamSelect.innerHTML = renderSelectsByDuelSports(duelSports);
             
-            mainTeamSelect.addEventListener('change', (e) => {
+            duelTeamSelect.addEventListener('change', (e) => {
+               const pairOptionsSelectCon = document.getElementById('select-pair-option-container');
+               pairOptionsSelectCon.classList.remove('d-none');
+
+               pairOptionsSelectCon.addEventListener('change', (e) => {
                 console.log(e.target.value);
+               })
             })
+
 
 
         }
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function getTeamSportsByMainTeamId(mainTeamId) {
     try {

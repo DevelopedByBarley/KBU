@@ -1,4 +1,4 @@
-<?php $main_teams = $params['main_teams'] ?? []?>
+<?php $main_teams = $params['main_teams'] ?? [] ?>
 
 <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
@@ -154,6 +154,23 @@
 								</select>
 							</div>
 						</div>
+
+						<div class="col-12 d-none" id="select-pair-option-container">
+							<div class="form-outline mb-4">
+								<label class="form-label" for="form6Example6">
+									Jelölje meg hogy van-e párja!
+									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+										<i class="fa-solid fa-circle-info text-2xl"></i>
+									</button>
+								</label>
+								<select class="form-select" aria-label="Select main team" id="main-team" name="pair-option" required>
+									<option value="" selected>Van párja?</option>
+									<option value="1">Van párom</option>
+									<option value="2">Párnak jelentkezem</option>
+								</select>
+							</div>
+						</div>
+
 
 
 						<div class="modal-footer">
