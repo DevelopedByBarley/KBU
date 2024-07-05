@@ -14,17 +14,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const mainTeamSelect = mainTeamsCon.querySelector('select');
             mainTeamSelect.innerHTML = renderSelectsByTeamSports(teamSports);
-            
+
             const duelTeamSelect = duelTeamsCon.querySelector('select');
             duelTeamSelect.innerHTML = renderSelectsByDuelSports(duelSports);
-            
-            duelTeamSelect.addEventListener('change', (e) => {
-               const pairOptionsSelectCon = document.getElementById('select-pair-option-container');
-               pairOptionsSelectCon.classList.remove('d-none');
 
-               pairOptionsSelectCon.addEventListener('change', (e) => {
-                console.log(e.target.value);
-               })
+            duelTeamSelect.addEventListener('change', (e) => {
+                const pairStatusSelectCon = document.getElementById('select-pair-status-container');
+                pairStatusSelectCon.classList.remove('d-none');
+
+                pairStatusSelectCon.addEventListener('change', (e) => {
+                    const pairStatus = Number(e.target.value);
+                    console.log(pairStatus);;
+                    if (pairStatus === 2) {
+                        const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
+                        pairEligibilityCon.classList.remove('d-none');
+
+                        pairEligibilityCon.addEventListener('change', (e) => {
+                            const pairEligibility = Number(e.target.value);
+
+                        if (pairEligibility === 2) {
+                            const pairingPwCon = document.getElementById('pairing-password-container');
+                            pairingPwCon.classList.remove('d-none')
+                            const pwGeneratorBtn = document.getElementById('pw-generator-btn');
+                            console.log(pwGeneratorBtn);
+                            pwGeneratorBtn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                let pwInput = e.target.previousElementSibling;
+                                pwInput.value = generatePassword();
+                            })
+                        }
+                    })
+
+
+            } else {
+
+            }
+                })
             })
 
 
@@ -35,6 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+function generatePassword() {
+    var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+    for (var i = 0, n = charset.length; i < length; ++i) {
+        retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return retVal;
+}
 
 
 

@@ -155,15 +155,15 @@
 							</div>
 						</div>
 
-						<div class="col-12 d-none" id="select-pair-option-container">
+						<div class="col-12 d-none" id="select-pair-status-container">
 							<div class="form-outline mb-4">
-								<label class="form-label" for="form6Example6">
+								<label class="form-label" for="pair-status">
 									Jelölje meg hogy van-e párja!
-									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="main-team" name="pair-option" required>
+								<select class="form-select" aria-label="Select pair status" id="pair-status" name="pair-status" required>
 									<option value="" selected>Van párja?</option>
 									<option value="1">Van párom</option>
 									<option value="2">Párnak jelentkezem</option>
@@ -171,21 +171,49 @@
 							</div>
 						</div>
 
+						<div class="col-12 d-none" id="select-pair-eligibility-container">
+							<div class="form-outline mb-4">
+								<label class="form-label" for="pair-eligibility">
+									Ki jelölhet önt párnak?
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+										<i class="fa-solid fa-circle-info text-2xl"></i>
+									</button>
+								</label>
+								<select class="form-select" aria-label="Select pair eligibility" id="pair-eligibility" name="pair-eligibility" required>
+									<option value="" selected>Jelölje be ki jelölheti önt párnak!</option>
+									<option value="1">Bárki megjelölhet</option>
+									<option value="2">Jelszót adok meg amivel megjelölhetnek</option>
+								</select>
+							</div>
+						</div>
 
+						<div class="col-12 d-none" id="pairing-password-container">
+							<div class="form-outline mb-4">
+								<label class="form-label" for="pair-eligibility">
+									Jelszót megadása
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+										<i class="fa-solid fa-circle-info text-2xl"></i>
+									</button>
+								</label>
+								<div class="d-flex gap-3">
+									<input name="pairing_password" type="text" id="pairing_password" class="form-control" />
+									<button type="button" class="btn bg-main-gray text-black" id="pw-generator-btn">Generálás</button>
+								</div>
+
+							</div>
+						</div>
 
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-primary">Save changes</button>
 						</div>
-				</form>
-			</div>
 
-			<div>
-				<img src="/public/assets/images/icons/logo.png" alt="">
+						<div>
+							<img src="/public/assets/images/icons/logo.png" alt="">
+						</div>
+					</div>
 			</div>
 		</div>
-	</div>
-</div>
 
 
 
@@ -205,7 +233,7 @@
 
 
 
-<!-- 			<div class="p-3">
+		<!-- 			<div class="p-3">
 
 
 						<div class="form-outline mb-4">
