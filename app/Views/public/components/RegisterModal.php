@@ -1,15 +1,18 @@
 <?php $main_teams = $params['main_teams'] ?? [] ?>
 
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+
+
+
+<div class="modal fade transition-ease-in-out-300" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-xl">
-		<div class="modal-content dark-bg-main-blue p-lg-5">
-			<div class="modal-header">
+		<div class="modal-content dark-bg-main-blue p-lg-5 p-1">
+			<div class="modal-header" id="register-modal-header">
 				<h1 class="modal-title fs-5" id="exampleModalLabel">
-					Regisztráció
+					Regisztráció <span id="team-header-text"></span>
 				</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-			<div class="modal-body p-1 p-md-4 p-lg-0">
+			<div class="modal-body p-1 p-md-4 p-lg-0 mt-5">
 				<div class="accordion accordion-flush border" id="accordionFlushExample">
 					<div class="accordion-item">
 						<h2 class="accordion-header">
@@ -105,7 +108,6 @@
 								</label>
 								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required>
 
-									<!--Rendering main teams-->
 
 									<option value="" selected>Válassza ki a főcsapatot</option>
 									<?php foreach ($main_teams as $team) : ?>
@@ -118,10 +120,9 @@
 										?>
 
 
-										<option value="<?= $team_id ?>" <?= $free_spots > 0 ? '' : 'disabled' ?>>
+										<option data-name="<?= $team_name ?>" data-bg="<?= $team_color ?>" value="<?= $team_id ?>" <?= $free_spots > 0 ? '' : 'disabled' ?>>
 											<?= $team_leader ?> - <?= $team_name ?> (<?= $free_spots ?> szabad hely)
 										</option>
-
 									<?php endforeach; ?>
 
 
@@ -131,7 +132,7 @@
 						<div class="col-12 d-none" id="team-sports-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Csapat sport kiválasztása  (Team sports con)
+									Csapat sport kiválasztása (Team sports con)
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -143,7 +144,7 @@
 						<div class="col-12 d-none" id="duel-sports-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Páros sport kiválasztása  (Duel sports con)
+									Páros sport kiválasztása (Duel sports con)
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -212,7 +213,6 @@
 					</div>
 			</div>
 		</div>
-
 
 
 

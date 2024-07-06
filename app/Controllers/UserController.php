@@ -16,7 +16,21 @@ class UserController extends Controller
     parent::__construct();
   }
 
-  public function index()
+  public function getAllUsersWhoFreeByDuelId($vars)
+  {
+
+    try {
+      $users = $this->User->getAllUsersByDuelSportId($vars['duel-sportId']);
+      http_response_code(200);
+      echo json_encode($users);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
+    }
+  }
+
+  public function index() 
   {
     $userId = $this->Auth->checkUserIsLoggedInOrRedirect('userId', '/user/login');
 

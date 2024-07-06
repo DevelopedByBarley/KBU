@@ -9,6 +9,23 @@ use PDOException;
 
 class User extends Model
 {
+
+  public function getAllUsersByDuelSportId($duel_sport_id)
+  {
+    try {
+      $stmt = $this->Pdo->prepare("SELECT * FROM `users` WHERE `duel_sportRef_id` = :duel_sportRefId AND pairRef_id IS NULL");
+      $stmt->bindParam(":duel_sportRefId", $duel_sport_id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $users;
+    } catch (PDOException $e) {
+      throw new  Exception("An error occurred during the database operation in getAllUsersByDuelSportId method: " . $e->getMessage(), 1);
+      exit;
+    }
+  }
+
   public function storeUser($body, $files)
   {
     $email = filter_var($body["email"] ?? '', FILTER_SANITIZE_EMAIL);
@@ -29,7 +46,6 @@ class User extends Model
       $stmt->execute();
 
       return true;
-
     } catch (PDOException $e) {
       throw new  Exception("An error occurred during the database operation in storeUser method: " . $e->getMessage(), 1);
       exit;
@@ -57,7 +73,6 @@ class User extends Model
 
 
       return $user['id'];
-
     } catch (PDOException $e) {
       throw new  Exception("An error occurred during the database operation in loginUser method: " . $e->getMessage(), 1);
       exit;
