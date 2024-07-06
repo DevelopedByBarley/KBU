@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const pairEligibilityselect = pairEligibilityCon.querySelector('select')
 
 	const pairingPwCon = document.getElementById('pairing-password-container');
-
+	const pairingPwInput = pairingPwCon.querySelector('#pairing_password');
 	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
 
 
@@ -23,14 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		const mainTeamId = Number(e.target.value);
 		if (mainTeamId === 0) {
 			disableElements([
-				duelTeamsSelect, teamSportsSelect, pairStatusSelect,
-				pairEligibilityselect
+				duelTeamsSelect,
+				teamSportsSelect,
+				pairStatusSelect,
+				pairEligibilityselect,
+				pairingPwInput
 			]);
 			hideElements([ // CLOSE ALL INPUT WHEN MAINTEAM ID DOESNT EXIST
 				duelTeamsCon,
 				teamSportsCon,
 				pairStatusSelectCon,
-				pairEligibilityCon
+				pairEligibilityCon,
+				pairingPwCon
 			])
 			return;
 		};
@@ -48,13 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	duelTeamsSelect.onchange = async (e) => {
 		const duelTeam = Number(e.target.value);
+		console.log(duelTeam);
 		if (duelTeam === 0) {
 			disableElements([
-				pairStatusSelect
+				pairStatusSelect,
+				pairEligibilityselect,
+				pairingPwInput
 			]);
 			return hideElements([
 				pairStatusSelectCon,
-				pairEligibilityCon
+				pairEligibilityCon,
+				pairingPwCon
 			])
 		};
 
@@ -62,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			enableElements([
 				pairStatusSelect,
 			])
-			showPairStatusCon(pairStatusSelectCon, pairEligibilityCon, pairingPwCon);
+			showPairStatusCon(pairStatusSelectCon, pairEligibilityCon, pairEligibilityselect, pairingPwCon, pairingPwInput);
 		}
 
 
@@ -76,42 +84,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function showPairStatusCon(pairStatusSelectCon, pairEligibilityCon, pairingPwCon) {
+function showPairStatusCon(pairStatusSelectCon, pairEligibilityCon, pairEligibilityselect, pairingPwCon, pairingPwInput) {
 	pairStatusSelectCon.classList.remove('d-none');
 
 	pairStatusSelectCon.onchange = async (e) => {
 		const pairStatus = Number(e.target.value);
 
+
 		if (pairStatus === 0) {
-			disableElements([]);
-			return hideElements([pairEligibilityCon])
+			disableElements([pairEligibilityselect, pairingPwInput]);
+			return hideElements([pairEligibilityCon, pairingPwCon])
 		};
 
-		enableElements([])
+		enableElements([pairEligibilityselect])
 
 		if (pairStatus === 1) {
 			hideElements([pairEligibilityCon, pairingPwCon])
+			disableElements([pairEligibilityselect, pairingPwInput])
 			console.log('VAN PÁROM JÖHET A LISTA		')
 		} else {
-			showPairEligibilityCon(pairEligibilityCon, pairingPwCon);
+			showPairEligibilityCon(pairEligibilityCon, pairingPwCon, pairingPwInput);
 		}
 	}
 }
 
 
-function showPairEligibilityCon(pairEligibilityCon, pairingPwCon) {
+function showPairEligibilityCon(pairEligibilityCon, pairingPwCon, pairingPwInput) {
 	pairEligibilityCon.classList.remove('d-none');
 
 	pairEligibilityCon.onchange = async (e) => {
 		const pairEligibility = Number(e.target.value);
-
-		if (pairEligibility === 0) return hideElements([pairingPwCon]);
+		if (pairEligibility === 0) {
+			disableElements([pairingPwInput]);
+			return hideElements([pairingPwCon]);
+		}
 
 		if (pairEligibility === 1) {
+			disableElements([pairingPwInput]);
 			hideElements([pairingPwCon]);
 			console.log('Bárki megjelölhet!')
 		} else {
 			showPairingPwCon(pairingPwCon);
+			enableElements([pairingPwInput])
 		}
 
 	}
@@ -142,6 +156,7 @@ function disableElements(elements) {
 		// Ellenőrizzük, hogy az elem még nem disabled
 		if (!element.disabled) {
 			// Kapcsoljuk ki az elemet
+			element.value = '';
 			element.disabled = true;
 		}
 	});

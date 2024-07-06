@@ -98,7 +98,7 @@
 						<div class="col-12">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Főcsapat kiválasztása
+									Főcsapat kiválasztása (Main team con)
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -131,7 +131,7 @@
 						<div class="col-12 d-none" id="team-sports-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Csapat sport kiválasztása
+									Csapat sport kiválasztása  (Team sports con)
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -143,7 +143,7 @@
 						<div class="col-12 d-none" id="duel-sports-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Páros sport kiválasztása
+									Páros sport kiválasztása  (Duel sports con)
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -156,7 +156,7 @@
 						<div class="col-12 d-none" id="select-pair-status-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-status">
-									Jelölje meg hogy van-e párja!
+									Jelölje meg hogy van-e párja! (pair-status)
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -172,7 +172,7 @@
 						<div class="col-12 d-none" id="select-pair-eligibility-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Ki jelölhet önt párnak?
+									Ki jelölhet önt párnak? (pair-eligibility)
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -188,7 +188,7 @@
 						<div class="col-12 d-none" id="pairing-password-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Jelszót megadása
+									Jelszót megadása (pairing-password)
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
