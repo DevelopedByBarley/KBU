@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			duelTeamsSelect, teamSportsSelect
 		]);
 
-		showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect);
-		showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect)
+		showAndRenderTeamSportsSelectOptions(mainTeamId);
+		showAndRenderDuelSportsSelectOpions(mainTeamId)
 	}
 
 	duelTeamsSelect.onchange = async (e) => {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			enableElements([
 				pairStatusSelect,
 			])
-			showPairStatusCon(duelTeam, pairStatusSelectCon, pairEligibilityCon, pairEligibilityselect, pairingPwCon, pairingPwInput);
+			showPairStatusCon(duelTeam);
 		}
 
 
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-	function showPairStatusCon(duelTeam, pairStatusSelectCon, pairEligibilityCon, pairEligibilityselect, pairingPwCon, pairingPwInput) {
+	function showPairStatusCon(duelTeam) {
 		pairStatusSelectCon.classList.remove('d-none');
 
 		pairStatusSelectCon.onchange = async (e) => {
@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				getFreeUsersAndRenderList(duelTeam);
 			} else {
-				showPairEligibilityCon(pairEligibilityCon, pairingPwCon, pairingPwInput);
+				showPairEligibilityCon();
 			}
 		}
 	}
 
 
-	function showPairEligibilityCon(pairEligibilityCon, pairingPwCon, pairingPwInput) {
+	function showPairEligibilityCon() {
 		pairEligibilityCon.classList.remove('d-none');
 
 		pairEligibilityCon.onchange = async (e) => {
@@ -211,13 +211,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log(users);
 	}
 
-	async function showAndRenderTeamSportsSelectOptions(mainTeamId, teamSportsCon, teamSportsSelect) {
+	async function showAndRenderTeamSportsSelectOptions(mainTeamId) {
 		const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
 		teamSportsCon.classList.remove('d-none')
 		teamSportsSelect.innerHTML = renderSelectsByTeamSports(teamSports);
 	}
 
-	async function showAndRenderDuelSportsSelectOpions(mainTeamId, duelTeamsCon, duelTeamsSelect) {
+	async function showAndRenderDuelSportsSelectOpions(mainTeamId) {
 		const duelSports = await getDuelSportsByMainTeamId(mainTeamId);
 		duelTeamsCon.classList.remove('d-none')
 		duelTeamsSelect.innerHTML = renderSelectsByDuelSports(duelSports);

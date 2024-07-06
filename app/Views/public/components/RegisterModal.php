@@ -170,6 +170,25 @@
 							</div>
 						</div>
 
+						<div class="col-12 d-none" id="choose-pair-container">
+							<div class="form-outline mb-4">
+								<label class="form-label" for="pair-status">
+									Válassza ki a párt
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+										<i class="fa-solid fa-circle-info text-2xl"></i>
+									</button>
+								</label>
+								<input type="hidden" class="form-control" value="" name="choosed-pair" required disabled>
+								<ul class="list-group" id="choose-pair-list">
+									<li class="list-group-item bg-red-400">Cras justo odio</li>
+									<li class="list-group-item bg-green-400">Dapibus ac facilisis in</li>
+									<li class="list-group-item bg-red-400">Morbi leo risus</li>
+									<li class="list-group-item bg-green-400">Porta ac consectetur ac</li>
+									<li class="list-group-item bg-green-400">Vestibulum at eros</li>
+								</ul>
+							</div>
+						</div>
+
 						<div class="col-12 d-none" id="select-pair-eligibility-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
