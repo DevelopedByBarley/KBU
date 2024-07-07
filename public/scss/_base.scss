@@ -15,30 +15,17 @@
   letter-spacing: 1.4px;
 }
 
-.fixed-modal-header {
-  position: fixed;
-  top: 50px;
-  /* A header felső része 50px-re lesz a lap tetejétől */
-  width: 100%;
-  background-color: #ffffff;
-  /* A fixált header háttérszíne */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Árnyék példa */
-  z-index: 1000;
-  /* Magasabb z-index érték, hogy a fixált header felül legyen */
-}
-
-.option-after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: '';
-  height: 25px;
-  width: 25px;
-  ;
-  background-color: red;
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px); /* Modern böngészők számára */
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
 }
 
 

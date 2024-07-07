@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-
 	const mainTeamSelect = document.getElementById('main-team');
 
 	const duelTeamsCon = document.getElementById('duel-sports-container'); // d-none
@@ -19,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const choosePairCon = document.getElementById('choose-pair-container');
 	const choosePairList = choosePairCon.querySelector('#choose-pair-list');
 	const choosePairInput = choosePairCon.querySelector('#choose-pair-input');
+	let choosedPair = false;
 
 	const pairingPwCon = document.getElementById('pairing-password-container');
-	const pairingPwInput = pairingPwCon.querySelector('#password');
+	const pairingPwInput = pairingPwCon.querySelector('#pairing_password');
 	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
-
 
 
 	mainTeamSelect.onchange = async (e) => {
@@ -105,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			const pairStatus = Number(e.target.value);
 
 
-			// Ha a van párod kérdésre nem választunk értéket
 			if (pairStatus === 0) {
 				disableElements([pairEligibilityselect, pairingPwInput, choosePairInput]);
 				return hideElements([pairEligibilityCon, pairingPwCon, choosePairCon])
@@ -115,13 +113,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			if (pairStatus === 1) {
 				hideElements([pairEligibilityCon, pairingPwCon])
-				disableElements([pairEligibilityselect, pairingPwInput]);
+				disableElements([pairEligibilityselect, pairingPwInput])
+
+				choosePairCon.classList.remove('d-none');
 				enableElements([choosePairInput]);
-				// ITT KELL KI RENDERELNI A FREE USERS LISTÁT
-				getFreeUsersAndRenderList(duelTeam);
-			} else { // Ha a van párod kérdésre PÁRNAK JELENTKEZEM
+				let freeUsersForPairing = await getFreeUsersForPairing(duelTeam);
+				renderFreeUsersListForPairing(freeUsersForPairing);
+
+				const freeUsers = document.querySelectorAll('.free-user');
+				console.log(freeUsers);
+
+
+
+
+
+
+
+			} else {
+				console.log('Mi a fasz');
 				hideElements([choosePairCon]);
-				disableElements([choosePairInput]);
+				disableElements([choosePairInput])
 				showPairEligibilityCon();
 			}
 		}
@@ -211,6 +222,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	}
 
+	async function getFreeUsersForPairing(duelTeamId) {
+		try {
+			const res = await axios.get(`/user/${duelTeamId}`);
+			const freeUsers = res.data;
+			return freeUsers;
+		} catch (err) {
+			alert(err);
+		}
+	}
 
 	async function showAndRenderTeamSportsSelectOptions(mainTeamId) {
 		const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
@@ -227,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 	// RENDERS---------------------------------
+
 
 	function renderSelectsByTeamSports(teamSports) {
 		let temp = `
@@ -332,6 +353,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 
+
+
+
+
 	function renderFreeUsersListForPairing(usersForPairing) {
 		let temp = '';
 
@@ -339,59 +364,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		usersForPairing.forEach((user, index) => {
 			console.log(user)
 			temp += `
-            <li data-id="${user.id}" class="free-user list-group-item">${user.name} <i class="fa-solid fa-key"></i> </li>
+            <li data-index="${index}"  data-id="${user.id}" class="${user.pair_password === '' ? 'bg-green-400' : 'bg-orange-400'} free-user list-group-item">${user.name} ${user.pair_password === '' ? '' : ' <i class="fa-solid fa-key"></i>'} </li>
         `;
 		});
 
+		console.log(usersForPairing); // Ellenőrizd a konzolon, hogy helyes HTML-t generál-e
 		choosePairList.innerHTML = temp;
 	}
 
 
-
-
-
-
-	async function getFreeUsersByDuelSportsId(duelTeamId) {
-		try {
-			const res = await axios.get(`/user/${duelTeamId}`);
-			const freeUsers = res.data;
-			return freeUsers;
-		} catch (err) {
-			alert(err);
-		}
-	}
-
-	async function getFreeUsersAndRenderList(duelTeamId) {
-
-
-		choosePairCon.classList.remove('d-none');
-
-		const usersForPairing = await getFreeUsersByDuelSportsId(duelTeamId);
-		renderFreeUsersListForPairing(usersForPairing);
-		chooseFromFreeUsersList();
-	}
-
-
-	function chooseFromFreeUsersList() {
-		const freeUsers = document.querySelectorAll('.free-user');
-
-		freeUsers.forEach((user, index) => {
-			user.addEventListener('click', (e) => {
-				// Először visszaállítjuk az összes elem borderét
-				freeUsers.forEach(user => {
-					user.style.border = 'none';
-				});
-
-				// A kattintott elem kapja meg a border-t
-				e.currentTarget.style.border = '2px solid blue';
-
-				// Az userId beállítása a kattintott elem data-id attribútumából
-				const userId = e.currentTarget.getAttribute('data-id');
-				choosePairInput.value = userId;
-			});
-		});
-	}
 });
+
+
+
+
+
 
 
 

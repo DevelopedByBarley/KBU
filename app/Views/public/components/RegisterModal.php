@@ -172,19 +172,19 @@
 
 						<div class="col-12 d-none" id="choose-pair-container">
 							<div class="form-outline mb-4">
-								<label class="form-label" for="pair-status">
+								<label class="form-label" for="choose-pair">
 									Válassza ki a párt
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="hidden" class="form-control" value="" name="choosed-pair" required disabled>
+								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="choosed-pair" required />
 								<ul class="list-group" id="choose-pair-list">
-									<li class="list-group-item bg-red-400">Cras justo odio</li>
+									<!-- <li class="list-group-item bg-red-400">Cras justo odio</li>
 									<li class="list-group-item bg-green-400">Dapibus ac facilisis in</li>
 									<li class="list-group-item bg-red-400">Morbi leo risus</li>
 									<li class="list-group-item bg-green-400">Porta ac consectetur ac</li>
-									<li class="list-group-item bg-green-400">Vestibulum at eros</li>
+									<li class="list-group-item bg-green-400">Vestibulum at eros</li> -->
 								</ul>
 							</div>
 						</div>
@@ -214,7 +214,7 @@
 									</button>
 								</label>
 								<div class="d-flex gap-3">
-									<input name="pairing_password" type="text" id="pairing_password" class="form-control" />
+									<input name="password" type="text" id="password" class="form-control" required disabled/>
 									<button type="button" class="btn bg-main-gray text-black" id="pw-generator-btn">Generálás</button>
 								</div>
 

@@ -16,15 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	const pairEligibilityCon = document.getElementById('select-pair-eligibility-container');
 	const pairEligibilityselect = pairEligibilityCon.querySelector('select')
 
-	const choosePairCon = document.getElementById('choose-pair-container');
-	const choosePairList = choosePairCon.querySelector('#choose-pair-list');
-	const choosePairInput = choosePairCon.querySelector('#choose-pair-input');
-
 	const pairingPwCon = document.getElementById('pairing-password-container');
-	const pairingPwInput = pairingPwCon.querySelector('#password');
+	const pairingPwInput = pairingPwCon.querySelector('#pairing_password');
 	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
-
-
 
 	mainTeamSelect.onchange = async (e) => {
 		const mainTeamId = Number(e.target.value);
@@ -40,16 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 				teamSportsSelect,
 				pairStatusSelect,
 				pairEligibilityselect,
-				pairingPwInput,
-				choosePairInput
+				pairingPwInput
 			]);
 			hideElements([ // CLOSE ALL INPUT WHEN MAINTEAM ID DOESNT EXIST
 				duelTeamsCon,
 				teamSportsCon,
 				pairStatusSelectCon,
 				pairEligibilityCon,
-				pairingPwCon,
-				choosePairCon
+				pairingPwCon
 			])
 			return;
 		};
@@ -68,14 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			disableElements([
 				pairStatusSelect,
 				pairEligibilityselect,
-				pairingPwInput,
-				choosePairInput
+				pairingPwInput
 			]);
 			return hideElements([
 				pairStatusSelectCon,
 				pairEligibilityCon,
-				pairingPwCon,
-				choosePairCon
+				pairingPwCon
 			])
 		};
 
@@ -105,23 +95,19 @@ document.addEventListener('DOMContentLoaded', () => {
 			const pairStatus = Number(e.target.value);
 
 
-			// Ha a van párod kérdésre nem választunk értéket
 			if (pairStatus === 0) {
-				disableElements([pairEligibilityselect, pairingPwInput, choosePairInput]);
-				return hideElements([pairEligibilityCon, pairingPwCon, choosePairCon])
+				disableElements([pairEligibilityselect, pairingPwInput]);
+				return hideElements([pairEligibilityCon, pairingPwCon])
 			};
 
 			enableElements([pairEligibilityselect])
 
 			if (pairStatus === 1) {
 				hideElements([pairEligibilityCon, pairingPwCon])
-				disableElements([pairEligibilityselect, pairingPwInput]);
-				enableElements([choosePairInput]);
-				// ITT KELL KI RENDERELNI A FREE USERS LISTÁT
+				disableElements([pairEligibilityselect, pairingPwInput])
+
 				getFreeUsersAndRenderList(duelTeam);
-			} else { // Ha a van párod kérdésre PÁRNAK JELENTKEZEM
-				hideElements([choosePairCon]);
-				disableElements([choosePairInput]);
+			} else {
 				showPairEligibilityCon();
 			}
 		}
@@ -210,7 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			alert(err);
 		}
 	}
+	async function getFreeUsersByDuelSportsId(duelTeamId) {
+		try {
+			const res = await axios.get(`/user/${duelTeamId}`);
+			const freeUsers = res.data;
+			return freeUsers;
+		} catch (err) {
+			alert(err);
+		}
+	}
 
+	async function getFreeUsersAndRenderList(duelTeamId) {
+		const users = await getFreeUsersByDuelSportsId(duelTeamId);
+		console.log(users);
+	}
 
 	async function showAndRenderTeamSportsSelectOptions(mainTeamId) {
 		const teamSports = await getTeamSportsByMainTeamId(mainTeamId);
@@ -330,68 +329,5 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		return retVal;
 	}
-
-
-	function renderFreeUsersListForPairing(usersForPairing) {
-		let temp = '';
-
-
-		usersForPairing.forEach((user, index) => {
-			console.log(user)
-			temp += `
-            <li data-id="${user.id}" class="free-user list-group-item">${user.name} <i class="fa-solid fa-key"></i> </li>
-        `;
-		});
-
-		choosePairList.innerHTML = temp;
-	}
-
-
-
-
-
-
-	async function getFreeUsersByDuelSportsId(duelTeamId) {
-		try {
-			const res = await axios.get(`/user/${duelTeamId}`);
-			const freeUsers = res.data;
-			return freeUsers;
-		} catch (err) {
-			alert(err);
-		}
-	}
-
-	async function getFreeUsersAndRenderList(duelTeamId) {
-
-
-		choosePairCon.classList.remove('d-none');
-
-		const usersForPairing = await getFreeUsersByDuelSportsId(duelTeamId);
-		renderFreeUsersListForPairing(usersForPairing);
-		chooseFromFreeUsersList();
-	}
-
-
-	function chooseFromFreeUsersList() {
-		const freeUsers = document.querySelectorAll('.free-user');
-
-		freeUsers.forEach((user, index) => {
-			user.addEventListener('click', (e) => {
-				// Először visszaállítjuk az összes elem borderét
-				freeUsers.forEach(user => {
-					user.style.border = 'none';
-				});
-
-				// A kattintott elem kapja meg a border-t
-				e.currentTarget.style.border = '2px solid blue';
-
-				// Az userId beállítása a kattintott elem data-id attribútumából
-				const userId = e.currentTarget.getAttribute('data-id');
-				choosePairInput.value = userId;
-			});
-		});
-	}
 });
-
-
 
