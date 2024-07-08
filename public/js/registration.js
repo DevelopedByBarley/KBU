@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const mainTeamName = selected.getAttribute('data-name') ?  selected.getAttribute('data-name') : '' 
+        const mainTeamName = selected.getAttribute('data-name') ? selected.getAttribute('data-name') : ''
         document.getElementById('team-header-text').innerHTML = "a(z) " + mainTeamName + " csapatba";
         addBackgroundToModal(selected);
 
@@ -301,9 +301,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // SET BACKGROUND OF MODAL BY MAIN TEAM COLOR----------------------------------------------------------------------------------------------------------
 
     function addBackgroundToModal(selected) {
-        const selectedBg =  selected.getAttribute('data-bg') ?  selected.getAttribute('data-bg') : 'none';
+        const selectedBg = selected.getAttribute('data-bg') ? selected.getAttribute('data-bg') : 'none';
 
-        const newBgClass = 'bg-' +selectedBg;
+        const newBgClass = 'bg-' + selectedBg;
 
         // A form modal és a modal header elemek kiválasztása
         const formModal = document.getElementById('formModal');
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                             background: 'cyan-500'
                                         }
                                     );
-                                    freeUserListItem.style.border = '2px solid green';
+                                    freeUserListItem.style.border = '3px solid lightgreen';
                                 } else {
                                     toast(
                                         {
@@ -511,15 +511,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function generateComparePwContainer(userId) {
+    function generateComparePwContainer() {
         // Létrehozunk egy div elemet és beállítjuk a belső HTML-jét
         const container = document.createElement('div');
-        container.className = 'compare-pw-container'; // Adjunk neki egy osztályt az azonosításhoz
+        container.className = 'compare-pw-container d-md-flex gap-3 mb-3 mt-1'; // Adjunk neki egy osztályt az azonosításhoz
         container.innerHTML = `
-                <input name="pairing-pw" id="pairing-pw" required />
-                <button class="btn bg-green-500" id="send">Elküld</button>
-                <button class="btn bg-red-500" id="close">Bezár</button>
-            </div>
+                <input type="password" autocomplete="off" placeholder="Jelszó beírása..." class="form-control border-2 w-75 my-2 my-md-0" name="pairing-pw" id="pairing-pw" required/>
+                <button class="btn bg-green-500 text-white" id="send">Elküld</button>
+                <button class="btn bg-red-500 text-white" id="close">Bezár</button>
         `;
         return container;
     }

@@ -18,7 +18,7 @@ define('COOKIE_MODAL_PERM', 0);
 define('SAVING_VISITOR_PERM', 1);
 
 // RATINGS & FEEDBACK PERMISSION
-define('FEEDBACK_PERM', 1);
+define('FEEDBACK_PERM', 0);
 
 
 
