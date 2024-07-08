@@ -1,3 +1,4 @@
+<?php $csrf = $params['csrf'];;?>
 
 
 <div class="container-fluid px-lg-5  mt-5 ">
@@ -260,7 +261,6 @@
 
 
 <?php include 'app/Views/public/components/RegisterModal.php'?>
-<?php include 'app/Views/public/components/ComparePwModal.php'?>
 
 
 

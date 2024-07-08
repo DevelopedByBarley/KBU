@@ -30,7 +30,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const mainTeamId = Number(e.target.value);
         const selected = e.target.selectedOptions[0];
 
-        const mainTeamName = selected.getAttribute('data-name')
+        if (Number(selected.value) === 0) {
+            disableElements([
+                duelTeamsSelect,
+                teamSportsSelect,
+                pairStatusSelect,
+                pairEligibilitySelect,
+                pairingPwInput,
+                hiddenChoosePairInput
+            ]);
+            hideElements([ // CLOSE ALL INPUT WHEN MAINTEAM ID DOESNT EXIST
+                duelTeamsCon,
+                teamSportsCon,
+                pairStatusSelectCon,
+                pairEligibilityCon,
+                pairingPwCon,
+                choosePairCon
+            ])
+            addBackgroundToModal(selected);
+
+            return;
+        }
+
+        const mainTeamName = selected.getAttribute('data-name') ?  selected.getAttribute('data-name') : '' 
         document.getElementById('team-header-text').innerHTML = "a(z) " + mainTeamName + " csapatba";
         addBackgroundToModal(selected);
 
@@ -244,11 +266,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const freeSpots = sport.max;
             const teamName = sport.name;
             const teamId = sport.id;
-            const color = sport.color;
 
             temp += `
             <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
-                ${teamName} - ${color} (${freeSpots} szabad hely)
+                ${teamName} - (${freeSpots} szabad hely)
             </option>
         `;
         });
@@ -266,11 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const freeSpots = sport.max;
             const teamName = sport.name;
             const teamId = sport.id;
-            const color = sport.color;
 
             temp += `
             <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
-                ${teamName} - ${color} (${freeSpots} szabad hely)
+                ${teamName} - (${freeSpots} szabad hely)
             </option>
         `;
         });
@@ -281,14 +301,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // SET BACKGROUND OF MODAL BY MAIN TEAM COLOR----------------------------------------------------------------------------------------------------------
 
     function addBackgroundToModal(selected) {
-        // Ellenőrizzük, hogy a selected értéke létezik-e és van-e data-bg attribútuma
-        if (!selected || !selected.getAttribute('data-bg')) {
-            console.error('Nincs megfelelő kiválasztott elem vagy data-bg attribútum.');
-            return;
-        }
+        const selectedBg =  selected.getAttribute('data-bg') ?  selected.getAttribute('data-bg') : 'none';
 
-        // Az új háttérosztály létrehozása
-        const newBgClass = 'bg-' + selected.getAttribute('data-bg');
+        const newBgClass = 'bg-' +selectedBg;
 
         // A form modal és a modal header elemek kiválasztása
         const formModal = document.getElementById('formModal');
@@ -480,7 +495,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 hiddenChoosePairInput.value = userId;
-                console.log(hiddenChoosePairInput.value)
 
                 toast(
                     {

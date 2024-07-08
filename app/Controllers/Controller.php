@@ -75,7 +75,8 @@ class Controller
     $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
     echo $this->Render->write("public/Layout.php", [
       "content" => $this->Render->write("public/pages/Welcome.php", [
-        'main_teams' => $main_teams
+        'main_teams' => $main_teams,
+        "csrf" => $this->CSRFToken
       ])
     ]);
   }

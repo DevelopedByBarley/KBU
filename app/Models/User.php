@@ -9,8 +9,9 @@ use PDOException;
 
 class User extends Model
 {
-  
-  public function compare($body, $userId) {
+
+  public function compare($body, $userId)
+  {
     $pairing_pw = $body['pairing_pw'] ?? null;
 
     try {
@@ -21,7 +22,6 @@ class User extends Model
       $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
       return $pairing_pw === $user['pair_password'];
-
     } catch (PDOException $e) {
       throw new  Exception("An error occurred during the database operation in getAllUsersByDuelSportId method: " . $e->getMessage(), 1);
       exit;
@@ -31,7 +31,7 @@ class User extends Model
   public function getAllUsersByDuelSportId($duel_sport_id)
   {
     try {
-      $stmt = $this->Pdo->prepare("SELECT * FROM `users` WHERE `duel_sportRef_id` = :duel_sportRefId AND pairRef_id IS NULL");
+      $stmt = $this->Pdo->prepare("SELECT * FROM `users` WHERE `duel_sportRef_id` = :duel_sportRefId AND pairRef_id IS NULL  AND pair_status = 2");
       $stmt->bindParam(":duel_sportRefId", $duel_sport_id, PDO::PARAM_INT);
       $stmt->execute();
 
@@ -44,31 +44,83 @@ class User extends Model
     }
   }
 
-  public function storeUser($body, $files)
+  public function storeUser($body)
   {
+    $name = filter_var($body["name"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
+    $class = filter_var($body["class"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
     $email = filter_var($body["email"] ?? '', FILTER_SANITIZE_EMAIL);
-    $pw = password_hash(filter_var($body["password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS), PASSWORD_DEFAULT);
-    $fileName = $this->FileSaver->saver($files['file'], 'uploads/images', null, ['image/png', 'image/jpeg']);
+    $ident_number = filter_var($body["ident-number"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
+    $main_teamRef_id = isset($body["main-team"]) ? (filter_var($body["main-team"], FILTER_VALIDATE_INT) ?: null) : null;
+    $team_sportRef_id = isset($body["team-sport"]) ? (filter_var($body["team-sport"], FILTER_VALIDATE_INT) ?: null) : null;
+    $duel_sportRef_id = isset($body["duel-sport"]) ? (filter_var($body["duel-sport"], FILTER_VALIDATE_INT) ?: null) : null;
 
+    $chess = 0;
+    //  $chess = filter_var($body["chess"] ?? '', FILTER_VALIDATE_INT);
+    $run = 0;
+    //$run = filter_var($body["run"] ?? '', FILTER_VALIDATE_INT);
+    $transfer = 0;
+    //$transfer = filter_var($body["transfer"] ?? '', FILTER_VALIDATE_INT);
+    $vegetarian = 0;
+    //$vegetarian = filter_var($body["vegetarian"] ?? '', FILTER_VALIDATE_INT);
+    $actimo = 0;;
+    //$actimo = filter_var($body["actimo"] ?? '', FILTER_VALIDATE_INT);
+    $pair_status = filter_var($body["pair-status"] ?? '', FILTER_VALIDATE_INT);
+    $pair_eligibility = filter_var($body["pair-eligibility"] ?? '', FILTER_VALIDATE_INT);
+    $pair_password = filter_var($body["password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
+    $pairRef_id = isset($body["pair-id"]) ? (int) $body["pair-id"] : null;
 
-    $isUserExist = $this->selectByRecord('users', 'email', $email, PDO::PARAM_STR);
-
-    if ($isUserExist) return false;
+    // Ha a változó nem egy érvényes integer érték, vagy nem létezik, akkor null értéket adunk neki
+    if ($pairRef_id === 0 || !filter_var($pairRef_id, FILTER_VALIDATE_INT)) {
+      $pairRef_id = null;
+    } else {
+    }
 
     try {
+      $stmt = $this->Pdo->prepare("
+              INSERT INTO `users` 
+              (`id`, `name`, `class`, `email`, `ident_number`, `main_teamRef_id`, `team_sportRef_id`, `duel_sportRef_id`, `chess`, `run`, `transfer`, `vegetarian`, `actimo`, `pair_status`, `pair_eligibility`, `pair_password`, `pairRef_id`, `created_at`) 
+              VALUES 
+              (NULL, :name, :class, :email, :ident_number, :main_teamRef_id, :team_sportRef_id, :duel_sportRef_id, :chess, :run, :transfer, :vegetarian, :actimo, :pair_status, :pair_eligibility, :pair_password, :pairRef_id, current_timestamp())
+          ");
 
-      $stmt = $this->Pdo->prepare("INSERT INTO `users` (`id`, `email`, `password`,  `fileName`, `created_at`) VALUES (NULL, :email, :password, :fileName, current_timestamp())");
+      $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+      $stmt->bindParam(":class", $class, PDO::PARAM_STR);
       $stmt->bindParam(":email", $email, PDO::PARAM_STR);
-      $stmt->bindParam(":password", $pw, PDO::PARAM_STR);
-      $stmt->bindParam(":fileName", $fileName, PDO::PARAM_STR);
+      $stmt->bindParam(":ident_number", $ident_number, PDO::PARAM_STR);
+      $stmt->bindParam(":main_teamRef_id", $main_teamRef_id, PDO::PARAM_INT);
+      $stmt->bindParam(":team_sportRef_id", $team_sportRef_id, PDO::PARAM_INT);
+      $stmt->bindParam(":duel_sportRef_id", $duel_sportRef_id, PDO::PARAM_INT);
+      $stmt->bindParam(":chess", $chess, PDO::PARAM_INT);
+      $stmt->bindParam(":run", $run, PDO::PARAM_INT);
+      $stmt->bindParam(":transfer", $transfer, PDO::PARAM_INT);
+      $stmt->bindParam(":vegetarian", $vegetarian, PDO::PARAM_INT);
+      $stmt->bindParam(":actimo", $actimo, PDO::PARAM_INT);
+      $stmt->bindParam(":pair_status", $pair_status, PDO::PARAM_INT);
+      $stmt->bindParam(":pair_eligibility", $pair_eligibility, PDO::PARAM_INT);
+      $stmt->bindParam(":pair_password", $pair_password, PDO::PARAM_STR);
+      $stmt->bindParam(":pairRef_id", $pairRef_id, PDO::PARAM_INT);
+
       $stmt->execute();
+      $lastInsertedId = $this->Pdo->lastInsertId();
+
+      if ($pairRef_id) {
+        try {
+          $stmt = $this->Pdo->prepare("UPDATE `users` SET `pairRef_id` = :last_inserted_id WHERE `users`.`id` = :pairRef_id");
+          $stmt->bindParam(":last_inserted_id", $lastInsertedId, PDO::PARAM_INT);
+          $stmt->bindParam(":pairRef_id", $pairRef_id, PDO::PARAM_INT);
+
+          $stmt->execute();
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
+      }
 
       return true;
     } catch (PDOException $e) {
-      throw new  Exception("An error occurred during the database operation in storeUser method: " . $e->getMessage(), 1);
-      exit;
+      throw new Exception("An error occurred during the database operation in storeUser method: " . $e->getMessage(), 1);
     }
   }
+
 
   public function loginUser($body)
   {

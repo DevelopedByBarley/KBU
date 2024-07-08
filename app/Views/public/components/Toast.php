@@ -43,6 +43,7 @@ if (isset($toast)) {
     position: fixed;
     right: 20px;
     top: 100px;
+    z-index: 100;
   }
 
   .toast {

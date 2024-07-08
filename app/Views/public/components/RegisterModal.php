@@ -1,4 +1,6 @@
-<?php $main_teams = $params['main_teams'] ?? [] ?>
+<?php
+$main_teams = $params['main_teams'] ?? []
+?>
 
 
 
@@ -47,9 +49,11 @@
 
 
 				<hr class="mt-5">
-				<form>
-					<div class="row mb-4 mt-4">
+				<form action="/user/register" method="POST" enctype="multipart/form-data">
+					<div class=" row mb-4 mt-4">
 						<div class="col-12 col-lg-6 my-2">
+							<?= $csrf->generate() ?>
+
 							<div class="form-outline">
 
 								<label class="form-label" for="form6Example1">
@@ -58,7 +62,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input name="name" type="text" id="form6Example1" class="form-control" data-validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' />
+								<input name="name" type="text" id="form6Example1" class="form-control" data-validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' required />
 							</div>
 						</div>
 
@@ -70,7 +74,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="class" id="form6Example2" class="form-control" data-validators='{"name": "class", "required": true, "minLength": 5}' />
+								<input type="text" name="class" id="form6Example2" class="form-control" data-validators='{"name": "class", "required": true, "minLength": 5}' required />
 							</div>
 						</div>
 
@@ -82,7 +86,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="email" name="email" id="form6Example3" class="form-control" data-validators='{"name": "email", "required": true, "email": true, "minLength": 7}' />
+								<input type="email" name="email" id="form6Example3" class="form-control" data-validators='{"name": "email", "required": true, "email": true, "minLength": 7}' required />
 							</div>
 						</div>
 
@@ -94,7 +98,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="alt_id" id="form6Example5" class="form-control" data-validators='{"name": "alt_id", "required": true, "minLength": 5}' />
+								<input type="text" name="ident-number" id="form6Example5" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
 							</div>
 						</div>
 
@@ -109,7 +113,8 @@
 								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required>
 
 
-									<option value="" selected>Válassza ki a főcsapatot</option>
+									<option value="" selected disabled>Válassza ki a főcsapatot</option>
+									<option value="0">Nem jelentkezem</option>
 									<?php foreach ($main_teams as $team) : ?>
 										<?php
 										$free_spots = $team['max'];
@@ -117,11 +122,12 @@
 										$team_color = htmlspecialchars($team['color']);
 										$team_leader = htmlspecialchars($team['leader']);
 										$team_id = htmlspecialchars($team['id']);
+										$color_emoji = htmlspecialchars($team['color_emoji']);
 										?>
 
 
 										<option data-name="<?= $team_name ?>" data-bg="<?= $team_color ?>" value="<?= $team_id ?>" <?= $free_spots > 0 ? '' : 'disabled' ?>>
-											<?= $team_leader ?> - <?= $team_name ?> (<?= $free_spots ?> szabad hely)
+											<?= $team_leader ?> - <?= $team_name ?> (<?= $free_spots ?> szabad hely) <?= $color_emoji ?>
 										</option>
 									<?php endforeach; ?>
 
@@ -137,7 +143,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="team-sports" name="team-sport" required disabled>
+								<select class="form-select" aria-label="Select main team" id="team-sport" name="team-sport" required disabled>
 								</select>
 							</div>
 						</div>
@@ -149,7 +155,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="duel-sports" name="duel-sport" required disabled>
+								<select class="form-select" aria-label="Select main team" id="duel-spors" name="duel-sport" required disabled>
 								</select>
 							</div>
 						</div>
@@ -178,7 +184,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="choosed-pair" required />
+								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="pair-id" required />
 								<ul class="list-group" id="choose-pair-list">
 									<!-- <li class="list-group-item bg-red-400">Cras justo odio</li>
 									<li class="list-group-item bg-green-400">Dapibus ac facilisis in</li>
@@ -214,7 +220,7 @@
 									</button>
 								</label>
 								<div class="d-flex gap-3">
-									<input name="password" type="text" id="password" class="form-control" required disabled/>
+									<input name="password" type="text" id="password" class="form-control" required disabled />
 									<button type="button" class="btn bg-main-gray text-black" id="pw-generator-btn">Generálás</button>
 								</div>
 
