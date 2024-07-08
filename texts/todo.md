@@ -5,14 +5,10 @@ pair status -> Van-e párja?
   2 ->van
 
 
-- Párosítás menete  
-- Lekérjük az összes olyan usert aki szeretne párt ez az hogy a pair státusz legyen 1 és pairRefId = null.
+- Ha jelszavas userre kattintunk akkor meg kell jeleniteni egy inputot amibe ki renderel egy containerrt amiben van
+ - Input,
+ - Elküldő gomb
+ - Kilépő gomb
+- Ha a jelszavas input látszódik akkor requirednek kell lennie 
 
-- jelszót nem szabad lekérni, ne jelenjen meg a konzolba. 
-
-
-
-- choose pair list hozzáadása - done
-- free users lekérése és kirenderelése - done
-- ha mégsem ezt az opciót választjuk akko kikapcsolása ennek - done
-- Listából való választás alap funkciója 
+Amig ez a folyamat zajlik meg kell gátolnunk hogy el tudja küldeni a user a formot

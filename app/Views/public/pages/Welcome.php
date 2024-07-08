@@ -260,6 +260,7 @@
 
 
 <?php include 'app/Views/public/components/RegisterModal.php'?>
+<?php include 'app/Views/public/components/ComparePwModal.php'?>
 
 
 
