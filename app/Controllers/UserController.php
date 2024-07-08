@@ -16,6 +16,22 @@ class UserController extends Controller
     parent::__construct();
   }
 
+  public function comparePwForPairingUsers($vars)
+  {
+    $userId = $vars['userId'] ?? null;
+    $_POST = json_decode(file_get_contents('php://input'), true);
+
+    try {
+      $isSuccess = $this->User->compare($_POST, $userId);
+      http_response_code(200);
+      echo json_encode($isSuccess);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
+    }
+  }
+
   public function getAllUsersWhoFreeByDuelId($vars)
   {
 
@@ -30,7 +46,7 @@ class UserController extends Controller
     }
   }
 
-  public function index() 
+  public function index()
   {
     $userId = $this->Auth->checkUserIsLoggedInOrRedirect('userId', '/user/login');
 

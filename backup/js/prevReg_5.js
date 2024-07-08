@@ -414,65 +414,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             comparePwContainer.remove();
                         });
 
-                        comparePwContainer.querySelector('#send').addEventListener('click', async (e) => {
+                        comparePwContainer.querySelector('#send').addEventListener('click', (e) => {
                             e.preventDefault();
-
-                            const pairingPwInput = comparePwContainer.querySelector('#pairing-pw').value;
-                            console.log(pairingPwInput);
-
-                            if (pairingPwInput === '') {
-                                return toast(
-                                    {
-                                        title: 'Üzenet!',
-                                        message: 'A mező kitöltése kötelező!',
-                                        time: null
-                                    },
-                                    {
-                                        textColor: 'white',
-                                        background: 'red-500'
-                                    }
-                                );
-                            }
-
-                            try {
-                                const response = await axios.post(`/user/pw-compare/${userId}`, {
-                                    pairing_pw: pairingPwInput
-                                });
-                                const isSuccess = response.data;
-                                if (isSuccess) {
-                                    hiddenChoosePairInput.value = userId;
-                                    console.log(hiddenChoosePairInput.value)
-                                    toast(
-                                        {
-                                            title: 'Üzenet!',
-                                            message: 'Ön sikeresen megjelölte párjának a kiválasztott felhasználót, a jelentkezés leadását követően párok lesztek!',
-                                            time: null
-                                        },
-                                        {
-                                            textColor: 'white',
-                                            background: 'cyan-500'
-                                        }
-                                    );
-                                    freeUserListItem.style.border = '2px solid green';
-                                } else {
-                                    toast(
-                                        {
-                                            title: 'Üzenet!',
-                                            message: 'Sikertelen , jelszó hibás!',
-                                            time: null
-                                        },
-                                        {
-                                            textColor: 'white',
-                                            background: 'red-500'
-                                        }
-                                    );
-                                }
-                                comparePwContainer.remove();
-                            } catch (error) {
-                                console.error('Error during password comparison:', error);
-                                // itt kezelhetjük a hibát, pl.:
-                                alert('Password comparison failed. Please try again.');
-                            }
+                            hiddenChoosePairInput.value = userId;
 
                         })
                     }
@@ -480,19 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 hiddenChoosePairInput.value = userId;
-                console.log(hiddenChoosePairInput.value)
-
-                toast(
-                    {
-                        title: 'Üzenet!',
-                        message: 'Ön sikeresen megjelölte párjának a kiválasztott felhasználót, a jelentkezés leadását követően párok lesztek!',
-                        time: null
-                    },
-                    {
-                        textColor: 'white',
-                        background: 'cyan-500'
-                    }
-                );
             });
         });
     }
@@ -502,9 +433,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.createElement('div');
         container.className = 'compare-pw-container'; // Adjunk neki egy osztályt az azonosításhoz
         container.innerHTML = `
-                <input name="pairing-pw" id="pairing-pw" required />
-                <button class="btn bg-green-500" id="send">Elküld</button>
-                <button class="btn bg-red-500" id="close">Bezár</button>
+                <input required />
+                <button id="send">Send</button>
+                <button id="close">Close</button>
             </div>
         `;
         return container;
@@ -512,6 +443,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
-
 
 

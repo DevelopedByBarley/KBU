@@ -14,3 +14,4 @@ $r->addRoute('GET', '/{duel-sportId}', [UserController::class, 'getAllUsersWhoFr
 $r->addRoute('POST', '/register', [UserController::class, 'store']);
 $r->addRoute('POST', '/login', [UserController::class, 'login']);
 $r->addRoute('POST', '/logout', [UserController::class, 'logout']);
+$r->addRoute('POST', '/pw-compare/{userId}', [UserController::class, 'comparePwForPairingUsers']); 

@@ -9,6 +9,24 @@ use PDOException;
 
 class User extends Model
 {
+  
+  public function compare($body, $userId) {
+    $pairing_pw = $body['pairing_pw'] ?? null;
+
+    try {
+      $stmt = $this->Pdo->prepare("SELECT id, name, pair_password FROM `users` WHERE `id` = :user_id AND pairRef_id IS NULL");
+      $stmt->bindParam(":user_id", $userId, PDO::PARAM_INT);
+      $stmt->execute();
+
+      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      return $pairing_pw === $user['pair_password'];
+
+    } catch (PDOException $e) {
+      throw new  Exception("An error occurred during the database operation in getAllUsersByDuelSportId method: " . $e->getMessage(), 1);
+      exit;
+    }
+  }
 
   public function getAllUsersByDuelSportId($duel_sport_id)
   {
