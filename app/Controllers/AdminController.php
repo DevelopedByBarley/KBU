@@ -57,7 +57,7 @@ class AdminController extends Controller
 
         $this->Mailer->renderAndSend('NewAdmin', [
           'admin_name' => $_POST['name'] ?? 'problem',
-          'site_url' => 'https://kbuprogram.max.hu' ?? 'problem',
+          'site_url' => BASE_URL ?? 'problem',
           'admin_password' => $_POST['password'] ?? 'problem'
         ], $_POST['email'], 'Hello');
 

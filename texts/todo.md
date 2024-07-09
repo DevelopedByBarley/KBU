@@ -13,3 +13,21 @@ pair-eligibility ->
 - Ha a jelszavas input látszódik akkor requirednek kell lennie 
 
 Amig ez a folyamat zajlik meg kell gátolnunk hogy el tudja küldeni a user a formot
+
+
+
+// Email kiküldés és lemondás
+
+Email kiküldés amivel le tudja mondani a teljes regisztrációját
+Vagy ki tudja törölni a párját
+
+// Ha mindenki által elérhetővé akar várni kérje az adminokat
+
+Email ki küldése
+  - Token expiressel generálása
+  - A token legyen jó mondjuk 1 hétig
+  - Küldjük ki az emaillel 
+  
+  - Ha rákattint az emailre megnézzük a tokeneket hogy létezik-e
+  - Átirányitjuk egy oldalra ahol megkérdezzük hogy mit akar törölni a regisztrációját vagy a párját ha van
+  - Ha vége töröljük a tokent vagy az expirest minuszba rakjuk

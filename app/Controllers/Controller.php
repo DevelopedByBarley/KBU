@@ -71,7 +71,6 @@ class Controller
 
   public function index()
   {
-
     $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
     echo $this->Render->write("public/Layout.php", [
       "content" => $this->Render->write("public/pages/Welcome.php", [
@@ -80,6 +79,18 @@ class Controller
       ])
     ]);
   }
+
+
+  public function reset()
+  {
+    $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
+    echo $this->Render->write("public/Layout.php", [
+      "content" => $this->Render->write("public/pages/Reset.php", [
+  
+      ])
+    ]);
+  }
+
   public function cookie()
   {
     echo $this->Render->write("public/Layout.php", [
@@ -94,6 +105,8 @@ class Controller
     ]);
   }
 
+
+
   public function redirectByState($isSuccess, $success_url, $failed_url)
   {
     if ($isSuccess) {
@@ -103,6 +116,31 @@ class Controller
       header("Location: $failed_url");
       exit;
     }
+  }
+
+  public function createResetPassword($tokenData)
+  {
+    return BASE_URL . '?token=' . urlencode($tokenData['token']) . '&expires=' . urlencode($tokenData['expires']);
+  }
+
+  public function generateExpiresTokenByDays($days)
+  {
+    $token = bin2hex(random_bytes(16));
+    $expires = time() + ($days * 24 * 60 * 60);
+    return [
+      'token' => $token,
+      'expires' => $expires,
+    ];
+  }
+
+  public function generateExpiresTokenByHours($hours)
+  {
+    $token = bin2hex(random_bytes(16));
+    $expires = time() + ($hours * 60 * 60);
+    return [
+      'token' => $token,
+      'expires' => $expires,
+    ];
   }
 
   protected function getIpByUser()

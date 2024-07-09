@@ -50,14 +50,14 @@ $currentUrl = $_SERVER['REQUEST_URI'];
                     <a href="/admin/table" class="text-decoration-none">
                         <li class="list-group-item <?= $currentUrl == '/admin/table' ? 'active' : '' ?> border-0 rounded-0 py-3">Regisztrációk</li>
                     </a>
-                    <a href="/admin/form" class="text-decoration-none">
-                        <li class="list-group-item <?= $currentUrl == '/admin/form' ? 'active' : '' ?> border-0 rounded-0 py-3">Form</li>
-                    </a>
-                    <a href="/admin/mailbox" class="text-decoration-none">
-                        <li class="list-group-item <?= $currentUrl == '/admin/mailbox' ? 'active' : '' ?> border-0 rounded-0 py-3">Mail box</li>
+                    <a href="#" class="text-decoration-none">
+                        <li class="list-group-item <?= $currentUrl == '/admin/form' ? 'active' : '' ?> border-0 rounded-0 py-3  bg-red-400">Form</li>
                     </a>
                     <a href="#" class="text-decoration-none">
-                        <li class="list-group-item <?= $currentUrl == '/admin/calendar' ? 'active' : '' ?> border-0 rounded-0 py-3  bg-red-400 ">Calendar</li>
+                        <li class="list-group-item <?= $currentUrl == '/admin/mailbox' ? 'active' : '' ?> border-0 rounded-0 py-3 bg-red-400">Mail box</li>
+                    </a>
+                    <a href="#" class="text-decoration-none">
+                        <li class="list-group-item <?= $currentUrl == '/admin/calendar' ? 'active' : '' ?> border-0 rounded-0 py-3  bg-red-400">Calendar</li>
                     </a>
                 </ul>
             </div>

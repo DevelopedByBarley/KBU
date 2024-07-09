@@ -65,14 +65,16 @@ class UserController extends Controller
   public function store()
   {
     $this->CSRFToken->check();
-    
+
     $isSuccess = $this->User->storeUser($_POST, $_FILES);
 
     if (!$isSuccess) {
+      $token = $this->generateExpiresTokenByDays(10);
+      $reset_url = $this->createResetPassword($token);
+
       $this->Alert->set('Regisztráció sikertelen, próbálja meg más adatokkal!', 'red-500', '/', null);
     }
 
     $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
   }
-
 }

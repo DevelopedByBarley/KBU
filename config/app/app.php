@@ -1,5 +1,6 @@
 <?php
 
+define('BASE_URL', 'https://kbuprogram.max.hu');
 // USER 
 define('USER_SERVICE_PERM', 1);
 
