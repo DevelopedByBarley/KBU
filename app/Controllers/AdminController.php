@@ -57,7 +57,7 @@ class AdminController extends Controller
 
         $this->Mailer->renderAndSend('NewAdmin', [
           'admin_name' => $_POST['name'] ?? 'problem',
-          'site_url' => 'http://localhost:8080' ?? 'problem',
+          'site_url' => 'https://kbuprogram.max.hu' ?? 'problem',
           'admin_password' => $_POST['password'] ?? 'problem'
         ], $_POST['email'], 'Hello');
 
@@ -101,7 +101,6 @@ class AdminController extends Controller
 
   public function login()
   {
-    session_start();
     $this->CSRFToken->check();
     try {
       $adminId = $this->Admin->loginAdmin($_POST);
