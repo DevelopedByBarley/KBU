@@ -1,19 +1,8 @@
 axios.get('/feedback').then(res => {
     const feedback = res.data.isExist;
-    toast(
-        {
-            title: 'Üzenet!',
-            message: 'Köszönük a visszajelzést!',
-            time: null
-        },
-        {
-            textColor: 'white',
-            background: 'cyan-500'
-        }
-    );
     if (!feedback) {
         let counter = localStorage.getItem('counter') ? Number(localStorage.getItem('counter')) : 0;
-        const max = 1000 * 1; // 5 mins
+        const max = 1000 * 60; // 5 mins
 
         const interval = setInterval(() => {
 
@@ -54,7 +43,7 @@ axios.get('/feedback').then(res => {
                 })
             }
 
-        }, 3000)
+        }, 4000)
 
     }
 });

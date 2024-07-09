@@ -11869,29 +11869,6 @@
   transform: translateX(24px);
 }
 
-#toast-root {
-  background-color: red;
-  position: fixed;
-  right: 20px;
-  top: 100px;
-  z-index: 1056 !important;
-}
-
-.toast {
-  position: relative;
-  animation: toastIn;
-  animation-duration: 0.5s;
-  cursor: pointer;
-}
-
-@keyframes toastIn {
-  0% {
-    transform: translateX(200%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 .rating-modal .modal-body .form-check {
   margin-bottom: 10px;
   /* Adjust spacing between smiley icons */
@@ -12061,6 +12038,27 @@
   100% {
     transform: translateY(150%) translateX(-50%);
     opacity: 0;
+  }
+}
+#toast-root {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  z-index: 1056 !important;
+}
+#toast-root .toast {
+  position: relative;
+  animation: toastIn;
+  animation-duration: 0.5s;
+  cursor: pointer;
+}
+
+@keyframes toastIn {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 .skeleton-card {
