@@ -21,6 +21,16 @@ class AdminController extends Controller
     parent::__construct();
   }
 
+  public function exportRegistrations()
+  {
+    try {
+      $users = $this->Model->all('users');
+      $this->XLSX->write($users);
+
+    } catch (Exception $e) {
+      echo $e->getMessage();
+    }
+  }
 
 
   public function store()
@@ -255,10 +265,8 @@ class AdminController extends Controller
   {
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
-
-    $data = [
-      'numOfPage' => 10,
-    ];
+    $users = $this->Model->all('users');
+    $data = $this->Model->paginate($users, 3, '', null);
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,

@@ -12,6 +12,7 @@ $r->addRoute('GET', '/table', [AdminController::class, 'table']);
 $r->addRoute('GET', '/form', [AdminController::class, 'form']);
 $r->addRoute('GET', '/settings', [AdminController::class, 'settings']);
 $r->addRoute('GET', '/mailbox', [AdminController::class, 'mailbox']);
+$r->addRoute('GET', '/export-registers', [AdminController::class, 'exportRegistrations']);
 
 
 // Operations

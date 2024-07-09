@@ -1,9 +1,10 @@
 
-pair-eligibility -> Ki jelölhet párnak? Bárkki megjelölhet, jelszót megadok
 pair status -> Van-e párja? 
-  1 ->Párnak jelentkezem ,
-  2 ->van
+  1 ->van
+  2 ->Párnak jelentkezem ,
 
+pair-eligibility ->
+ Ki jelölhet párnak? Bárkki megjelölhet, jelszót megadok
 
 - Ha jelszavas userre kattintunk akkor meg kell jeleniteni egy inputot amibe ki renderel egy containerrt amiben van
  - Input,

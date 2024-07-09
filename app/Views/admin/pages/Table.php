@@ -1,287 +1,137 @@
-<div class="container-fluid min-h-95 d-flex p-5 my-5 align-items-start justify-content-center flex-column-reverse gap-5 table-responsive">
-  <table class="table align-middle mb-0 rounded rounded-lg shadow">
-    <thead class="bg-teal-500">
-      <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Position</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">John Doe</p>
-              <p class="text-muted mb-0">john.doe@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Software engineer</p>
-          <p class="text-muted mb-0">IT department</p>
-        </td>
-        <td>
-          <span class="badge bg-lime-500 rounded-pill d-inline">Active</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Alex Ray</p>
-              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Consultant</p>
-          <p class="text-muted mb-0">Finance</p>
-        </td>
-        <td>
-          <span class="badge bg-cyan-500 rounded-pill d-inline">Onboarding</span>
-        </td>
-        <td>Junior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Kate Hunington</p>
-              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Designer</p>
-          <p class="text-muted mb-0">UI/UX</p>
-        </td>
-        <td>
-          <span class="badge bg-orange-500 rounded-pill d-inline">Awaiting</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">John Doe</p>
-              <p class="text-muted mb-0">john.doe@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Software engineer</p>
-          <p class="text-muted mb-0">IT department</p>
-        </td>
-        <td>
-          <span class="badge bg-lime-500 rounded-pill d-inline">Active</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Alex Ray</p>
-              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Consultant</p>
-          <p class="text-muted mb-0">Finance</p>
-        </td>
-        <td>
-          <span class="badge bg-cyan-500 rounded-pill d-inline">Onboarding</span>
-        </td>
-        <td>Junior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Kate Hunington</p>
-              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Designer</p>
-          <p class="text-muted mb-0">UI/UX</p>
-        </td>
-        <td>
-          <span class="badge bg-orange-500 rounded-pill d-inline">Awaiting</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">John Doe</p>
-              <p class="text-muted mb-0">john.doe@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Software engineer</p>
-          <p class="text-muted mb-0">IT department</p>
-        </td>
-        <td>
-          <span class="badge bg-lime-500 rounded-pill d-inline">Active</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Alex Ray</p>
-              <p class="text-muted mb-0">alex.ray@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Consultant</p>
-          <p class="text-muted mb-0">Finance</p>
-        </td>
-        <td>
-          <span class="badge bg-cyan-500 rounded-pill d-inline">Onboarding</span>
-        </td>
-        <td>Junior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt="" style="width: 45px; height: 45px" />
-            <div class="ms-3">
-              <p class="fw-bold mb-1">Kate Hunington</p>
-              <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <p class="fw-normal mb-1">Designer</p>
-          <p class="text-muted mb-0">UI/UX</p>
-        </td>
-        <td>
-          <span class="badge bg-orange-500 rounded-pill d-inline">Awaiting</span>
-        </td>
-        <td>Senior</td>
-        <td>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white">
-            Show
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white">
-            Edit
-          </button>
-          <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white">
-            Delete
-          </button>
-        </td>
-      </tr>
-    </tbody>
+<?php
+$users = $params['data']['pages'];
+?>
 
-    <?php include 'app/Views/public/components/Pagination.php' ?>
-  </table>
+<div class="container-fluid min-h-95 d-flex p-5 my-5 align-items-start justify-content-center flex-column-reverse gap-5">
+  <div class="table-responsive min-h-700 w-100">
+    <table class="table align-middle mb-0 rounded rounded-lg shadow">
+      <thead class="bg-teal-500">
+        <tr>
+          <th>Név</th>
+          <th>Törzsszám és osztály</th>
+          <th>Futás</th>
+          <th>Transzfer</th>
+          <th>Vegetáriánus</th>
+          <th>Actimo</th>
+          <th>Fő csapat</th>
+          <th>Csapat sport</th>
+          <th>Páros sport</th>
+          <th>Pár státusz</th>
+          <th>Engedély</th>
+          <th>Van jelszava?</th>
+          <th>Pár</th>
+          <th>Létrehozva</th>
+          <th>Műveletek</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($users as $user) : ?>
+          <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <!-- Assuming you have a profile image for each user, update the image source -->
+                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
+                <div class="ms-3">
+                  <p class="fw-bold mb-1"><?= htmlspecialchars($user['name']); ?></p>
+                  <!-- Display user email -->
+                  <p class="text-muted mb-0"><?= htmlspecialchars($user['email']); ?></p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <!-- Example of job title and department -->
+              <p class="fw-Nemrmal mb-1"><?= htmlspecialchars($user['ident_number']); ?></p>
+              <p class="text-muted mb-0"><?= htmlspecialchars($user['class']); ?></p>
+            </td>
+            <td>
+              <?= $user['run'] == '0' ? 'Nem' : 'Igen'; ?>
+            </td>
+            <td>
+              <?= $user['transfer'] == '0' ? 'Nem' : 'Igen'; ?>
+            </td>
+            <td>
+              <?= $user['vegetarian'] == '0' ? 'Nem' : 'Igen'; ?>
+            </td>
+            <td>
+              <?= $user['actimo'] == '0' ? 'Nem' : 'Igen'; ?>
+            </td>
+            <td>
+              <?= htmlspecialchars($user['main_teamRef_id']); ?>
+            </td>
+            <td>
+              <?= htmlspecialchars($user['team_sportRef_id']); ?>
+            </td>
+            <td>
+              <?= $user['duel_sportRef_id'] ? 'Igen' : 'Nem'; ?>
+            </td>
+            <td>
+              <?php
+              // Determine badge color and status text based on user status, eligibility, and password
+              $status = (int) $user['pair_status'];
+              $eligibility = (int) $user['pair_eligibility'];
+              $password = empty($user['pair_password']) ? 0 : 1;
+              $pairRefId = $user['pairRef_id'];
+              $badge_color = '';
+              $status_text = '';
+
+              switch ($status) {
+                case 1:
+                  if ($pairRefId) {
+                    $badge_color = 'bg-teal-500';
+                    $status_text = 'Van párja';
+                  }
+                  break;
+                case 2:
+                  if ($pairRefId) {
+                    $badge_color = 'bg-teal-500';
+                    $status_text = 'Van párja';
+                  }
+                case 2:
+                  if (!$pairRefId && $password === 1) {
+                    $badge_color = 'bg-orange-500';
+                    $status_text = 'Jelszóval várakozik';
+                  }
+                case 2:
+                  if (!$pairRefId && $password === 0) {
+                    $badge_color = 'bg-purple-500';
+                    $status_text = 'Jelszó nélkül várakozik';
+                  }
+                  break;
+                default:
+                  $badge_color = 'bg-gray-500';
+                  $status_text = 'Nem jelentkezett';
+              }
+              ?>
+              <span class="badge <?= $badge_color; ?> rounded-pill d-inline"><?= htmlspecialchars($status_text); ?></span>
+            </td>
+
+            <td>
+              <?= $user['pair_eligibility'] == '0' ? 'Nem' : 'Igen'; ?>
+            </td>
+            <td>
+              <?= empty($user['pair_password']) ? 'Nem' : 'Igen'; ?>
+            </td>
+            <td>
+              <?= $user['pairRef_id'] ? 'Igen' : 'Nem'; ?>
+            </td>
+            <td>
+              <?= htmlspecialchars($user['created_at']); ?>
+            </td>
+            <td>
+              <div class="btn-group gap-3" role="group" aria-label="Műveletek">
+                <button type="button" class="btn bg-sky-500">Megtekintés</button>
+                <button type="button" class="btn bg-yellow-500">Frissítés</button>
+                <button type="button" class="btn btn-danger">Törlés</button>
+              </div>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center mt-3">
+    <?php include 'app/Views/public/components/Pagination.php'; ?>
+    <a href="/admin/export-registers" class="btn btn-success">Exportálás Excel-be</a>
+  </div>
 </div>
