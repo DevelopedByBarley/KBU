@@ -36,30 +36,3 @@ if (isset($toast)) {
 
 
 
-
-
-<style>
-  #toast-root {
-    position: fixed;
-    right: 20px;
-    top: 100px;
-    z-index: 100;
-  }
-
-  .toast {
-    position: relative;
-    animation: toastIn;
-    animation-duration: .5s;
-    cursor: pointer;
-  }
-
-  @keyframes toastIn {
-    0% {
-      transform: translateX(200%);
-    }
-
-    100% {
-      transform: translateX(0);
-    }
-  }
-</style>

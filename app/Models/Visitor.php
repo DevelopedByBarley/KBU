@@ -70,22 +70,34 @@ class Visitor extends Model
 
   private function getCountryFromIP($ip)
   {
-    if ($ip == '127.0.0.1' || $ip == '::1') {
-      return 'Localhost';
-    }
-
-    $accessKey = 'YOUR_ACCESS_KEY'; // Cseréld ki a saját API kulcsodra
-    $url = "http://ipinfo.io/{$ip}/country?token={$accessKey}";
-
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    $country = curl_exec($ch);
-    curl_close($ch);
-
-    return $country ? trim($country) : 'Unknown';
+      if ($ip == '127.0.0.1' || $ip == '::1') {
+          return 'Localhost';
+      }
+  
+      // Ellenőrizd, hogy az IP cím nem privát vagy bogon cím-e
+      if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+          return 'Private or Bogon IP';
+      }
+  
+      $accessKey = $_SERVER['IP_ACCESS_KEY']; // Cseréld ki a saját API kulcsodra
+      $url = "https://ipinfo.io/{$ip}?token={$accessKey}";
+  
+      $json = @file_get_contents($url);
+  
+      if ($json === false) {
+          return 'Unknown';
+      }
+  
+      $data = json_decode($json, true);
+  
+      if (isset($data['country'])) {
+          return trim($data['country']);
+      } elseif (isset($data['bogon']) && $data['bogon'] === true) {
+          return 'Private or Bogon IP';
+      } else {
+          return 'Unknown';
+      }
   }
-
   private function getUserIP()
   {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
