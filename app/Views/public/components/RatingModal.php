@@ -1,8 +1,8 @@
-<div class="modal fade rating-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade rating-modal" id="ratingModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ratingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-violet-500 text-white">
-                <h5 class="modal-title" id="staticBackdropLabel">Adja le értékelését</h5>
+                <h5 class="modal-title" id="ratingModalLabel">Adja le értékelését</h5>
             </div>
             <div class="modal-body py-5">
                 <div class="container">
