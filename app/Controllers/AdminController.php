@@ -24,9 +24,14 @@ class AdminController extends Controller
   public function exportRegistrations()
   {
     try {
+      $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
       $users = $this->Model->all('users');
+      $this->Activity->store([
+        'content' => "Kiexportálta a regisztráltakat",
+        'contentInEn' => null,
+        'adminRefId' => $adminId
+      ],  $adminId);
       $this->XLSX->write($users);
-
     } catch (Exception $e) {
       echo $e->getMessage();
     }
@@ -104,7 +109,7 @@ class AdminController extends Controller
     $this->CSRFToken->check();
     try {
       $adminId = $this->Admin->loginAdmin($_POST);
-      
+
 
       if ($adminId) {
         session_write_close(); // Bezárjuk a sessiont
