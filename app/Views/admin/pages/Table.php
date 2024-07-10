@@ -116,7 +116,8 @@ $users = $params['data']['pages'];
             </td>
             <td>
               <div class="btn-group gap-3" role="group" aria-label="Műveletek">
-                <button type="button" class="btn bg-sky-500">Megtekintés</button>
+                <button type="button" class="btn bg-sky-500" data-bs-toggle="modal" data-bs-target="#showUserModal-<?= $user['id'] ?>">Megtekintés</button>
+                <?php require 'app/Views/admin/components/ShowUserModal.php' ?>
                 <button type="button" class="btn bg-yellow-500">Frissítés</button>
                 <button type="button" class="btn btn-danger">Törlés</button>
               </div>
