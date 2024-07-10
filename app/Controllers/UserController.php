@@ -106,6 +106,8 @@ class UserController extends Controller
       $user_id  = $token_data['ref_id'];
       $token = $token_data['token'];
       $this->User->deleteUser($user_id);
+      $this->User->deletePairRefIdIfItExist($user_id);
+
       $deactivated = $this->Model->deactivateResetToken($token);
 
       if (!$deactivated) {

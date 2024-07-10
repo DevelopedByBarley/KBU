@@ -12,12 +12,12 @@ class User extends Model
 
   public function deleteUser($user_id)
   {
-    
+
     if ($user_id === null) {
       http_response_code(400);
       exit("Hiányzó userId.");
     }
-    
+
 
     try {
       $stmt = $this->Pdo->prepare("DELETE FROM users WHERE id = :userId");
@@ -39,17 +39,31 @@ class User extends Model
 
   public function deletePairRefIdIfItExist($userId)
   {
+    echo '<pre>';
     try {
-      $stmt1 = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE id = :userId");
-      $stmt1->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $stmt =  $this->Pdo->prepare("SELECT * FROM USERS WHERE id = :userId OR pairRef_id = :userId");
+      $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $stmt->execute();
+      $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      $stmt2 = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE pairRef_id = :userId");
-      $stmt2->bindParam(':userId', $userId, PDO::PARAM_INT);
+      foreach ($users as $user) {
+        if ((int)$user['pair_status'] === 1) {
+          $stmt = $this->Pdo->prepare("UPDATE users SET pair_status = 2, pair_eligibility = 1 WHERE id = :userId AND pair_status = 1");
+          $stmt->bindParam(':userId', $user['id'], PDO::PARAM_INT);
+          $stmt->execute();
+        }
+      }
 
-      $stmt1->execute();
-      $stmt2->execute();
+      $stmt = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE id = :userId OR pairRef_id = :userId");
+      $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $stmt->execute();
 
-      if ($stmt1->rowCount() > 0 || $stmt2->rowCount() > 0) {
+
+
+ 
+
+
+      if ($stmt->rowCount() > 0) {
         return true;
       } else {
         return false;
