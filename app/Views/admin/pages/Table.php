@@ -17,7 +17,6 @@ $users = $params['data']['pages'];
           <th>Csapat sport</th>
           <th>Páros sport</th>
           <th>Pár státusz</th>
-          <th>Engedély</th>
           <th>Van jelszava?</th>
           <th>Pár</th>
           <th>Létrehozva</th>
@@ -106,9 +105,6 @@ $users = $params['data']['pages'];
               <span class="badge <?= $badge_color; ?> rounded-pill d-inline"><?= htmlspecialchars($status_text); ?></span>
             </td>
 
-            <td>
-              <?= $user['pair_eligibility'] == '0' ? 'Nem' : 'Igen'; ?>
-            </td>
             <td>
               <?= empty($user['pair_password']) ? 'Nem' : 'Igen'; ?>
             </td>

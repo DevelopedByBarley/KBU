@@ -39,7 +39,6 @@ class User extends Model
 
   public function deletePairRefIdIfItExist($userId)
   {
-    echo '<pre>';
     try {
       $stmt =  $this->Pdo->prepare("SELECT * FROM USERS WHERE id = :userId OR pairRef_id = :userId");
       $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
@@ -57,11 +56,6 @@ class User extends Model
       $stmt = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE id = :userId OR pairRef_id = :userId");
       $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
       $stmt->execute();
-
-
-
- 
-
 
       if ($stmt->rowCount() > 0) {
         return true;

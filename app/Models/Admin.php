@@ -62,6 +62,7 @@ class Admin extends Model
       $hash = password_hash($password, PASSWORD_DEFAULT);
       $prev_password = filter_var($body["prev_password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
       $avatar = filter_var($body["settings_avatar_radio"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
+      $level = filter_var($body["level"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
 
       $prev_admin = $this->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
       $current_password = $prev_admin['password'];
@@ -91,6 +92,7 @@ class Admin extends Model
         $stmt = $this->Pdo->prepare("UPDATE `admins` 
                                            SET `name` = :name, 
                                                `password` = :password, 
+                                               `level` = :level, 
                                                `avatar` = :avatar 
                                            WHERE `id` = :adminId");
 
@@ -100,6 +102,7 @@ class Admin extends Model
         // Prepare the SQL statement without password update
         $stmt = $this->Pdo->prepare("UPDATE `admins` 
                                            SET `name` = :name, 
+                                               `level` = :level, 
                                                `avatar` = :avatar 
                                            WHERE `id` = :adminId");
       }
@@ -107,6 +110,7 @@ class Admin extends Model
       // Bind common parameters to the statement
       $stmt->bindParam(":adminId", $adminId, PDO::PARAM_INT);
       $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+      $stmt->bindParam(":level", $level, PDO::PARAM_INT);
       $stmt->bindParam(":avatar", $avatar, PDO::PARAM_STR);
 
       // Execute the statement

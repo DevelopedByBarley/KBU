@@ -1,3 +1,5 @@
+<?php $levels = [1, 2, 3] ?>
+
 <div class="modal fade" id="updateAdminModal-<?= $current_admin['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -54,7 +56,18 @@
     }' />
                         </div>
                     </div>
-
+                
+                    <?php if ((int)$admin['level'] === 3) : ?>
+                        <div class="form-group my-2">
+                            <label for="exampleInputPassword1">Level</label>
+                            <select class="form-select" name="level" aria-label="Default select example" required>
+                                <option value="" selected disabled>Select admin level</option>
+                                <?php foreach ($levels as $level) : ?>
+                                    <option <?= (int)$current_admin['level'] === $level ? 'selected' : '' ?> value="<?= $level ?>"><?= $level ?></option>
+                                <?php endforeach ?>
+                            </select>
+                        </div>
+                    <?php endif ?>
                     <div class="avatars">
                         <div class="row">
                             <label for="avatars" class="my-3">Avatar kiválasztása</label>

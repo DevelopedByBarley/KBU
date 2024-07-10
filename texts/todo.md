@@ -40,3 +40,13 @@ Ezt hogy lehet megkülömböztetni?
 
     - A pár státuszom legyen 2 
     - És az eligiblity pedig legyen 1
+
+
+
+  // ADMIN TUDJA MÉGIS ÁLLÍTANI A LEVELT HA 3-as
+
+  // Mit tudjon még az admin csinálni a userrel?
+  - Meg tudja tekinteni
+  - Frissitse bármilyét,
+     - viszont a fő csapatok és a csapat sportokból való áthelyezést csak akkor engedélyezze, ha van bennük hely
+     -
