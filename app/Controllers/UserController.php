@@ -64,17 +64,78 @@ class UserController extends Controller
 
   public function store()
   {
-    $this->CSRFToken->check();
+     $this->CSRFToken->check();
 
-    $isSuccess = $this->User->storeUser($_POST, $_FILES);
+    try {
+      $last_inserted_id = $this->User->storeUser($_POST, $_FILES);
 
-    if (!$isSuccess) {
-      $token = $this->generateExpiresTokenByDays(10);
-      $reset_url = $this->createResetPassword($token);
+      if (!$last_inserted_id) {
+        $this->Alert->set('Regisztráció sikertelen, próbálja meg más adatokkal!', 'red-500', '/', null);
+      }
 
-      $this->Alert->set('Regisztráció sikertelen, próbálja meg más adatokkal!', 'red-500', '/', null);
+      $tokenData = $this->generateExpiresTokenByDays(10);
+      $reset_url = $this->createResetUrl($tokenData);
+
+
+
+      $this->Model->storeToken($tokenData['token'], $tokenData['expires'], '/reset', $last_inserted_id);
+      $this->Mailer->renderAndSend('newUser', [
+        'user_name' => $_POST['name'] ?? 'problem',
+        'reset_url' => $reset_url  ?? 'problem',
+        'pair_password' => $_POST['password'] ?? null
+      ], $_POST['email'], 'Visszaigazolás a regisztrációról.');
+      $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
     }
+  }
 
-    $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
+
+  public function destroy()
+  {
+
+    try {
+      $token_data = $this->Model->checkResetToken();
+
+      if (!$token_data) {
+        http_response_code(400);
+        $this->Toast->set('Ez a token lejárt vagy nem létezik!', 'danger', '/', null);
+      }
+      $user_id  = $token_data['ref_id'];
+      $token = $token_data['token'];
+      $this->User->deleteUser($user_id);
+      $deactivated = $this->Model->deactivateResetToken($token);
+
+      if (!$deactivated) {
+        http_response_code(400);
+        $this->Toast->set('Ez a token lejárt vagy nem létezik!', 'danger', '/', null);
+      }
+
+      http_response_code(200);
+      $this->Toast->set('Felhasználó sikeresen törölve.', 'cyan-500', '/', null);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
+    }
+  }
+
+  public function resetPair()
+  {
+    try {
+      $token_data = $this->Model->checkResetToken();
+      $user_id  = $token_data['ref_id'];
+      $token = $token_data['token'];
+      $this->User->deletePairRefIdIfItExist($user_id);
+      $this->Model->deactivateResetToken($token);
+      http_response_code(200);
+      $this->Toast->set('Pár törlése sikeres', 'cyan-500', '/', null);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
+    }
   }
 }

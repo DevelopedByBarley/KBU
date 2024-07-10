@@ -14,6 +14,7 @@ use App\Helpers\XLSX;
 use App\Models\MainTeam;
 use App\Models\Model;
 use App\Models\Visitor;
+use PDO;
 
 class Controller
 {
@@ -83,10 +84,11 @@ class Controller
 
   public function reset()
   {
-    $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
+    $userId = $this->Model->checkResetToken()['ref_id'];
+    $user = $this->Model->selectByRecord('users', 'id', $userId, PDO::PARAM_INT);
     echo $this->Render->write("public/Layout.php", [
       "content" => $this->Render->write("public/pages/Reset.php", [
-  
+        'user' => $user
       ])
     ]);
   }
@@ -118,9 +120,9 @@ class Controller
     }
   }
 
-  public function createResetPassword($tokenData)
+  public function createResetUrl($tokenData)
   {
-    return BASE_URL . '?token=' . urlencode($tokenData['token']) . '&expires=' . urlencode($tokenData['expires']);
+    return BASE_URL . '/reset?token=' . urlencode($tokenData['token']) . '&expires=' . urlencode($tokenData['expires']);
   }
 
   public function generateExpiresTokenByDays($days)

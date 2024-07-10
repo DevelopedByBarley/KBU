@@ -31,6 +31,73 @@ class Model
     $this->Mailer->renderAndSend('Test', ['name' => $name], 'arpadsz@max.hu', 'Test');
   }
 
+  public function storeToken($token, $expires, $link, $ref_id)
+  {
+    try {
+      $stmt = $this->Pdo->prepare("INSERT INTO `token` VALUES (NULL, :token, :expires, :link, :ref_id, current_timestamp());");
+      $stmt->bindParam(":token", $token);
+      $stmt->bindParam(":expires", $expires);
+      $stmt->bindParam(":link", $link);
+      $stmt->bindParam(":ref_id", $ref_id);
+      $stmt->execute();
+
+      return $link;
+    } catch (PDOException $e) {
+      throw new Exception("An error occurred during the database operation in the storeToken method: " . $e->getMessage());
+    }
+  }
+
+  public function checkResetToken()
+  {
+    $token = $_GET['token'] ?? '';
+    $expires = $_GET['expires'] ?? '';
+
+    if (empty($token) || empty($expires)) {
+      return false;
+    }
+
+    if (time() > (int)$expires) {
+      return false;
+    }
+
+    try {
+      $stmt = $this->Pdo->prepare("SELECT * FROM token WHERE token = :token");
+      $stmt->execute(['token' => $token]);
+
+      if ($stmt->rowCount() > 0) {
+        $token = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $token;
+      } else {
+        return false;
+      }
+    } catch (PDOException $e) {
+      error_log("Adatbázis hiba: " . $e->getMessage());
+      http_response_code(500);
+      throw new Exception("An error occurred during the database operation in the checkResetToken method: " . $e->getMessage());
+    }
+  }
+
+
+  public function deactivateResetToken($token)
+  {
+    try {
+      $stmt = $this->Pdo->prepare("UPDATE token SET expires = -1 WHERE token = :token");
+      $stmt->execute(['token' => $token]);
+
+      if ($stmt->rowCount() > 0) {
+        return true;
+      } else {
+        return false; 
+      }
+    } catch (PDOException $e) {
+      error_log("Adatbázis hiba: " . $e->getMessage());
+      http_response_code(500); // Belső szerver hiba
+      throw new Exception("Adatbázis hiba történt a deactivateResetToken metódusban: " . $e->getMessage());
+    }
+  }
+
+
+
 
 
 

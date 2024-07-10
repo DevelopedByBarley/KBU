@@ -10,6 +10,59 @@ use PDOException;
 class User extends Model
 {
 
+  public function deleteUser($user_id)
+  {
+    
+    if ($user_id === null) {
+      http_response_code(400);
+      exit("Hiányzó userId.");
+    }
+    
+
+    try {
+      $stmt = $this->Pdo->prepare("DELETE FROM users WHERE id = :userId");
+      $stmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      if ($stmt->rowCount() > 0) {
+        return true;
+      } else {
+        http_response_code(404);
+        exit("A felhasználó nem található.");
+      }
+    } catch (\Throwable $th) {
+      error_log("Adatbázis hiba: " . $th->getMessage());
+      http_response_code(500);
+      exit("Belső szerver hiba.");
+    }
+  }
+
+  public function deletePairRefIdIfItExist($userId)
+  {
+    try {
+      $stmt1 = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE id = :userId");
+      $stmt1->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+      $stmt2 = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE pairRef_id = :userId");
+      $stmt2->bindParam(':userId', $userId, PDO::PARAM_INT);
+
+      $stmt1->execute();
+      $stmt2->execute();
+
+      if ($stmt1->rowCount() > 0 || $stmt2->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (\Throwable $th) {
+      error_log("Adatbázis hiba: " . $th->getMessage());
+      http_response_code(500);
+      exit("Belső szerver hiba.");
+    }
+  }
+
+
+
   public function compare($body, $userId)
   {
     $pairing_pw = $body['pairing_pw'] ?? null;
@@ -72,7 +125,6 @@ class User extends Model
     // Ha a változó nem egy érvényes integer érték, vagy nem létezik, akkor null értéket adunk neki
     if ($pairRef_id === 0 || !filter_var($pairRef_id, FILTER_VALIDATE_INT)) {
       $pairRef_id = null;
-    } else {
     }
 
     try {
@@ -101,21 +153,21 @@ class User extends Model
       $stmt->bindParam(":pairRef_id", $pairRef_id, PDO::PARAM_INT);
 
       $stmt->execute();
-      $lastInsertedId = $this->Pdo->lastInsertId();
+      $last_inserted_id = $this->Pdo->lastInsertId();
 
       if ($pairRef_id) {
         try {
           $stmt = $this->Pdo->prepare("UPDATE `users` SET `pairRef_id` = :last_inserted_id WHERE `users`.`id` = :pairRef_id");
-          $stmt->bindParam(":last_inserted_id", $lastInsertedId, PDO::PARAM_INT);
+          $stmt->bindParam(":last_inserted_id", $last_inserted_id, PDO::PARAM_INT);
           $stmt->bindParam(":pairRef_id", $pairRef_id, PDO::PARAM_INT);
 
           $stmt->execute();
-        } catch (\Throwable $th) {
-          //throw $th;
+        } catch (PDOException $e) {
+          throw new Exception("An error occurred during the database operation in storeUser method: " . $e->getMessage(), 1);
         }
       }
 
-      return true;
+      return $last_inserted_id;
     } catch (PDOException $e) {
       throw new Exception("An error occurred during the database operation in storeUser method: " . $e->getMessage(), 1);
     }

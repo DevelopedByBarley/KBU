@@ -98,7 +98,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="ident-number" id="form6Example5" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
+								<input type="number" name="ident-number" id="form6Example5" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
 							</div>
 						</div>
 

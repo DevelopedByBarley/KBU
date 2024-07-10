@@ -31,3 +31,12 @@ Email ki küldése
   - Ha rákattint az emailre megnézzük a tokeneket hogy létezik-e
   - Átirányitjuk egy oldalra ahol megkérdezzük hogy mit akar törölni a regisztrációját vagy a párját ha van
   - Ha vége töröljük a tokent vagy az expirest minuszba rakjuk
+
+
+
+// Mivan akkor ha megjelöltem egy párt, de közben törlődik vagy a regisztráció vagy a párosodás
+Ezt hogy lehet megkülömböztetni?
+  - ha pár státuszom 1 a törlés pillanatában akkor:
+
+    - A pár státuszom legyen 2 
+    - És az eligiblity pedig legyen 1
