@@ -14,19 +14,19 @@ $csrf = $params['csrf'];
               <div class="mb-md-5 mt-md-4 pb-5">
 
                 <h2 class="fw-bold mb-2 text-uppercase">ADMIN</h2>
-                <p class=" mb-5">Please enter your login and password!</p>
+                <p class=" mb-5">Kérem adja meg felhasználó nevét és jelszavát!</p>
 
                 <div class="form-outline form-white mb-4">
                   <input class="form-control py-2" id="inputEmailAddress" type="text" placeholder="Enter email address" name="name">
-                  <label class="form-label" for="typeEmailX">Email</label>
+                  <label class="form-label" for="typeEmailX">Felhasználónév</label>
                 </div>
 
                 <div class="form-outline form-white mb-4">
                   <input class="form-control py-2" id="inputPassword" type="password" placeholder="Enter password" name="password">
-                  <label class="form-label" for="typePasswordX">Password</label>
+                  <label class="form-label" for="typePasswordX">Jelszó</label>
                 </div>
 
-                <button class="btn btn-lg px-5" type="submit">Login</button>
+                <button class="btn btn-lg px-5" type="submit">Bejelentkezés</button>
 
               </div>
             </form>

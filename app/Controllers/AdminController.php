@@ -104,6 +104,7 @@ class AdminController extends Controller
     $this->CSRFToken->check();
     try {
       $adminId = $this->Admin->loginAdmin($_POST);
+      
 
       if ($adminId) {
         session_write_close(); // Bezárjuk a sessiont
@@ -112,6 +113,13 @@ class AdminController extends Controller
         session_start();
         session_regenerate_id(true);
         $_SESSION['adminId'] = $adminId;
+
+        $this->Activity->store([
+          'content' => "Belépett az admin felületre",
+          'contentInEn' => null,
+          'adminRefId' => $adminId
+        ],  $adminId);
+
         header('Location: /admin/dashboard');
         exit;
       } else {
