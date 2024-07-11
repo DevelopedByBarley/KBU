@@ -34,6 +34,7 @@ class AdminController extends Controller
 
       $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
       $user = $this->Model->selectByRecord('users', 'id', $userId, PDO::PARAM_INT);
+      $this->Model->deletePairRefIdIfItExist($userId);
 
       $this->Activity->store([
         'content' => "Kitörölte " . $user['name'] . 'nevű felhasználót',

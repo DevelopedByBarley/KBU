@@ -87,7 +87,7 @@ class Model
       if ($stmt->rowCount() > 0) {
         return true;
       } else {
-        return false; 
+        return false;
       }
     } catch (PDOException $e) {
       error_log("Adatbázis hiba: " . $e->getMessage());
@@ -245,6 +245,39 @@ class Model
       $stmt->execute();
     } catch (PDOException $e) {
       throw new Exception("An error occurred during the database operation in the deleteRecordById method: " . $e->getMessage());
+    }
+  }
+
+
+  public function deletePairRefIdIfItExist($userId)
+  {
+    try {
+      $stmt =  $this->Pdo->prepare("SELECT * FROM USERS WHERE id = :userId OR pairRef_id = :userId");
+      $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $stmt->execute();
+      $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      foreach ($users as $user) {
+        if ((int)$user['pair_status'] === 1) {
+          $stmt = $this->Pdo->prepare("UPDATE users SET pair_status = 2, pair_eligibility = 1 WHERE id = :userId AND pair_status = 1");
+          $stmt->bindParam(':userId', $user['id'], PDO::PARAM_INT);
+          $stmt->execute();
+        }
+      }
+
+      $stmt = $this->Pdo->prepare("UPDATE users SET pairRef_id = NULL WHERE id = :userId OR pairRef_id = :userId");
+      $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+      $stmt->execute();
+
+      if ($stmt->rowCount() > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (\Throwable $th) {
+      error_log("Adatbázis hiba: " . $th->getMessage());
+      http_response_code(500);
+      exit("Belső szerver hiba.");
     }
   }
 }
