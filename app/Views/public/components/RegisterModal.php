@@ -45,6 +45,11 @@ $main_teams = $params['main_teams'] ?? []
 					</div>
 				</div>
 
+				<div class="alert alert-danger mt-2">
+					<i class="fa-solid fa-triangle-exclamation text-xl mx-2"></i>
+					Figyelem, a jelentkezés folytatásához a törzsszám ellenörzése kötelező!
+				</div>
+
 
 
 
@@ -93,12 +98,13 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 col-lg-6 my-2">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example5">
-									Törzsszám
-									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="A belépőkártyádon található 6 vagy 8 jegyű szám.">
+									<span class="red-500"></span>Törzsszám <i class="red-500 fa-solid fa-triangle-exclamation text-xl"></i>
+									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="A belépőkártyádon található 6 vagy 8 jegyű szám. Figyelem! A jelentkezés folytatásához az ellenörzése kötelező">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="number" name="ident-number" id="form6Example5" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
+								<input type="number" name="ident-number" id="ident-number" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
+								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600">Ellenörzés</button>
 							</div>
 						</div>
 
@@ -110,7 +116,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required>
+								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required disabled>
 
 
 									<option value="" selected disabled>Válassza ki a főcsapatot</option>
@@ -143,7 +149,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Select main team" id="team-sport" name="team-sport" required disabled>
+								<select class="form-select" aria-label="Select team sport" id="team-sport" name="team-sport" required disabled>
 								</select>
 							</div>
 						</div>
@@ -184,7 +190,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="pair-id" required />
+								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="pair-id" required disabled/>
 								<ul class="list-group" id="choose-pair-list">
 									<!-- <li class="list-group-item bg-red-400">Cras justo odio</li>
 									<li class="list-group-item bg-green-400">Dapibus ac facilisis in</li>

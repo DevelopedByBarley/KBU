@@ -164,7 +164,6 @@ class Controller
 
   protected function sanitizePost()
   {
-    $postData = file_get_contents('php://input');
-    parse_str($postData, $_POST);
+    $_POST = json_decode(file_get_contents('php://input'), true);
   }
 }

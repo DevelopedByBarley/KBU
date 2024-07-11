@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-
+    const checkIdentNumberBtn = document.getElementById('check-ident-num');
     const mainTeamSelect = document.getElementById('main-team');
 
     const duelTeamsCon = document.getElementById('duel-sports-container'); // d-none
@@ -23,6 +23,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const pairingPwCon = document.getElementById('pairing-password-container');
     const pairingPwInput = pairingPwCon.querySelector('#password');
     const pwGeneratorBtn = document.getElementById('pw-generator-btn');
+
+
+
+    checkIdentNumberBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const identNumber = document.getElementById('ident-number').value;
+        mainTeamSelect.setAttribute('disabled', 'disabled');
+        if (!identNumber || identNumber === '' || identNumber.length < 6 || identNumber.length > 8 ) {
+
+            return toast(
+                {
+                    title: 'Üzenet!',
+                    message: 'Nem megfelelő formátum. Kérjük írjon be létező törzsszámot',
+                    time: 'Most'
+                },
+                {
+                    textColor: 'white',
+                    background: 'red-500'
+                }
+            );
+        }
+
+        axios.post('/user/is-exist', { identNumber: identNumber })
+            .then(res => {
+                const isExist = res.data ? true : false;
+                console.log(res.data)
+                console.log(isExist);
+
+                if (isExist) {
+                    return toast(
+                        {
+                            title: 'Üzenet!',
+                            message: 'Ezzel a törzsszámmal már regisztráltak!',
+                            time: 'Most'
+                        },
+                        {
+                            textColor: 'white',
+                            background: 'orange-500'
+                        }
+                    );
+                }
+
+                mainTeamSelect.removeAttribute('disabled');
+
+                return toast(
+                    {
+                        title: 'Üzenet!',
+                        message: 'Törzsszám elfogadva!!',
+                        time: 'Most'
+                    },
+                    {
+                        textColor: 'white',
+                        background: 'teal-500'
+                    }
+                );
+
+
+
+            })
+            .catch(err => {
+                console.error('Hiba történt a kérés során:', err);
+            });
+    })
+
+
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\Controller;
 use App\Models\User;
 use Exception;
+use PDO;
 
 class UserController extends Controller
 {
@@ -64,7 +65,7 @@ class UserController extends Controller
 
   public function store()
   {
-     $this->CSRFToken->check();
+    $this->CSRFToken->check();
 
     try {
       $last_inserted_id = $this->User->storeUser($_POST, $_FILES);
@@ -134,6 +135,21 @@ class UserController extends Controller
       $this->Model->deactivateResetToken($token);
       http_response_code(200);
       $this->Toast->set('Pár törlése sikeres', 'cyan-500', '/', null);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
+    }
+  }
+
+  public function checkUserIsExist()
+  {
+    try {
+      $this->sanitizePost();
+      $ident_number = $_POST['identNumber'] ?? null;
+      $user = $this->Model->selectByRecord('users', 'ident_number', $ident_number, PDO::PARAM_INT);
+      http_response_code(200);;
+      echo json_encode($user);
     } catch (Exception $e) {
       http_response_code(500);
       echo "Internal Server Error" . $e->getMessage();

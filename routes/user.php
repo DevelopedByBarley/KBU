@@ -5,9 +5,9 @@ use App\Controllers\UserController;
 // route_group -> /
 
 // Statikus útvonalak
-$r->addRoute('GET', '/register', [UserController::class, 'registerPage']);
-$r->addRoute('GET', '/login', [UserController::class, 'loginPage']);
-$r->addRoute('GET', '/dashboard', [UserController::class, 'index']);
+//$r->addRoute('GET', '/register', [UserController::class, 'registerPage']);
+//$r->addRoute('GET', '/login', [UserController::class, 'loginPage']);
+//$r->addRoute('GET', '/dashboard', [UserController::class, 'index']);
 $r->addRoute('GET', '/delete', [UserController::class, 'destroy']);
 $r->addRoute('GET', '/reset-pair', [UserController::class, 'resetPair']);
 
@@ -17,5 +17,6 @@ $r->addRoute('POST', '/pw-compare/{userId}', [UserController::class, 'comparePwF
 
 // POST útvonalak
 $r->addRoute('POST', '/register', [UserController::class, 'store']);
-$r->addRoute('POST', '/login', [UserController::class, 'login']);
-$r->addRoute('POST', '/logout', [UserController::class, 'logout']);
+$r->addRoute('POST', '/is-exist', [UserController::class, 'checkUserIsExist']);
+//$r->addRoute('POST', '/login', [UserController::class, 'login']);
+//$r->addRoute('POST', '/logout', [UserController::class, 'logout']);
