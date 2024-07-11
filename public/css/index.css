@@ -12206,6 +12206,13 @@
   box-shadow: #292c35;
 }
 
+#sports-container .card {
+  transition: all 0.4s ease-in-out;
+}
+#sports-container .card:hover {
+  transform: scale(1.05);
+}
+
 /* #admin-dashboard-header {
   .timeline {
     border-left: 1px solid hsl(0, 0%, 90%);

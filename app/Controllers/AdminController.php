@@ -18,7 +18,7 @@ class AdminController extends Controller
   private $Admin;
   private $Activity;
   private $MainTeam;
-  private$DuelSport;
+  private $DuelSport;
   private $TeamSport;
 
   public function __construct()
@@ -350,6 +350,10 @@ class AdminController extends Controller
       ])
     ]);
   }
+
+
+
+
   public function settings()
   {
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
@@ -369,10 +373,6 @@ class AdminController extends Controller
       }
     });
 
-
-
-
-
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
@@ -384,6 +384,8 @@ class AdminController extends Controller
       ])
     ]);
   }
+
+
   public function mailbox()
   {
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
@@ -398,6 +400,77 @@ class AdminController extends Controller
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/MailBox.php", [
         'data' => $data
+      ])
+    ]);
+  }
+
+
+
+  public function sports()
+  {
+    $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
+    $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
+
+
+
+    echo $this->Render->write("admin/Layout.php", [
+      "csrf" => $this->CSRFToken,
+      'admin' => $admin,
+      "content" => $this->Render->write("admin/pages/Sports.php", [
+        
+      ])
+    ]);
+  }
+  public function mainTeams()
+  {
+    $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
+    $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
+
+
+
+    echo $this->Render->write("admin/Layout.php", [
+      "csrf" => $this->CSRFToken,
+      'admin' => $admin,
+      "content" => $this->Render->write("admin/pages/MainTeams.php", [
+        
+      ])
+    ]);
+  }
+
+
+
+
+  public function teamSports()
+  {
+    $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
+    $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
+
+
+
+    echo $this->Render->write("admin/Layout.php", [
+      "csrf" => $this->CSRFToken,
+      'admin' => $admin,
+      "content" => $this->Render->write("admin/pages/TeamSports.php", [
+        
+      ])
+    ]);
+  }
+
+
+
+  
+  public function duelSports()
+  {
+    $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
+    $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
+
+
+
+    echo $this->Render->write("admin/Layout.php", [
+      "csrf" => $this->CSRFToken,
+      'admin' => $admin,
+      "content" => $this->Render->write("admin/pages/DuelSports.php", [
+        
       ])
     ]);
   }
