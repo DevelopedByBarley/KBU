@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\Controller;
+use App\Helpers\Toast;
 use App\Models\User;
 use Exception;
 use PDO;
@@ -65,7 +66,7 @@ class UserController extends Controller
 
   public function store()
   {
-    $this->CSRFToken->check();
+    //$this->CSRFToken->check();
 
     try {
       $last_inserted_id = $this->User->storeUser($_POST, $_FILES);
@@ -88,8 +89,8 @@ class UserController extends Controller
       $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
     } catch (Exception $e) {
       http_response_code(500);
-      echo "Internal Server Error" . $e->getMessage();
-      exit;
+      error_log("Adatbázis hiba: " . $e->getMessage());
+      $this->Toast->set('Sikertelen regisztráció! Általános szerver hiba, vagy az adott erőforrás nem található. Kérjük próbálja meg újra vagy forduljon egy adminhoz!', 'red-500', '/', null);
     }
   }
 
@@ -98,7 +99,7 @@ class UserController extends Controller
   {
 
     try {
-      $token_data = $this->Model->checkResetToken();
+    $token_data = $this->Model->checkResetToken();
 
       if (!$token_data) {
         http_response_code(400);
@@ -106,8 +107,8 @@ class UserController extends Controller
       }
       $user_id  = $token_data['ref_id'];
       $token = $token_data['token'];
-      $this->User->deleteUser($user_id);
       $this->Model->deletePairRefIdIfItExist($user_id);
+      $this->User->deleteUser($user_id);
 
       $deactivated = $this->Model->deactivateResetToken($token);
 

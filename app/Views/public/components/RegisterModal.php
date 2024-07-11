@@ -104,7 +104,7 @@ $main_teams = $params['main_teams'] ?? []
 									</button>
 								</label>
 								<input type="number" name="ident-number" id="ident-number" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
-								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600">Ellenörzés</button>
+								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white">Ellenörzés</button>
 							</div>
 						</div>
 

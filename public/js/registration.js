@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     {
                         textColor: 'white',
-                        background: 'teal-500'
+                        background: 'cyan-500'
                     }
                 );
 
@@ -238,7 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pairEligibility === 1) {
                 disableElements([pairingPwInput]);
                 hideElements([pairingPwCon]);
-                console.log('Bárki megjelölhet!')
             } else {
                 showPairingPwCon(pairingPwCon);
                 enableElements([pairingPwInput])

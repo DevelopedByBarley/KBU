@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_URL', 'https://kbuprogram.max.hu');
+define('BASE_URL', 'http://localhost:8080');
 // USER 
 define('USER_SERVICE_PERM', 1);
 

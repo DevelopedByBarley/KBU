@@ -99,19 +99,22 @@ class User extends Model
     $pair_eligibility = filter_var($body["pair-eligibility"] ?? '', FILTER_VALIDATE_INT);
     $pair_password = filter_var($body["password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
     $pairRef_id = isset($body["pair-id"]) ? (int) $body["pair-id"] : null;
+    $pairHaveRefId = $this->selectByRecord('users', 'id', $pairRef_id, PDO::PARAM_INT)['pairRef_id'];
 
-    // Ha a változó nem egy érvényes integer érték, vagy nem létezik, akkor null értéket adunk neki
+
+
     if ($pairRef_id === 0 || !filter_var($pairRef_id, FILTER_VALIDATE_INT)) {
       $pairRef_id = null;
     }
 
+    // Want to select pair but that one had a pair :D 
+    if($pairRef_id && $pairHaveRefId) {
+      return false;
+    }
+
+
     try {
-      $stmt = $this->Pdo->prepare("
-              INSERT INTO `users` 
-              (`id`, `name`, `class`, `email`, `ident_number`, `main_teamRef_id`, `team_sportRef_id`, `duel_sportRef_id`, `chess`, `run`, `transfer`, `vegetarian`, `actimo`, `pair_status`, `pair_eligibility`, `pair_password`, `pairRef_id`, `created_at`) 
-              VALUES 
-              (NULL, :name, :class, :email, :ident_number, :main_teamRef_id, :team_sportRef_id, :duel_sportRef_id, :chess, :run, :transfer, :vegetarian, :actimo, :pair_status, :pair_eligibility, :pair_password, :pairRef_id, current_timestamp())
-          ");
+      $stmt = $this->Pdo->prepare(" INSERT INTO `users` VALUES (NULL, :name, :class, :email, :ident_number, :main_teamRef_id, :team_sportRef_id, :duel_sportRef_id, :chess, :run, :transfer, :vegetarian, :actimo, :pair_status, :pair_eligibility, :pair_password, :pairRef_id, current_timestamp())");
 
       $stmt->bindParam(":name", $name, PDO::PARAM_STR);
       $stmt->bindParam(":class", $class, PDO::PARAM_STR);
