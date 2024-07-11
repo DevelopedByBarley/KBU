@@ -10,6 +10,9 @@
                     <img class="rounded-circle mt-5 mb-3" width="150px" src="/public/assets/images/avatars/<?= $user['avatar'] ?? 'user' ?>.png">
                     <div class="mt-2"><span class="fw-bold text-xl"><?= $user['name'] ?></span></div>
                     <span><?= $user['email'] ?></span>
+                    <span class="badge bg-sky-500 mt-2 p-2 px-3">
+                        <?= $user['created_at'] ?>
+                    </span>
                 </div>
                 <div class="container">
                     <div class="row">
@@ -68,14 +71,8 @@
                             <p><?= $user['pair_eligibility'] ?></p>
                         </div>
                         <div class="col-6 text-center my-3 text-center">
-                            <h5>Páros azonosító</h5>
-                            <p><?= $user['pairRef_id'] ?></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 text-center my-3 text-center">
-                            <h5>Létrehozás dátuma</h5>
-                            <p><?= $user['created_at'] ?></p>
+                            <h5>Pár azonosító</h5>
+                            <p><?= $user['pairRef_id']  ?? 'Nincs párja' ?></p>
                         </div>
                     </div>
                 </div>
