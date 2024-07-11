@@ -24,13 +24,13 @@ function find_team_by_id($teams, $id)
     <div class="row">
       <div class="col-12 min-h-95 d-flex align-items-center justify-content-center">
         <h2>
-          
+
           Jelenleg nincs egyetlen regisztráció sem
         </h2>
       </div>
     </div>
   </div>
-  <?php return;?>
+  <?php return; ?>
 <?php endif ?>
 
 
@@ -146,10 +146,11 @@ function find_team_by_id($teams, $id)
                   <div class="btn-group gap-3" role="group" aria-label="Műveletek">
                     <button type="button" class="btn bg-sky-500" data-bs-toggle="modal" data-bs-target="#showUserModal-<?= $user['id'] ?>">Megtekintés</button>
                     <?php require 'app/Views/admin/components/ShowUserModal.php' ?>
-                    <button type="button" class="btn bg-yellow-500">Frissítés</button>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal-<?= $user['id'] ?>">Törlés</button>
+                    <button type="button" class="btn bg-yellow-500" data-bs-toggle="modal" data-bs-target="#updateUserModal-<?= $user['id'] ?>">Frissítés</button>
+                    <?php require 'app/Views/admin/components/UpdateUserModal.php' ?>
+                    <button type=" button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal-<?= $user['id'] ?>">Törlés</button>
                     <?php require 'app/Views/admin/components/DeleteUserModal.php' ?>
-
+                    <button type=" button" class="btn bg-violet-500">Token küldése</button>
                   </div>
                 </td>
               </tr>

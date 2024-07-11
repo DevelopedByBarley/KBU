@@ -17,7 +17,7 @@ $user = $params['user'] ?? null;
                 <a class="btn text-2xl border-gray-900 dark-border-gray-50 hover-bg-gray-900 hover-gray-50" href="/user/delete?token=<?= $token ?>&expires=<?= $expires ?>">
                     Törlöm a regisztrációmat
                 </a>
-                <?php if ($user['pairRef_id']) : ?>
+                <?php if (isset($user['pairRef_id'])) : ?>
                     <a class="btn text-2xl border-gray-900 dark-border-gray-50 hover-bg-gray-900 hover-gray-50" href="/user/reset-pair?token=<?= $token ?>&expires=<?= $expires ?>">
                         Törlöm a páromat
                     </a>

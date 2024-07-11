@@ -5,6 +5,9 @@ namespace App\Controllers;
 use App\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\AdminActivity;
+use App\Models\DuelSport;
+use App\Models\MainTeam;
+use App\Models\TeamSport;
 use DateTime;
 use Exception;
 use InvalidArgumentException;
@@ -14,11 +17,17 @@ class AdminController extends Controller
 {
   private $Admin;
   private $Activity;
+  private $MainTeam;
+  private$DuelSport;
+  private $TeamSport;
 
   public function __construct()
   {
     $this->Admin = new Admin();
     $this->Activity = new AdminActivity();
+    $this->MainTeam = new MainTeam();
+    $this->DuelSport = new DuelSport();
+    $this->TeamSport = new TeamSport();
     parent::__construct();
   }
 
@@ -307,7 +316,7 @@ class AdminController extends Controller
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
     $users = $this->Model->all('users');
     $data = $this->Model->paginate($users, 10, '', null);
-    $main_teams = $this->Model->all('main_teams');
+    $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
     $team_sports = $this->Model->all('team_sports');
     $duel_sports = $this->Model->all('duel_sports');
 
