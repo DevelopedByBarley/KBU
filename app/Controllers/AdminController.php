@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\AdminActivity;
 use DateTime;
 use Exception;
+use InvalidArgumentException;
 use PDO;
 
 class AdminController extends Controller
@@ -19,6 +20,32 @@ class AdminController extends Controller
     $this->Admin = new Admin();
     $this->Activity = new AdminActivity();
     parent::__construct();
+  }
+
+  public function deleteUserById($vars)
+  {
+    try {
+
+      if (!isset($vars['id']) || !is_numeric($vars['id'])) {
+        throw new InvalidArgumentException('Invalid user ID');
+      }
+
+      $userId = (int)$vars['id'];
+
+      $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
+      $user = $this->Model->selectByRecord('users', 'id', $userId, PDO::PARAM_INT);
+
+      $this->Activity->store([
+        'content' => "Kitörölte " . $user['name'] . 'nevű felhasználót',
+        'contentInEn' => null,
+        'adminRefId' => $adminId
+      ],  $adminId);
+      $this->Model->deleteRecordById('users', $userId);
+      $this->Toast->set('User sikeresen törölve!', 'cyan-500', '/admin/table', null);
+    } catch (Exception $e) {
+      echo $e->getMessage();
+      exit;
+    }
   }
 
   public function exportRegistrations()
@@ -278,16 +305,25 @@ class AdminController extends Controller
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
     $users = $this->Model->all('users');
-    $data = $this->Model->paginate($users, 3, '', null);
+    $data = $this->Model->paginate($users, 10, '', null);
+    $main_teams = $this->Model->all('main_teams');
+    $team_sports = $this->Model->all('team_sports');
+    $duel_sports = $this->Model->all('duel_sports');
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       "admin" => $admin,
       "content" => $this->Render->write("admin/pages/Table.php", [
-        'data' => $data
+        "csrf" => $this->CSRFToken,
+        'data' => $data,
+        'main_teams' => $main_teams,
+        'team_sports' => $team_sports,
+        'duel_sports' => $duel_sports
       ])
     ]);
   }
+
+
   public function form()
   {
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
