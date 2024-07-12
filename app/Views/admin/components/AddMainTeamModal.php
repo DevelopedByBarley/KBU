@@ -1,7 +1,25 @@
+<style>
+    .radio-input {
+        display: none;
+    }
+
+    .radio-label {
+        font-size: 2rem;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .radio-input:checked+.radio-label {
+        outline: 2px solid #000;
+        border-radius: 50%;
+    }
+</style>
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="your_server_endpoint_here" method="POST">
+            <form action="/main-teams" method="POST">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Új csapatsport hozzáadása</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -11,9 +29,14 @@
                         <label for="name" class="form-label">Név</label>
                         <input type="text" class="form-control" id="name" name="name" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 form-outline">
                         <label for="color" class="form-label">Szín</label>
-                        
+                        <div>
+                            <?php foreach ($params['availableTeams'] as $key => $value) : ?>
+                                <input type="radio" id="<?= $key ?>" name="color" value="<?= $key ?>" class="radio-input">
+                                <label for="<?= $key ?>" class="radio-label"><?= $value['symbol'] ?></label>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="max" class="form-label">Maximum férőhely</label>

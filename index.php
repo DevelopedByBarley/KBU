@@ -17,6 +17,7 @@ $langService->language();
 
 
 
+require_once 'config/variables/colors.php';
 require_once 'config/variables/avatars.php';
 require_once 'config/app/langs.php';
 require_once 'config/app/app.php';

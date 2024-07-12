@@ -25,7 +25,7 @@ class Visitor extends Model
           $userAgent = $_SERVER['HTTP_USER_AGENT'];
           $deviceType = $this->getDeviceType($userAgent);
           $ip = self::getUserIP();
-          $country = $this->getCountryFromIP($ip);
+          $country = USE_IP_CHECKER ? $this->getCountryFromIP($ip) : 'Not watching';
 
           $stmt = $this->Pdo->prepare(
             "INSERT INTO visits (session_id, ip_address, visit_start, visit_end,  browser, operating_system, referrer, device_type, country) VALUES (:session_id, :ip_address, current_timestamp(), current_timestamp(), :browser, :operating_system, :referrer, :device_type, :country)"

@@ -416,26 +416,40 @@ class AdminController extends Controller
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
-      "content" => $this->Render->write("admin/pages/Sports.php", [
-        
-      ])
+      "content" => $this->Render->write("admin/pages/Sports.php", [])
     ]);
   }
+
   public function mainTeams()
   {
-    $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
+    $adminId = $this->Auth->checkUserIsLoggedInOrRedirect('adminId', '/admin'); // Megjegyzés: itt Auth helyett Auth->.
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
 
+    $main_teams = $this->Model->all('main_teams');
 
+    // Collect existing colors and symbols from $main_teams
+    $existingColors = [];
+    foreach ($main_teams as $team) {
+      $existingColors[] = $team['color'];
+      $existingColors[] = $team['color_emoji'];
+    }
+
+    // Filter COLORS array to exclude existing colors and symbols
+    $availableTeams = array_filter(COLORS, function ($value) use ($existingColors) {
+      return !in_array($value['color'], $existingColors) && !in_array($value['symbol'], $existingColors);
+    });
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/MainTeams.php", [
-        
+        'data' => $this->Model->paginate($main_teams, 10, '', null),
+        'availableTeams' => $availableTeams  // Pass available colors to the view
       ])
     ]);
   }
+
+
 
 
 
@@ -445,32 +459,33 @@ class AdminController extends Controller
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
 
+    $team_sports = $this->Model->all('team_sports');
 
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/TeamSports.php", [
-        
+        'data' => $this->Model->paginate($team_sports, 10, '', null),
       ])
     ]);
   }
 
 
 
-  
+
   public function duelSports()
   {
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
 
-
+    $duel_sports = $this->Model->all('duel_sports');
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/DuelSports.php", [
-        
+        'data' => $this->Model->paginate($duel_sports, 10, '', null)
       ])
     ]);
   }
