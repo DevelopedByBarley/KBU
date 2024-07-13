@@ -166,4 +166,19 @@ class Controller
   {
     $_POST = json_decode(file_get_contents('php://input'), true);
   }
+
+  protected function hasValidateErrors($data)
+  {
+      foreach ($data as $key => $value) {
+          if (is_array($value)) {
+              if (isset($value['status']) && $value['status'] === false) {
+                  return true;
+              } elseif (self::hasValidateErrors($value)) {
+                  return true;
+              }
+          }
+      }
+      return false;
+  }
+  
 }

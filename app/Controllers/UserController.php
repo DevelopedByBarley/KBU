@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\Controller;
 use App\Helpers\Toast;
+use App\Helpers\Validator;
 use App\Models\User;
 use Exception;
 use PDO;
@@ -67,8 +68,30 @@ class UserController extends Controller
   public function store()
   {
     //$this->CSRFToken->check();
+    echo '<pre>';
+    var_dump($_POST);
 
     try {
+      $validator = new Validator();
+      $validators  = [
+        'ident_number' => [
+          'value' => $_POST['ident-number'],
+          'validators' => [
+            'required' => true,
+            'minLength' => 6,
+            'maxLength' => 8,
+            'checkIsIdentityNumExist' => true
+          ]
+        ],
+      ];
+
+      $validated = $validator->validate($validators);
+      $hasValidateErrors = $this->hasValidateErrors($validated); // Itt már ha vannak gondok kiirja true-val és lehet dobni a sessionbe;
+    
+      if($hasValidateErrors) {
+        $this->Toast->set('Regisztráció során hibás adatokat adott meg, kérjük próbája meg újra', 'danger', '/', null);
+      }
+    
       $last_inserted_id = $this->User->storeUser($_POST, $_FILES);
 
       if (!$last_inserted_id) {
@@ -101,7 +124,7 @@ class UserController extends Controller
   {
 
     try {
-    $token_data = $this->Model->checkResetToken();
+      $token_data = $this->Model->checkResetToken();
 
       if (!$token_data) {
         http_response_code(400);
