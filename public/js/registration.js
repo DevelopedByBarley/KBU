@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+
+	const identNumberInput = document.getElementById('ident-number');
+
 	const checkIdentNumberBtn = document.getElementById('check-ident-num');
 	const mainTeamSelect = document.getElementById('main-team');
 
@@ -23,6 +26,29 @@ document.addEventListener('DOMContentLoaded', () => {
 	const pairingPwCon = document.getElementById('pairing-password-container');
 	const pairingPwInput = pairingPwCon.querySelector('#password');
 	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
+
+
+	identNumberInput.oninput = (e) => {
+		console.log(e.target.value);
+		disableElements([
+			mainTeamSelect,
+			duelTeamsSelect,
+			teamSportsSelect,
+			pairStatusSelect,
+			pairEligibilitySelect,
+			pairingPwInput,
+			hiddenChoosePairInput
+		]);
+		return hideElements([ // CLOSE ALL INPUT WHEN MAINTEAM ID DOESNT EXIST
+			duelTeamsCon,
+			teamSportsCon,
+			pairStatusSelectCon,
+			pairEligibilityCon,
+			pairingPwCon,
+			choosePairCon
+		])
+	}
+
 
 
 
