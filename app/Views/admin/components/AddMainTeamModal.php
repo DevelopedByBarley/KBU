@@ -1,27 +1,12 @@
-<style>
-    .radio-input {
-        display: none;
-    }
-
-    .radio-label {
-        font-size: 2rem;
-        cursor: pointer;
-        margin-right: 10px;
-    }
-
-    .radio-input:checked+.radio-label {
-        outline: 2px solid #000;
-        border-radius: 50%;
-    }
-</style>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="addMainTeamModal" tabindex="-1" aria-labelledby="addMainTeamModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form action="/main-teams" method="POST">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Új csapatsport hozzáadása</h5>
+                    <h5 class="modal-title" id="addMainTeamModalLabel">Új fő csapat hozzáadása</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

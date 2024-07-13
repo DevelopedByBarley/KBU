@@ -15,6 +15,19 @@ class DuelSportController extends Controller
         parent::__construct();
         $this->DuelSport = new DuelSport();
     }
+    public function storeDuelSport()
+    {
+        try {
+            $this->DuelSport->store($_POST);
+            http_response_code(200);
+            $this->Toast->set('Páros sport sikeresen hozzáadva!', 'teal-500', '/admin/duel-sports', null);
+        } catch (Exception $e) {
+            http_response_code(500);
+            error_log("Adatbázis hiba: " . $e->getMessage());
+            $this->Toast->set('Páros sport hozzáadása sikertelen!', 'red-500', '/admin/duel-sports', null);
+        }
+    }
+
 
     public function all($vars)
     {

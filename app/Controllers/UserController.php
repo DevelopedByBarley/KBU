@@ -89,6 +89,8 @@ class UserController extends Controller
       $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
     } catch (Exception $e) {
       http_response_code(500);
+      var_dump("Adatbázis hiba: " . $e->getMessage());
+      exit;
       error_log("Adatbázis hiba: " . $e->getMessage());
       $this->Toast->set('Sikertelen regisztráció! Általános szerver hiba, vagy az adott erőforrás nem található. Kérjük próbálja meg újra vagy forduljon egy adminhoz!', 'red-500', '/', null);
     }

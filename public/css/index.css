@@ -12286,4 +12286,23 @@
 }
 .image-radio .form-check-input:checked + .form-check-label::before {
   border: 5px solid #a855f7;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-label {
+  font-size: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease-in-out;
+  outline: 0px solid purple;
+  padding-inline: 8px;
+}
+
+.radio-input:checked + .radio-label {
+  outline: 3px solid purple;
+  padding-inline: 10px;
 }/*# sourceMappingURL=index.css.map */

@@ -52,7 +52,7 @@ class MainTeam extends Model
       $max = filter_var($body['max'] ?? '', FILTER_SANITIZE_NUMBER_INT);
       $leader = filter_var($body['leader'] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
 
-      $stmt = $this->Pdo->prepare("INSERT INTO `main_teams` (`id`, `name`, `color`, `color_emoji`, `max`, `leader`, `created_at`) VALUES (NULL, :name, :color, :color_emoji, :max, :leader, current_timestamp())");
+      $stmt = $this->Pdo->prepare("INSERT INTO `main_teams` VALUES (NULL, :name, :color, :color_emoji, :max, :leader, current_timestamp())");
 
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
       $stmt->bindParam(':color', $color, PDO::PARAM_STR);

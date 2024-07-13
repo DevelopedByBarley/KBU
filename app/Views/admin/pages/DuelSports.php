@@ -5,11 +5,11 @@
         <div class="col-9 col-lg-4 offset-1">
             <h1 class="mt-10">Páros sportok</h1>
             <!-- Button to open the modal -->
-            <button type="button" class="btn bg-sky-500 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-info text-white mt-2" data-bs-toggle="modal" data-bs-target="#addDuelSportModal">
                 Sport hozzáadása
             </button>
 
-            <?php include 'app/Views/admin/components/AddDuelSportsModal.php' ?>
+            <?php include 'app/Views/admin/components/AddDuelSportModal.php' ?>
         </div>
     </div>
 

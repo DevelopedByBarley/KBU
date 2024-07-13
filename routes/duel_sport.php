@@ -5,3 +5,5 @@ use App\Controllers\DuelSportController;
 // route_group -> /duel_sports
 
 $r->addRoute('GET', '/{team-refId}', [DuelSportController::class, 'all']);
+
+$r->addRoute('POST', '', [DuelSportController::class, 'storeDuelSport']);

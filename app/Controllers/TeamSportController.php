@@ -16,6 +16,20 @@ class TeamSportController extends Controller
         $this->TeamSport = new TeamSport();
     }
 
+    public function storeTeamSport()
+    {
+        try {
+            $this->TeamSport->store($_POST);
+            http_response_code(200);
+            $this->Toast->set('Csapatsport sikeresen hozzáadva!', 'teal-500', '/admin/team-sports', null);
+        } catch (Exception $e) {
+            http_response_code(500);
+            error_log("Adatbázis hiba: " . $e->getMessage());
+            $this->Toast->set('Csapatsport hozzáadása sikertelen!', 'red-500', '/admin/team-sports', null);
+        }
+    }
+
+
     public function all($vars)
     {
         try {

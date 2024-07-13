@@ -460,6 +460,7 @@ class AdminController extends Controller
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
 
     $team_sports = $this->Model->all('team_sports');
+    $main_teams = $this->Model->all('main_teams');
 
 
     echo $this->Render->write("admin/Layout.php", [
@@ -467,6 +468,7 @@ class AdminController extends Controller
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/TeamSports.php", [
         'data' => $this->Model->paginate($team_sports, 10, '', null),
+        'main_teams' => $main_teams
       ])
     ]);
   }
@@ -480,12 +482,15 @@ class AdminController extends Controller
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_STR);
 
     $duel_sports = $this->Model->all('duel_sports');
+    $main_teams = $this->Model->all('main_teams');
+
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/DuelSports.php", [
-        'data' => $this->Model->paginate($duel_sports, 10, '', null)
+        'data' => $this->Model->paginate($duel_sports, 10, '', null),
+        'main_teams' => $main_teams
       ])
     ]);
   }

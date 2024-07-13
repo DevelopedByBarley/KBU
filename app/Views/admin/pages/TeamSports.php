@@ -4,12 +4,11 @@
     <div class="row">
         <div class="col-9 col-lg-4 offset-1">
             <h1 class="mt-10">Csapat sportok</h1>
-            <!-- Button to open the modal -->
-            <button type="button" class="btn bg-sky-500 mt-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-info text-white mt-2" data-bs-toggle="modal" data-bs-target="#addTeamSportModal">
                 Sport hozzáadása
             </button>
 
-            <?php include 'app/Views/admin/components/AddTeamSportsModal.php' ?>
+            <?php include 'app/Views/admin/components/AddTeamSportModal.php' ?>
         </div>
     </div>
 
