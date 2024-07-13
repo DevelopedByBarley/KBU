@@ -1,6 +1,6 @@
 const ctx = document.getElementById('myChart') ? document.getElementById('myChart').getContext('2d') : null;
-const registrationsChartData = document.getElementById('registrations-chart-data').getAttribute('data-registrations');
-const visitorsChartData = document.getElementById('visitors-data').getAttribute('data-visitors');
+const registrationsChartData = document.getElementById('registrations-chart-data') ? document.getElementById('registrations-chart-data').getAttribute('data-registrations') : null;
+const visitorsChartData = document.getElementById('visitors-data') ? document.getElementById('visitors-data').getAttribute('data-visitors') : null;
 
 // JSON adatok feldolgozása
 const registrationsData = JSON.parse(registrationsChartData);
@@ -9,7 +9,7 @@ const visitorsData = JSON.parse(visitorsChartData);
 const allMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // Hónapok és regisztrációk külön változókba rendezése
-const months = allMonths.map(month => registrationsData[month] || 0); // Ha nincs adat, akkor 0
+const months = registrationsData ?  allMonths.map(month => registrationsData[month] || 0) : null; // Ha nincs adat, akkor 0
 
 if (ctx) {
 

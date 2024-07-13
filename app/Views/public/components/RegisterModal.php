@@ -155,9 +155,7 @@ $main_teams = $params['main_teams'] ?? []
 							</div>
 						</div>
 						<div class="col-12 d-none" id="duel-sports-container">
-							<div class="spinner-border text-primary spinner m-3" role="status">
-								<span class="sr-only">Loading...</span>
-							</div>
+							<?php include 'app/Views/public/components/Spinner.php' ?>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Páros sport kiválasztása (Duel sports con)
@@ -187,9 +185,7 @@ $main_teams = $params['main_teams'] ?? []
 						</div>
 
 						<div class="col-12 d-none" id="choose-pair-container">
-							<div class="spinner-border text-primary spinner m-3" role="status">
-								<span class="sr-only">Loading...</span>
-							</div>
+							<?php include 'app/Views/public/components/Spinner.php' ?>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="choose-pair">
 									Válassza ki a párt

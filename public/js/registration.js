@@ -110,14 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			})
 	})
 
-
-
-
-
-
-
-
-
 	mainTeamSelect.onchange = async (e) => {
 		const mainTeamId = Number(e.target.value);
 		const selected = e.target.selectedOptions[0];
@@ -376,11 +368,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function spinner(classes = '') {
 		return `
-             <div class="spinner-border text-primary spinner m-0 p-0 ${classes}" role="status">
+      <div class="spinner-border text-primary spinner m-0 p-0 ${classes}" role="status">
 				<span class="sr-only">Loading...</span>
 			</div>
-            
-        `;
+      `;
 	}
 
 	function renderSelectsByTeamSports(teamSports) {

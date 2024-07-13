@@ -86,8 +86,8 @@ function find_team_by_id($teams, $id)
                   <?= $user['actimo'] == '0' ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-thumbs-up"></i>'; ?>
                 </td>
                 <td>
-                  <div class="p-2 rounded-3 text-white bg-<?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['color'] ?? '<i class="fa-solid fa-xmark"></i> jelentkezett' ?>">
-                    <?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['leader'] ?? '<i class="fa-solid fa-xmark"></i> jelentkezett' ?>
+                  <div class="py-0 px-5 rounded-3 text-white text-center bg-<?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['color'] ?? '' ?>">
+                    <p> <?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['leader'] ?? 'Nem jelentkezett' ?></p>
                   </div>
                 </td>
                 <td>
@@ -128,7 +128,7 @@ function find_team_by_id($teams, $id)
                       break;
                     default:
                       $badge_color = 'bg-gray-500';
-                      $status_text = '<i class="fa-solid fa-xmark"></i> jelentkezett';
+                      $status_text = 'Nem jelentkezett';
                   }
                   ?>
                   <span class="badge <?= $badge_color; ?> rounded-pill d-inline"><?= htmlspecialchars($status_text); ?></span>
@@ -142,15 +142,15 @@ function find_team_by_id($teams, $id)
                 <td>
                   <?= htmlspecialchars($user['created_at']); ?>
                 </td>
-                <td>
-                  <div class="btn-group gap-3" role="group" aria-label="Műveletek">
-                    <button type="button" class="btn bg-sky-500" data-bs-toggle="modal" data-bs-target="#showUserModal-<?= $user['id'] ?>">Megtekintés</button>
+                <td class="min-w-500">
+                  <div class="d-flex gap-2">
+                    <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#showUserModal-<?= $user['id'] ?>">Megtekintés</button>
                     <?php require 'app/Views/admin/components/ShowUserModal.php' ?>
-                    <button type="button" class="btn bg-yellow-500" data-bs-toggle="modal" data-bs-target="#updateUserModal-<?= $user['id'] ?>">Frissítés</button>
+                    <button type="button" class="btn text-white btn-warning" data-bs-toggle="modal" data-bs-target="#updateUserModal-<?= $user['id'] ?>">Frissítés</button>
                     <?php require 'app/Views/admin/components/UpdateUserModal.php' ?>
-                    <button type=" button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal-<?= $user['id'] ?>">Törlés</button>
+                    <button type=" button" class="btn text-white btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal-<?= $user['id'] ?>">Törlés</button>
                     <?php require 'app/Views/admin/components/DeleteUserModal.php' ?>
-                    <button type=" button" class="btn bg-violet-500">Token küldése</button>
+                    <button type=" button" class="btn text-white bg-violet-500 hover-bg-violet-600">Token küldése</button>
                   </div>
                 </td>
               </tr>
