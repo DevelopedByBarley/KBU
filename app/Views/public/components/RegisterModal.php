@@ -104,7 +104,7 @@ $main_teams = $params['main_teams'] ?? []
 									</button>
 								</label>
 								<input type="number" name="ident-number" id="ident-number" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
-								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white">Ellenörzés</button>
+								<button id="check-ident-num" class="btn w-25 bg-violet-500 hover-bg-violet-600 text-white">Ellenörzés</button>
 							</div>
 						</div>
 
@@ -142,6 +142,7 @@ $main_teams = $params['main_teams'] ?? []
 							</div>
 						</div>
 						<div class="col-12 d-none" id="team-sports-container">
+
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Csapat sport kiválasztása (Team sports con)
@@ -154,6 +155,9 @@ $main_teams = $params['main_teams'] ?? []
 							</div>
 						</div>
 						<div class="col-12 d-none" id="duel-sports-container">
+							<div class="spinner-border text-primary spinner m-3" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Páros sport kiválasztása (Duel sports con)
@@ -183,6 +187,9 @@ $main_teams = $params['main_teams'] ?? []
 						</div>
 
 						<div class="col-12 d-none" id="choose-pair-container">
+							<div class="spinner-border text-primary spinner m-3" role="status">
+								<span class="sr-only">Loading...</span>
+							</div>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="choose-pair">
 									Válassza ki a párt
@@ -190,7 +197,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="pair-id" required disabled/>
+								<input type="text" id="choose-pair-input" class="form-control visually-hidden" value="" name="pair-id" required disabled />
 								<ul class="list-group" id="choose-pair-list">
 									<!-- <li class="list-group-item bg-red-400">Cras justo odio</li>
 									<li class="list-group-item bg-green-400">Dapibus ac facilisis in</li>
