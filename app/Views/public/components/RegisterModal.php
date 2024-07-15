@@ -25,7 +25,7 @@ $main_teams = $params['main_teams'] ?? []
 						</h2>
 						<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
 							<div class="accordion-body">
-								<p class="fw-bolder">
+								<p class="fw-bolder text-xl">
 									Kedves Kollégák,
 								</p>
 								<p>

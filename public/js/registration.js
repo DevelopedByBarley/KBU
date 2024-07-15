@@ -28,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
 
 
+	identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenörzése kötlező!');
+
+
 	identNumberInput.oninput = (e) => {
-		console.log(e.target.value);
+
+		identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenörzése kötlező!');
 		disableElements([
 			mainTeamSelect,
 			duelTeamsSelect,
@@ -120,6 +124,8 @@ document.addEventListener('DOMContentLoaded', () => {
 					}
 					mainTeamSelect.removeAttribute('disabled');
 					checkIdentNumberBtn.innerHTML = 'Ellenőrzés';
+					identNumberInput.setCustomValidity('');
+
 					return toast(
 						{
 							title: 'Üzenet!',
@@ -504,9 +510,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(user)
 			let userEligibility = Number(user.pair_eligibility);
 			temp += `
-            <div>
-                <li role="button" data-id="${user.id}" data-eligibility="${userEligibility}" class="pointer mt-1 free-user list-group-item ${userEligibility === 1 ? 'bg-cyan-500' : 'bg-amber-500'}">
-                    ${user.name} ${userEligibility === 1 ? '' : '<i class="fa-solid fa-key"></i>'}
+            <div">
+                <li role="button" data-id="${user.id}" data-eligibility="${userEligibility}" class="text-center rounded-4 pointer mt-1 free-user list-group-item ${userEligibility === 1 ? 'bg-sky-500' : 'bg-amber-500'} text-white">
+                   <span class="text-xl"> ${user.name} ${userEligibility === 1 ? '' : '<i class="fa-solid fa-key"></i>'}</span>
                 </li>
             </div>
         `;
