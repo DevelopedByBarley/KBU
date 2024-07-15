@@ -68,8 +68,7 @@ class UserController extends Controller
   public function store()
   {
     //$this->CSRFToken->check();
-    echo '<pre>';
-    var_dump($_POST);
+    
 
     try {
       $validator = new Validator();

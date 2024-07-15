@@ -702,6 +702,23 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 
+
+	// Kiválaszt minden checkbox típusú elemet az oldalon
+	const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+	// Iterálj végig a kiválasztott elemeken
+	checkboxes.forEach(function (checkbox) {
+		checkbox.addEventListener('change', function () {
+			if (this.checked) {
+			  this.value = 1
+			} else {
+				this.value = 0
+			}
+		});
+	});
+
+
+
 });
 
 

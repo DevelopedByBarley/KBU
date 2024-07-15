@@ -43,7 +43,6 @@ function find_team_by_id($teams, $id)
             <tr>
               <th>Név</th>
               <th>Törzsszám és osztály</th>
-              <th>Futás</th>
               <th>Transzfer</th>
               <th>Vegetáriánus</th>
               <th>Actimo</th>
@@ -74,10 +73,11 @@ function find_team_by_id($teams, $id)
                   <p class="text-muted mb-0"><?= htmlspecialchars($user['class']); ?></p>
                 </td>
                 <td>
-                  <?= $user['run'] == '0' ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-thumbs-up"></i>'; ?>
-                </td>
-                <td>
-                  <?= $user['transfer'] == '0' ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-thumbs-up"></i>'; ?>
+                  <?php foreach (TRANSFERS as $index => $transfer) : ?>
+                    <?php if ((int)$user['transfer'] === (int)$index) : ?>
+                      <?= $transfer ?>
+                    <?php endif ?>
+                  <?php endforeach ?>
                 </td>
                 <td>
                   <?= $user['vegetarian'] == '0' ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-thumbs-up"></i>'; ?>

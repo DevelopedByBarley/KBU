@@ -120,7 +120,6 @@ $main_teams = $params['main_teams'] ?? []
 
 
 									<option value="" selected disabled>Válassza ki a főcsapatot</option>
-									<option value="0">Nem jelentkezem</option>
 									<?php foreach ($main_teams as $team) : ?>
 										<?php
 										$free_spots = $team['max'];
@@ -236,54 +235,7 @@ $main_teams = $params['main_teams'] ?? []
 							</div>
 						</div>
 
-						<div class="modal-footer mt-5 d-flex align-items-center flex-column">
-							<div class="d-flex align-items-center justify-content-center gap-3">
-								<button type="button" class="btn  btn-lg  btn-secondary" data-bs-dismiss="modal">Bezár</button>
-								<button type="submit" class="btn btn-lg bg-green-400 hover-bg-green-500">Regisztráció</button>
-							</div>
-							<div class="dark-bg-gray-50 mt-5 w-100 text-center">
-								<img class="my-4 mx-2" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
-							</div>
-						</div>
 
-					</div>
-			</div>
-		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- 			<div class="p-3">
-
-
-						<div class="form-outline mb-4">
-							<label class="form-label" for="form6Example4">
-								Futás
-								<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Két távra jelentkezhettek, 2,5 km valamint 5 km. Kérjük, jelöljétek ki a választott távot.">
-									<i class="fa-solid fa-circle-info text-2xl"></i>
-								</button>
-							</label>
-							<select class="form-select" aria-label="Select running option">
-								<option selected>Táv kiválasztása</option>
-								<option value="1">Nem jelentkezem</option>
-								<option value="2">Futás (2,5km)</option>
-								<option value="2">Futás (5km)</option>
-							</select>
-						</div>
 
 						<div class="col-12">
 
@@ -294,11 +246,13 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<select class="form-select" aria-label="Default select example">
-									<option selected>Open this select menu</option>
-									<option value="1">Igen, reggel</option>
-									<option value="2">Igen, délután</option>
-									<option value="3">Igen, reggel és délután</option>
+								<select class="form-select" aria-label="Default select example" name="transfer">
+									<option value="" selected disabled>Transzferigény kiválasztása</option>
+									<?php foreach (TRANSFERS as $index => $transfer) : ?>
+										<option value="<?= $index ?>">
+											<?= $transfer ?>
+										</option>
+									<?php endforeach; ?>
 								</select>
 								<small class="d-block mt-2 orange-500 px-3">
 									Kérünk mindenkit, használjátok Ļa transzfer lehetőséget, a tömegközlekedést, vagy érkezzetek egy autóval többen, mert erősen korlátozott a parkolóhelyek száma. Tömegközlekedési lehetőség a helyszínre: 41-es villamos, vagy 187-es busz Kelenföldről (Őrmező felőli oldal)
@@ -306,30 +260,54 @@ $main_teams = $params['main_teams'] ?? []
 									Délután: indulás 14.45-kor a Sport 11 elől (érkezés: Knorr-Bremse H105 telephely elé)</small>
 							</div>
 						</div>
-				<div class="form-check d-flex mb-4">
-					<input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" />
-					<label class="form-check-label" for="form6Example8"> Vegetáriánus ebéd igénylése</label>
-				</div>
 
-				<div class="form-check d-flex mb-4">
-					<input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" />
-					<label class="form-check-label" for="form6Example8"> Elolvastam a jelentkezési útmutatót.</label>
-				</div>
-				<div class="form-check d-flex mb-4">
-					<input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" />
-					<label class="form-check-label" for="form6Example8"> A jelen Adatkezelési Tájékoztató tartalmát megismertem, megértettem és elfogadom.</label>
-				</div>
-				<div class="form-check d-flex mb-4">
-					<input class="form-check-input me-2" type="checkbox" value="" id="form6Example8" />
-					<label class="form-check-label" for="form6Example8">
+						<div class="col-12">
+							<select class="form-select mb-5" aria-label="Default select example" name="actimo" required>
+								<option value="" selected disabled>Rendelkezel actimo profillal?</option>
+								<option value="1">Igen</option>
+								<option value="0">Nem</option>
+							</select>
+							<div class="form-check d-flex mb-4">
+								<input class="form-check-input me-2" type="checkbox" value="" id="vegetarian" name="vegetarian" />
+								<label class="form-check-label" for="vegetarian"> Vegetáriánus ebéd igénylése</label>
+							</div>
 
-						A jelen Adatkezelési Tájékoztató ismeretében hozzájárulok ahhoz, hogy a Felvételeket,
-						a nevemet, a tartózkodási helyemet, valamint beosztásomat, mint személyes adataimat az Adatkezelő,
-						a Felvételek felhasználása során, saját marketing és promóciós céljai elérése érdekében
-						az Általános Adatvédelmi Rendelet (General Data Protection Regulation, továbbiakban GDPR),
-						valamint az információs önrendelkezési jogról és az információszabadságról 2011. évi CXII.
-						törvény rendelkezéseinek megfelelően kezelje és megbízottjaihoz, mint adatfeldolgozókhoz továbbítsa
+							<div class="form-check d-flex mb-4">
+								<input class="form-check-input me-2" type="checkbox" value="" id="guide" required />
+								<label class="form-check-label" for="guide"> Elolvastam a jelentkezési útmutatót.</label>
+							</div>
+							<div class="form-check d-flex mb-4">
+								<input class="form-check-input me-2" type="checkbox" value="" id="privacy" required />
+								<label class="form-check-label" for="privacy"> A jelen Adatkezelési Tájékoztató tartalmát megismertem, megértettem és elfogadom.</label>
+							</div>
+							<div class="form-check d-flex mb-4">
+								<input class="form-check-input me-2" type="checkbox" value="" id="privacy-perm" required />
+								<label class="form-check-label" for="privacy-perm">
 
-					</label>
-				</div>
-			</div> -->
+									A jelen <a href="#"> Adatkezelési Tájékoztató</a> ismeretében hozzájárulok ahhoz, hogy a Felvételeket,
+									a nevemet, a tartózkodási helyemet, valamint beosztásomat, mint személyes adataimat az Adatkezelő,
+									a Felvételek felhasználása során, saját marketing és promóciós céljai elérése érdekében
+									az Általános Adatvédelmi Rendelet (General Data Protection Regulation, továbbiakban GDPR),
+									valamint az információs önrendelkezési jogról és az információszabadságról 2011. évi CXII.
+									törvény rendelkezéseinek megfelelően kezelje és megbízottjaihoz, mint adatfeldolgozókhoz továbbítsa
+
+								</label>
+							</div>
+						</div>
+
+						<div class="modal-footer mt-5 d-flex align-items-center flex-column">
+							<div class="d-flex align-items-center justify-content-center gap-3">
+								<button type="button" class="btn  btn-lg  btn-secondary" data-bs-dismiss="modal">Bezár</button>
+								<button type="submit" class="btn btn-lg bg-green-400 hover-bg-green-500">Regisztráció</button>
+							</div>
+							<div class="dark-bg-gray-50 mt-5 w-100 text-center">
+								<img class="my-4 mx-2" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
+							</div>
+						</div>
+
+
+
+					</div>
+				</form>
+			</div>
+		</div>

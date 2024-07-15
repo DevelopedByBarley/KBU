@@ -35,16 +35,7 @@
                             <p><?= $user['duel_sportRef_id'] ?></p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-6 text-center my-3 text-center">
-                            <h5>Sakk</h5>
-                            <p><?= $user['chess'] == 1 ? 'Igen' : 'Nem' ?></p>
-                        </div>
-                        <div class="col-6 text-center my-3 text-center">
-                            <h5>Futás</h5>
-                            <p><?= $user['run'] == 1 ? 'Igen' : 'Nem' ?></p>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-6 text-center my-3 text-center">
                             <h5>Áthelyezés</h5>

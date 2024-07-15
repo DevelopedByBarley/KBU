@@ -85,16 +85,10 @@ class User extends Model
     $team_sportRef_id = isset($body["team-sport"]) ? (filter_var($body["team-sport"], FILTER_VALIDATE_INT) ?: null) : null;
     $duel_sportRef_id = isset($body["duel-sport"]) ? (filter_var($body["duel-sport"], FILTER_VALIDATE_INT) ?: null) : null;
 
-    $chess = 0;
-    //  $chess = filter_var($body["chess"] ?? '', FILTER_VALIDATE_INT);
-    $run = 0;
-    //$run = filter_var($body["run"] ?? '', FILTER_VALIDATE_INT);
-    $transfer = 0;
-    //$transfer = filter_var($body["transfer"] ?? '', FILTER_VALIDATE_INT);
-    $vegetarian = 0;
-    //$vegetarian = filter_var($body["vegetarian"] ?? '', FILTER_VALIDATE_INT);
-    $actimo = 0;;
-    //$actimo = filter_var($body["actimo"] ?? '', FILTER_VALIDATE_INT);
+    $transfer = filter_var($body["transfer"] ?? '', FILTER_VALIDATE_INT);
+    $vegetarian = filter_var($body["vegetarian"] ?? '', FILTER_VALIDATE_INT);
+    $actimo = filter_var($body["actimo"] ?? '', FILTER_VALIDATE_INT);
+
     $pair_status = filter_var($body["pair-status"] ?? '', FILTER_VALIDATE_INT);
     $pair_eligibility = filter_var($body["pair-eligibility"] ?? '', FILTER_VALIDATE_INT);
     $pair_password = filter_var($body["password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -114,7 +108,7 @@ class User extends Model
 
 
     try {
-      $stmt = $this->Pdo->prepare(" INSERT INTO `users` VALUES (NULL, :name, :class, :email, :ident_number, :main_teamRef_id, :team_sportRef_id, :duel_sportRef_id, :chess, :run, :transfer, :vegetarian, :actimo, :pair_status, :pair_eligibility, :pair_password, :pairRef_id, current_timestamp())");
+      $stmt = $this->Pdo->prepare(" INSERT INTO `users` VALUES (NULL, :name, :class, :email, :ident_number, :main_teamRef_id, :team_sportRef_id, :duel_sportRef_id, :transfer, :vegetarian, :actimo, :pair_status, :pair_eligibility, :pair_password, :pairRef_id, current_timestamp())");
 
       $stmt->bindParam(":name", $name, PDO::PARAM_STR);
       $stmt->bindParam(":class", $class, PDO::PARAM_STR);
@@ -123,8 +117,6 @@ class User extends Model
       $stmt->bindParam(":main_teamRef_id", $main_teamRef_id, PDO::PARAM_INT);
       $stmt->bindParam(":team_sportRef_id", $team_sportRef_id, PDO::PARAM_INT);
       $stmt->bindParam(":duel_sportRef_id", $duel_sportRef_id, PDO::PARAM_INT);
-      $stmt->bindParam(":chess", $chess, PDO::PARAM_INT);
-      $stmt->bindParam(":run", $run, PDO::PARAM_INT);
       $stmt->bindParam(":transfer", $transfer, PDO::PARAM_INT);
       $stmt->bindParam(":vegetarian", $vegetarian, PDO::PARAM_INT);
       $stmt->bindParam(":actimo", $actimo, PDO::PARAM_INT);
