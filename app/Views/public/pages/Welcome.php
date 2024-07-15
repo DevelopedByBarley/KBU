@@ -1,4 +1,4 @@
-<?php $csrf = $params['csrf'];;?>
+<?php $csrf = $params['csrf'];; ?>
 
 
 <div class="container-fluid px-lg-5  mt-5 ">
@@ -45,31 +45,29 @@
 					</li>
 
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">07:30 - 08:30</h5>
+						<h5 class="fw-bold main-blue dark-text-main-orange">08:00 - 08:30</h5>
 						<p class="mb-2 fw-bold">Megnyitó, bajnokságok menetének ismertetése</p>
 					</li>
 
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">07:30 - 08:30</h5>
+						<h5 class="fw-bold main-blue dark-text-main-orange">08:30 - 13:45</h5>
 						<p class="mb-2 fw-bold">Sportbajnokságok és egyéb programok</p>
 						<p class="text-muted">
-							Orci varius natoque penatibus et magnis dis parturient montes,
-							nascetur ridiculus mus. Nulla ullamcorper arcu lacus, maximus
-							facilisis erat pellentesque nec. Duis et dui maximus dui aliquam
-							convallis. Quisque consectetur purus erat, et ullamcorper sapien
-							tincidunt vitae.
+							(csoportos órák a Fitness termekben, futás,ergométer,
+							mini sportpályák, bringa park,  cornhole, focikapu sebességmérővel, 
+							óriás csocsóasztal,interaktív aréna, kinect,  logikai játékok,  kézműves foglalkozás és textilzsák festés)
+
 						</p>
+					</li>
+					<li class="timeline-item mb-5">
+						<h5 class="fw-bold main-blue dark-text-main-orange">11:30 - 13:30</h5>
+						<p class="mb-2 fw-bold">Ebéd kuponos rendszerben</p>
 					</li>
 
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">07:30 - 08:30</h5>
-						<p class="tmb-2 fw-bold">Sportbajnokságok és egyéb programok</p>
-						<p class="text-muted">
-							Nulla ac tellus convallis, pulvinar nulla ac, fermentum diam. Sed
-							et urna sit amet massa dapibus tristique non finibus ligula. Nam
-							pharetra libero nibh, id feugiat tortor rhoncus vitae. Ut suscipit
-							vulputate mattis.
-						</p>
+						<h5 class="fw-bold main-blue dark-text-main-orange">14:00 - 14:30</h5>
+						<p class="tmb-2 fw-bold">Eredményhirdetés és programzárás</p>
+	
 					</li>
 				</ul>
 			</section>
@@ -260,7 +258,4 @@
 </div>
 
 
-<?php include 'app/Views/public/components/RegisterModal.php'?>
-
-
-
+<?php include 'app/Views/public/components/RegisterModal.php' ?>

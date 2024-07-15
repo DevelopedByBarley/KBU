@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							}
 
 							try {
-								comparePwContainer.innerHTML = spinner();
+								comparePwContainer.innerHTML = spinner("m-5");
 								response = await axios.post(`/user/pw-compare/${userId}`, {
 									pairing_pw: pairingPwInput
 								});

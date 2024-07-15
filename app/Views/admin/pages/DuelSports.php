@@ -1,4 +1,4 @@
-<?php $duel_sports = $params['data']['pages'] ?? []?>
+<?php $duel_sports = $params['data']['pages'] ?? [] ?>
 
 <div class="container-fluid">
     <div class="row">
@@ -42,9 +42,10 @@
                                 <td><?= htmlspecialchars($team['created_at']) ?></td>
                                 <td>
                                     <div class="btn-group gap-2">
-                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white" data-bs-toggle="modal" data-bs-target="#showTeamModal-<?= $team['id'] ?>">Show</button>
-                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white" data-bs-toggle="modal" data-bs-target="#updateTeamModal-<?= $team['id'] ?>">Edit</button>
-                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteTeamModal-<?= $team['id'] ?>">Delete</button>
+                                        
+                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white" data-bs-toggle="modal" data-bs-target="#showTeamModal-<?= $team['id'] ?>" disabled>Megtekintés</button>
+                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white" data-bs-toggle="modal" data-bs-target="#updateTeamModal-<?= $team['id'] ?>" disabled>Frissítés</button>
+                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteTeamModal-<?= $team['id'] ?>" disabled>Törlés</button>
                                     </div>
                                 </td>
                             </tr>
