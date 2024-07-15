@@ -11,7 +11,11 @@ $csrf = $params['csrf'] ?? null;
         <div class="col-12 shadow dark-bg-gray-800 py-5 <?= (int)$level === 3 ? 'col-lg-3 offset-xl-2' : '' ?>">
             <div class="d-flex flex-column align-items-center text-center p-3 pt-5">
                 <img class="rounded-circle mt-5" width="150px" src="/public/assets/images/avatars/<?= $admin['avatar'] ?>.png">
-                <div class="mt-2"><span class="fw-bold text-xl"><?= $admin['name'] ?></span> <span>(Level <?= $level ?>)</span></div><span><?= $admin['email'] ?></span><span> </span>
+                <div class="mt-2">
+                    <span class="fw-bold text-xl"><?= $admin['name'] ?></span>
+                    <span>(Level <?= $level ?>)</span>
+                </div>
+                <span><?= $admin['email'] ?></span>
                 <div class="mt-1 badge bg-sky-500  p-2 mt-2">
                     (<?= $admin['created_at'] ?>)
                 </div>
@@ -50,7 +54,7 @@ $csrf = $params['csrf'] ?? null;
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="badge 
+                                                <span class="badge rounded-pill d-inline
                                     <?php
                                         switch ((int)$current_admin['level']) {
                                             case 1:
@@ -63,23 +67,20 @@ $csrf = $params['csrf'] ?? null;
                                                 echo 'bg-red-500';
                                                 break;
                                             default:
-                                            echo 'bg-sky-500';
+                                                echo 'bg-sky-500';
                                         }
-                                        ?> rounded-pill d-inline">
+                                    ?> ">
                                                     Level <?= htmlspecialchars($current_admin['level']) ?>
                                                 </span>
                                             </td>
                                             <td><?= htmlspecialchars($current_admin['created_at']) ?></td>
                                             <td>
                                                 <div class="btn-group gap-2">
-                                                    <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white"  data-bs-toggle="modal" data-bs-target="#showAdminModal-<?= $current_admin['id'] ?>">Show</button>
-                                                    <?php include 'app/Views/admin/components/showAdminModal.php' ?>
+                                                    <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white" data-bs-toggle="modal" data-bs-target="#showAdminModal-<?= $current_admin['id'] ?>">Show</button>
                                                     <?php if ((int)$current_admin['level'] !== 3) : ?>
-                                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white"  data-bs-toggle="modal" data-bs-target="#updateAdminModal-<?= $current_admin['id'] ?>">Edit</button>
-                                                        <?php include 'app/Views/admin/components/updateAdminModal.php' ?>
+                                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white" data-bs-toggle="modal" data-bs-target="#updateAdminModal-<?= $current_admin['id'] ?>">Edit</button>
                                                         <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteAdminModal-<?= $current_admin['id'] ?>">Delete</button>
-                                                        <?php include 'app/Views/admin/components/DeleteAdminModal.php' ?>
-                                                        <?php endif ?>
+                                                    <?php endif ?>
                                                 </div>
                                             </td>
                                         </tr>
@@ -97,7 +98,12 @@ $csrf = $params['csrf'] ?? null;
     </div>
 </div>
 
+<?php foreach ($admin_list as $current_admin) : ?>
+    <?php include 'app/Views/admin/components/showAdminModal.php' ?>
+    <?php include 'app/Views/admin/components/updateAdminModal.php' ?>
+    <?php include 'app/Views/admin/components/DeleteAdminModal.php' ?>
 
+<?php endforeach ?>
 
 
 <?php include 'app/Views/admin/components/AdminSettingsModal.php' ?>
