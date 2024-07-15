@@ -236,14 +236,16 @@ $main_teams = $params['main_teams'] ?? []
 							</div>
 						</div>
 
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">Save changes</button>
+						<div class="modal-footer mt-5 d-flex align-items-center flex-column">
+							<div class="d-flex align-items-center justify-content-center gap-3">
+								<button type="button" class="btn  btn-lg  btn-secondary" data-bs-dismiss="modal">Bezár</button>
+								<button type="submit" class="btn btn-lg bg-green-400 hover-bg-green-500">Regisztráció</button>
+							</div>
+							<div class="dark-bg-gray-50 mt-5 w-100 text-center">
+								<img class="my-4 mx-2" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
+							</div>
 						</div>
 
-						<div>
-							<img src="/public/assets/images/icons/logo.png" alt="">
-						</div>
 					</div>
 			</div>
 		</div>

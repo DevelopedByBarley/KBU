@@ -1,106 +1,186 @@
 @media (min-width: 1200px) {
-    #runner {
-      position: relative;
-      right: 150px;
-    }
-  }
-  
-  .side-nav {
-    width: 100vh;
-    height: 45px;
-    position: absolute;
-    top: 50px;
-    transform-origin: left top;
-    transform: rotate(-90deg) translateX(-100%);
-  
-    a {
-      font-weight: bolder;
-    }
-  }
-  
-  .timeline {
-    border-left: 1px solid hsl(0, 0%, 90%);
+  #runner {
     position: relative;
-    list-style: none;
-  
-    .timeline-item {
-      position: relative;
-  
-      &:after {
-        position: absolute;
-        display: block;
-        top: 0;
-        background-color: hsl(0, 0%, 90%);
-        top: 5px;
-        left: -38px;
-        border-radius: 50%;
-        height: 11px;
-        width: 11px;
-        content: "";
-      }
+    right: 150px;
+  }
+}
+
+
+
+.side-nav {
+  width: 100vh;
+  height: 45px;
+  position: absolute;
+  top: 50px;
+  transform-origin: left top;
+  transform: rotate(-90deg) translateX(-100%);
+
+  a {
+    font-weight: bolder;
+  }
+}
+
+
+#header {
+  .parallax-wrap {
+    position: relative;
+    span {
+      position: absolute;
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    #runner {
+      width: 70%;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    h1 {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    #runner {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    h1 {
+      font-size: 8rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
     }
 
   }
-  
-  #first-info {
+
+
+
+
+}
+
+
+.timeline {
+  border-left: 1px solid hsl(0, 0%, 90%);
+  position: relative;
+  list-style: none;
+
+  .timeline-item {
     position: relative;
-  
-    .skew {
+
+    &:after {
       position: absolute;
-      bottom: -199px;
-      left: 0;
-      right: 0;
-      clip-path: polygon(0 0, 0 53%, 100% 0);
+      display: block;
+      top: 0;
+      background-color: hsl(0, 0%, 90%);
+      top: 5px;
+      left: -38px;
+      border-radius: 50%;
+      height: 11px;
+      width: 11px;
+      content: "";
     }
   }
-  
-  #rule-tiles {
-    #tiles {
-      .tile {
-        position: relative;
-        z-index: 9;
-        overflow: hidden;
-  
-        img {
-          transition: all 0.4s ease-in-out;
-          width: 100%;
-  
-          @media (max-width: 1366px) {
-            width: 135% !important;
-          }
+
+}
+
+#first-info {
+  position: relative;
+
+  .skew {
+    position: absolute;
+    bottom: -199px;
+    left: 0;
+    right: 0;
+    clip-path: polygon(0 0, 0 53%, 100% 0);
+  }
+}
+
+#rule-tiles {
+  #tiles {
+    .tile {
+      position: relative;
+      z-index: 9;
+      overflow: hidden;
+
+      img {
+        transition: all 0.4s ease-in-out;
+        width: 100%;
+
+        @media (max-width: 1366px) {
+          width: 135% !important;
         }
-  
-        &:hover  img {
-          transform: scale(1.1);
-          transition: all 0.4s ease-in-out;
-        }
-  
-        .wrapper {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 10;
-        }
-  
-        .content {
-          position: absolute;
-          height: 100%;
-          top: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          z-index: 11;
-        }
+      }
+
+      &:hover img {
+        transform: scale(1.1);
+        transition: all 0.4s ease-in-out;
+      }
+
+      .wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+      }
+
+      .content {
+        position: absolute;
+        height: 100%;
+        top: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 11;
       }
     }
   }
-  
-  /* Support me if you like it */
- /*  .support {
+}
+
+/* Support me if you like it */
+/*  .support {
     position: absolute;
     right: 20px;
     bottom: 20px;
@@ -119,11 +199,11 @@
   }
    */
 
-   .timeline-img {
-    transition: all 0.4s ease-in-out;
+.timeline-img {
+  transition: all 0.4s ease-in-out;
 
-    &:hover {
-      transform: scale(1.05) rotate(-5deg) translateY(-5%);
-      box-shadow: #292c35;
-    }
+  &:hover {
+    transform: scale(1.05) rotate(-5deg) translateY(-5%);
+    box-shadow: #292c35;
   }
+}

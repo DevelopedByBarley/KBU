@@ -207,7 +207,7 @@
 						</div>
 
 						<div>
-							<img src="/public/assets/images/icons/logo.png" alt="">
+							<img src="/public/assets/images/logo.png" alt="">
 						</div>
 					</div>
 			</div>

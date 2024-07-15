@@ -1,7 +1,7 @@
 <nav class="navbar fixed fixed-top bg-main-gray navbar-expand-lg navbar-light py-3">
   <div class="container-fluid">
     <a class="navbar-brand max-w-200" href="/">
-      <img src="/public/assets/images/icons/logo.png" class="img-fluid w-100" alt="">
+      <img src="/public/assets/images/logo.png" class="img-fluid w-100" alt="">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,13 +21,13 @@
           <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">JELENTKEZÉS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900 mx-3 mx-lg-0" href="/">IMPRESSZUM</a>
+          <a class="nav-link main-blue  hover-blue-900 mx-xl-3 mx-lg-0" href="/">IMPRESSZUM</a>
         </li>
         <li class="nav-item ">
 
-          <div class="w-100 d-flex justify-content-end align-items-center px-2">
+          <div class="w-100 d-flex justify-content-xl-end align-items-center px-2">
         
-            <div class="form-check form-switch theme-switcher p-0 mx-3">
+            <div class="form-check form-switch theme-switcher p-0 mx-xl-3 mt-2 mt-xl-0">
               <input type="checkbox" class="form-check-input checkbox text-2xl" role="switch" id="theme-toggle">
               <label for="theme-toggle" class="dark-bg-sky-700 bg-gray-300 checkbox-label">
                 <i class="fas fa-moon"></i>

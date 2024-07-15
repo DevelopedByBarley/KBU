@@ -50,3 +50,17 @@ Ezt hogy lehet megkülömböztetni?
   - Frissitse bármilyét,
      - viszont a fő csapatok és a csapat sportokból való áthelyezést csak akkor engedélyezze, ha van bennük hely
      -
+
+
+Style update
+  Mobile:
+    - Navbar stilus update
+    - Header gomb mérete túl nagy
+    - Header h1 lehetne kicsit nagyobb
+    - Max logo nem jelenik meg
+    - Knorr bremse logo nem jelenik meg
+
+  -Regisztráció:
+    - Ellenörzés gomb padding probléma
+    - Generálás btn stílus update
+    - close submit btn stilus update

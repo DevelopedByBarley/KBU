@@ -1,25 +1,24 @@
 <?php $csrf = $params['csrf'];; ?>
 
 
-<div class="container-fluid px-lg-5  mt-5 ">
-	<div class="row d-flex align-items-center justify-content-center min-h-95">
-		<div class="col-12 col-xl-7 col-xxl-6 px-5 d-flex align-items-center justify-content-center justify-content-xl-end">
-			<div class="my-5 text-center text-xl-start">
-				<h1 class="fw-bolder fw-bolder display-1">KNORR BREMSE</h1>
-				<h2 class="fw-bolder  display-5">Sportnap</h2>
-				<p class="fw-normal ">2023. Május 12.</p>
-				<div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start mt-4">
-					<a data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 " href="#features">Regisztráció</a>
+<header>
+	<div class="container-fluid px-lg-5  mt-5 mb-10">
+		<div class="row d-flex align-items-center justify-content-center" id="header">
+			<div class="col-12 col-xl-6 offset-xl-1 col-xxl-6 px-5 mt-5 d-flex align-items-center justify-content-center">
+				<div class="mt-5 text-center text-xl-start">
+					<h1 class="fw-bolder text-nowrap m-0">KNORR BREMSE</h1>
+					<h2 class="fw-bolder mt-0">Sportnap</h2>
+					<p class="fw-normal ">2023. Május 12.</p>
+					<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1">Regisztráció</button>
+				</div>
+			</div>
+			<div class="col-12 col-xl-5 col-xxl-5 text-center mt-5">
+				<div class="blur-load parallax-wrap">
+					<img parallax="1" class="img-fluid rounded-5" id="runner" loading="lazy" src="/public/assets/images/running.png" alt="..." />
 				</div>
 			</div>
 		</div>
-		<div class="col-12 col-xl-5 col-xxl-5 text-center">
-			<div class="blur-load">
-				<img class="img-fluid rounded-5" id="runner" loading="lazy" src="/public/assets/images/running.png" alt="..." />
-			</div>
-		</div>
 	</div>
-</div>
 </header>
 
 <div class="side-nav d-none d-xl-flex align-items-center justify-content-around">
@@ -54,8 +53,8 @@
 						<p class="mb-2 fw-bold">Sportbajnokságok és egyéb programok</p>
 						<p class="text-muted">
 							(csoportos órák a Fitness termekben, futás,ergométer,
-							mini sportpályák, bringa park,  cornhole, focikapu sebességmérővel, 
-							óriás csocsóasztal,interaktív aréna, kinect,  logikai játékok,  kézműves foglalkozás és textilzsák festés)
+							mini sportpályák, bringa park, cornhole, focikapu sebességmérővel,
+							óriás csocsóasztal,interaktív aréna, kinect, logikai játékok, kézműves foglalkozás és textilzsák festés)
 
 						</p>
 					</li>
@@ -67,7 +66,7 @@
 					<li class="timeline-item mb-5">
 						<h5 class="fw-bold main-blue dark-text-main-orange">14:00 - 14:30</h5>
 						<p class="tmb-2 fw-bold">Eredményhirdetés és programzárás</p>
-	
+
 					</li>
 				</ul>
 			</section>
@@ -192,8 +191,10 @@
 			</div>
 		</div>
 		<div class="col-12 col-lg-5 tile p-0 rounded-4 shadow">
-			<div class="blur-load">
-				<img class="img" loading="lazy" src="/public/assets/images/pexels-joshsorenson-976873.jpg" alt="..." />
+			<div class="blur-load parallax-wrap">
+				<span>
+					<img class="img" loading="lazy" src="/public/assets/images/pexels-joshsorenson-976873.jpg" alt="..." />
+				</span>
 			</div>
 			<div class="wrapper  h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
@@ -249,9 +250,9 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between  my-3">
-			<img class="my-4" src="/public/assets/images/icons/logo.png" alt="">
+			<img class="my-4 mx-2 dark-bg-gray-50 p-3" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
 			<a href="https://max.hu/" target="_blank">
-				<img src="/public/assets/images/icons/Max_Logo_White.png" class="bg-dark p-3 max-h-200 max-w-200" alt="">
+				<img src="/public/assets/images/Max_Logo_White.png" class="bg-dark p-3 max-h-200 max-w-200" alt="">
 			</a>
 		</div>
 	</div>
@@ -259,3 +260,6 @@
 
 
 <?php include 'app/Views/public/components/RegisterModal.php' ?>
+
+
+
