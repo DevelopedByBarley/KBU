@@ -145,11 +145,8 @@ function find_team_by_id($teams, $id)
                 <td class="min-w-500">
                   <div class="d-flex gap-2">
                     <button type="button" class="btn btn-info text-white" data-bs-toggle="modal" data-bs-target="#showUserModal-<?= $user['id'] ?>">Megtekintés</button>
-                    <?php require 'app/Views/admin/components/ShowUserModal.php' ?>
                     <button type="button" class="btn text-white btn-warning" data-bs-toggle="modal" data-bs-target="#updateUserModal-<?= $user['id'] ?>" disabled>Frissítés</button>
-                    <?php require 'app/Views/admin/components/UpdateUserModal.php' ?>
                     <button type=" button" class="btn text-white btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal-<?= $user['id'] ?>">Törlés</button>
-                    <?php require 'app/Views/admin/components/DeleteUserModal.php' ?>
                     <button type=" button" class="btn text-white bg-violet-500 hover-bg-violet-600" disabled>Token küldése</button>
                   </div>
                 </td>
@@ -165,3 +162,9 @@ function find_team_by_id($teams, $id)
     <a href="/admin/export-registers" class="btn btn-success">Exportálás Excel-be</a>
   </div>
 </div>
+
+<?php foreach ($users as $user) : ?>
+  <?php require 'app/Views/admin/components/ShowUserModal.php' ?>
+  <?php require 'app/Views/admin/components/UpdateUserModal.php' ?>
+  <?php require 'app/Views/admin/components/DeleteUserModal.php' ?>
+<?php endforeach ?>
