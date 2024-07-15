@@ -38,6 +38,8 @@ class TeamSport extends Model
       $stmt->bindParam(':max', $max, PDO::PARAM_INT);
       $stmt->bindParam(':main_teamRef_id', $main_teamRef_id, PDO::PARAM_STR);
       $stmt->execute();
+
+      return $name;
     } catch (Exception $e) {
       var_dump($e->getMessage());
       exit;

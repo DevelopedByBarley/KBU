@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AdminActivity;
 use App\Models\TeamSport;
 use Exception;
 use PDO;
@@ -9,18 +10,28 @@ use PDO;
 class TeamSportController extends Controller
 {
     private $TeamSport;
+    private $Activity;
 
     public function __construct()
     {
         parent::__construct();
         $this->TeamSport = new TeamSport();
+        $this->Activity = new AdminActivity();
+
     }
 
     public function storeTeamSport()
     {
+        $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
         try {
-            $this->TeamSport->store($_POST);
+
+            $sport = $this->TeamSport->store($_POST);
             http_response_code(200);
+            $this->Activity->store([
+                'content' => "Hozzá adott egy új csapat sportot: $sport csapat.",
+                'contentInEn' => null,
+                'adminRefId' => $adminId
+            ],  $adminId);
             $this->Toast->set('Csapatsport sikeresen hozzáadva!', 'teal-500', '/admin/team-sports', null);
         } catch (Exception $e) {
             http_response_code(500);

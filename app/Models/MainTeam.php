@@ -60,6 +60,8 @@ class MainTeam extends Model
       $stmt->bindParam(':max', $max, PDO::PARAM_INT);
       $stmt->bindParam(':leader', $leader, PDO::PARAM_STR);
       $stmt->execute();
+
+      return $name;
     } catch (Exception $e) {
       throw new Exception("An error occurred during the database operation in geAllMainTeams: " . $e->getMessage());
       exit;

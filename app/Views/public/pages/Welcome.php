@@ -191,10 +191,8 @@
 			</div>
 		</div>
 		<div class="col-12 col-lg-5 tile p-0 rounded-4 shadow">
-			<div class="blur-load parallax-wrap">
-				<span>
-					<img class="img" loading="lazy" src="/public/assets/images/pexels-joshsorenson-976873.jpg" alt="..." />
-				</span>
+			<div class="blur-load">
+				<img class="img" loading="lazy" src="/public/assets/images/pexels-joshsorenson-976873.jpg" alt="..." />
 			</div>
 			<div class="wrapper  h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
@@ -260,6 +258,3 @@
 
 
 <?php include 'app/Views/public/components/RegisterModal.php' ?>
-
-
-
