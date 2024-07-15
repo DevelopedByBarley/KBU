@@ -505,6 +505,16 @@ document.addEventListener('DOMContentLoaded', () => {
 	function renderFreeUsersListForPairing(usersForPairing) {
 		let temp = '';
 
+		if (usersForPairing.length === 0) {
+			temp += `
+            <div>
+                <h5 class="text-center">Ennél a sportnál nincs egyetlen választható pár sem</h5>
+            </div>
+        `;
+			choosePairList.innerHTML = temp;
+			return;
+		}
+
 
 		usersForPairing.forEach((user) => {
 			console.log(user)
