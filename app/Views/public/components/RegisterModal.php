@@ -104,14 +104,14 @@ $main_teams = $params['main_teams'] ?? []
 									</button>
 								</label>
 								<input type="number" name="ident-number" id="ident-number" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
-								<button id="check-ident-num" class="btn w-25 bg-violet-500 hover-bg-violet-600 text-white">Ellenörzés</button>
+								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white" style="min-width: 100px;">Ellenörzés</button>
 							</div>
 						</div>
 
 						<div class="col-12">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Főcsapat kiválasztása (Main team con)
+									Főcsapat kiválasztása
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -145,7 +145,7 @@ $main_teams = $params['main_teams'] ?? []
 
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Csapat sport kiválasztása (Team sports con)
+									Csapat sport kiválasztása
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -158,7 +158,7 @@ $main_teams = $params['main_teams'] ?? []
 							<?php include 'app/Views/public/components/Spinner.php' ?>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Páros sport kiválasztása (Duel sports con)
+									Páros sport kiválasztása
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -171,7 +171,7 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="select-pair-status-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-status">
-									Jelölje meg hogy van-e párja! (pair-status)
+									Jelölje meg hogy van-e párja!
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -207,7 +207,7 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="select-pair-eligibility-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Ki jelölhet önt párnak? (pair-eligibility)
+									Ki jelölhet önt párnak?
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -223,14 +223,14 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="pairing-password-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Jelszót megadása (pairing-password)
+									Jelszót megadása
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
 								<div class="d-flex gap-3">
 									<input name="password" type="text" id="password" class="form-control" required disabled />
-									<button type="button" class="btn bg-main-gray text-black" id="pw-generator-btn">Generálás</button>
+									<button type="button" class="btn  bg-violet-500 hover-bg-violet-600" id="pw-generator-btn">Generálás</button>
 								</div>
 
 							</div>
