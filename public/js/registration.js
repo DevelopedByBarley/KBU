@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			return toast(
 				{
-					title: 'Üzenet!',
+					title: 'KBU program üzenete!',
 					message: 'Nem megfelelő formátum. Kérjük írjon be létező törzsszámot',
 					time: 'Most'
 				},
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						checkIdentNumberBtn.innerHTML = 'Ellenörzés';
 						return toast(
 							{
-								title: 'Üzenet!',
+								title: 'KBU program üzenete!',
 								message: 'Ezzel a törzsszámmal már regisztráltak!',
 								time: 'Most'
 							},
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 					return toast(
 						{
-							title: 'Üzenet!',
-							message: 'Törzsszám elfogadva!!',
+							title: 'KBU program üzenete!',
+							message: 'Törzsszám elfogadva!',
 							time: 'Most'
 						},
 						{
@@ -611,7 +611,7 @@ document.addEventListener('DOMContentLoaded', () => {
 							if (pairingPwInput === '') {
 								return toast(
 									{
-										title: 'Üzenet!',
+										title: 'KBU program üzenete!',
 										message: 'A mező kitöltése kötelező!',
 										time: null
 									},
@@ -640,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
 										hiddenChoosePairInput.value = userId;
 										toast(
 											{
-												title: 'Üzenet!',
+												title: 'KBU program üzenete!',
 												message: 'Ön sikeresen megjelölte párjának a kiválasztott felhasználót, a jelentkezés leadását követően párok lesztek!',
 												time: null
 											},
@@ -653,7 +653,7 @@ document.addEventListener('DOMContentLoaded', () => {
 									} else {
 										toast(
 											{
-												title: 'Üzenet!',
+												title: 'KBU program üzenete!',
 												message: 'Sikertelen , jelszó hibás!',
 												time: null
 											},
@@ -676,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				toast(
 					{
-						title: 'Üzenet!',
+						title: 'KBU program üzenete!',
 						message: 'Ön sikeresen megjelölte párjának a kiválasztott felhasználót, a jelentkezés leadását követően párok lesztek!',
 						time: null
 					},

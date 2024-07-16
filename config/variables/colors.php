@@ -1,7 +1,7 @@
 <?php
 define('COLORS', [
     1 => [
-        "color" => 'white',
+        "color" => 'gray-300',
         "symbol" => '⚪'
     ],
     2 => [

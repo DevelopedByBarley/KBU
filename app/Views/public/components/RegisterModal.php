@@ -298,7 +298,7 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="modal-footer mt-5 d-flex align-items-center flex-column">
 							<div class="d-flex align-items-center justify-content-center gap-3">
 								<button type="button" class="btn  btn-lg  btn-secondary" data-bs-dismiss="modal">Bezár</button>
-								<button type="submit" class="btn btn-lg bg-green-400 hover-bg-green-500">Regisztráció</button>
+								<button type="submit" class="btn btn-lg bg-green-400 hover-bg-green-500 text-white">Regisztráció</button>
 							</div>
 							<div class="dark-bg-gray-50 mt-5 w-100 text-center">
 								<img class="my-4 mx-2" style="width: 300px;" src="/public/assets/images/logo.png" alt="">

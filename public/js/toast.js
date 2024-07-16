@@ -40,7 +40,7 @@ function renderToasts(root, content, style) {
 
   toast.innerHTML = `
     <div class="toast-header d-flex justify-content-between bg-${style.background ? style.background : 'light'} text-${style.textColor ? style.textColor : 'dark'}">
-      <strong class="mr-auto">${content.title ? content.title : 'MVC message!'}</strong>
+      <strong class="mr-auto">${content.title ? content.title : 'KBU program üzenete!'}</strong>
       <small>${content.time ? content.time : 'most'}</small>
     </div>
     <div class="toast-body">

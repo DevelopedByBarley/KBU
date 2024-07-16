@@ -67,7 +67,7 @@ class UserController extends Controller
 
   public function store()
   {
-    //$this->CSRFToken->check();
+    $this->CSRFToken->check();
 
 
     try {

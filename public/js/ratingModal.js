@@ -30,7 +30,7 @@ axios.get('/feedback').then(res => {
                             myModal.hide();
                             toast(
                                 {
-                                    title: 'Üzenet!',
+                                    title: 'KBU program üzenete!',
                                     message: 'Köszönük a visszajelzést!',
                                     time: null
                                 },

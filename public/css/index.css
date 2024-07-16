@@ -12260,10 +12260,23 @@
    */
 .timeline-img {
   transition: all 0.4s ease-in-out;
+  border: 1rem solid white;
 }
 .timeline-img:hover {
   transform: scale(1.05) rotate(-5deg) translateY(-5%);
   box-shadow: #292c35;
+}
+
+.timeline-img-1 {
+  transform: rotate(-5deg);
+}
+
+.timeline-img-3 {
+  transform: rotate(5deg);
+}
+
+.timeline-img-4 {
+  transform: rotate(-5deg);
 }
 
 #sports-container .card {
@@ -12335,10 +12348,10 @@
   margin-right: 10px;
   transition: all 0.2s ease-in-out;
   outline: 0px solid purple;
-  padding-inline: 8px;
+  padding-inline: 5px;
 }
 
 .radio-input:checked + .radio-label {
   outline: 3px solid purple;
-  padding-inline: 10px;
+  padding-inline: 5px;
 }/*# sourceMappingURL=index.css.map */

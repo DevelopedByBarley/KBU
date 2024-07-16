@@ -12,7 +12,7 @@
           <a class="nav-link main-blue hover-blue-900 mx-lg-3" href="/">PROGRAM</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">TRANSZFER</a>
+          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="#transfer-info">TRANSZFER</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">PONTOZÁS</a>

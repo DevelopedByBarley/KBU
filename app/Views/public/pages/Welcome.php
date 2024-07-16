@@ -72,26 +72,26 @@
 			</section>
 			<!-- Section: Timeline -->
 		</div>
-		<div class="col-12 col-lg-6">
+		<div class="col-12 col-lg-6"  id="timeline-images">
 			<div class="row">
-				<div class="col-12 col-md-6 my-2">
+				<div class="col-12 col-md-6 my-4">
 					<div class="blur-load">
-						<img src="/public/assets/images/polaroid1.png" loading="lazy" class="img-fluid timeline-img" alt="">
+						<img src="/public/assets/images/foci-1.jpg" loading="lazy" class="img-fluid timeline-img  timeline-img-1 shadow rounded-0" alt="">
 					</div>
 				</div>
-				<div class="col-12 col-md-6 my-2">
+				<div class="col-12 col-md-6 my-4">
 					<div class="blur-load">
-						<img src="/public/assets/images/polaroid2.png" loading="lazy" class="img-fluid timeline-img" alt="">
+						<img src="/public/assets/images/csocso-3.jpg" loading="lazy" class="img-fluid timeline-img  timeline-img-2 shadow rounded-0" alt="">
 					</div>
 				</div>
-				<div class="col-12 col-md-6 my-2">
+				<div class="col-12 col-md-6 my-4">
 					<div class="blur-load">
-						<img src="/public/assets/images/polaroid3.png" loading="lazy" class="img-fluid timeline-img" alt="">
+						<img src="/public/assets/images/joga.jpg" loading="lazy" class="img-fluid timeline-img  timeline-img-3 shadow rounded-0" alt="">
 					</div>
 				</div>
-				<div class="col-12 col-md-6 my-2">
+				<div class="col-12 col-md-6 my-4">
 					<div class="blur-load">
-						<img src="/public/assets/images/polaroid4.png" loading="lazy" class="img-fluid timeline-img" alt="">
+						<img src="/public/assets/images/dij.jpg" loading="lazy" class="img-fluid timeline-img  timeline-img-4 shadow rounded-0" alt="">
 					</div>
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 <div id="first-info" class="gray-50 bg-main-blue dark-bg-light-blue min-h-400 mt-8">
 	<div class="container">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-12" id="transfer-info">
 				<div class="min-h-400 d-flex align-items-center justify-content-center flex-column p-3 py-5">
 					<p class="text-xl fw-bold">
 						Transzfer lehetőség: A Knorr-Bremse telephelyről (1238 Budapest, Helsinki út 105.) a
@@ -136,7 +136,7 @@
 	<div class="row gap-4 d-flex justify-content-center" id="tiles">
 		<div class="col-12 col-lg-5 tile p-0 rounded-4 shadow min-h-300">
 			<div class="blur-load">
-				<img class="img" loading="lazy" src="/public/assets/images/pexels-expressivestanley-3148452.jpg" alt="..." />
+				<img class="img" loading="lazy" src="/public/assets/images/foc-2.jpg" alt="..." />
 			</div>
 			<div class="wrapper h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
@@ -155,7 +155,7 @@
 		</div>
 		<div class="col-12 col-lg-5 tile p-0  rounded-4 shadow">
 			<div class="blur-load">
-				<img class="img" loading="lazy" src="/public/assets/images/pexels-denniz-futalan-339724-2306898.jpg" alt="..." />
+				<img class="img" loading="lazy" src="/public/assets/images/csocso-2.jpg" alt="..." />
 			</div>
 			<div class="wrapper h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
@@ -172,7 +172,7 @@
 		</div>
 		<div class="col-12 col-lg-5 tile p-0  rounded-4 shadow">
 			<div class="blur-load">
-				<img class="img" loading="lazy" src="/public/assets/images/pexels-kampus-8813526.jpg" alt="..." />
+				<img class="img" loading="lazy" src="/public/assets/images/sport.jpg" alt="..." />
 			</div>
 			<div class="wrapper  h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
@@ -191,7 +191,7 @@
 		</div>
 		<div class="col-12 col-lg-5 tile p-0 rounded-4 shadow">
 			<div class="blur-load">
-				<img class="img" loading="lazy" src="/public/assets/images/pexels-joshsorenson-976873.jpg" alt="..." />
+				<img class="img" loading="lazy" src="/public/assets/images/ping-pong-2.jpg" alt="..." />
 			</div>
 			<div class="wrapper  h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
