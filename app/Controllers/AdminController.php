@@ -18,17 +18,41 @@ class AdminController extends Controller
   private $Admin;
   private $Activity;
   private $MainTeam;
-  private $DuelSport;
-  private $TeamSport;
+
 
   public function __construct()
   {
     $this->Admin = new Admin();
     $this->Activity = new AdminActivity();
     $this->MainTeam = new MainTeam();
-    $this->DuelSport = new DuelSport();
-    $this->TeamSport = new TeamSport();
     parent::__construct();
+  }
+
+  public function sendNewTokenForUser($vars)
+  {
+    try {
+      $userId = $vars['id'] ?? null;
+      $tokenData = $this->generateExpiresTokenByDays(10);
+      $reset_url = $this->createResetUrl($tokenData);
+      $email = $userId ? $this->Model->selectByRecord('users', 'id', $userId, PDO::PARAM_INT)['email'] : null;
+
+      if(!$email) {
+        $this->Toast->set('Token  elküldése sikertelen!', 'danger', '/admin/table', null);
+      }
+
+
+      $this->Model->storeToken($tokenData['token'], $tokenData['expires'], '/reset', $userId);
+
+
+      $this->Mailer->renderAndSend('NewToken', [
+        'reset_url' => $reset_url ?? 'problem'
+      ], $email, 'Új token!');
+      $this->Toast->set('Token sikeresen elküldve!', 'cyan-500', '/admin/table', null); //code...
+    } catch (Exception $e) {
+      error_log($e->getMessage());
+      $this->Toast->set('Token  elküldése sikertelen!!', 'danger', '/admin/table', null); //code...
+
+    }
   }
 
   public function deleteUserById($vars)

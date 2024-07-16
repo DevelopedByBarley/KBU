@@ -27,3 +27,4 @@ $r->addRoute('POST', '/store', [AdminController::class, 'store']);
 $r->addRoute('POST', '/update', [AdminController::class, 'update']);
 $r->addRoute('POST', '/delete/{id}', [AdminController::class, 'delete']);
 $r->addRoute('POST', '/delete-user/{id}', [AdminController::class, 'deleteUserById']);
+$r->addRoute('POST', '/new-token/{id}', [AdminController::class, 'sendNewTokenForUser']);
