@@ -1,7 +1,7 @@
 <div class="modal fade rating-modal" id="sendMailModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="sendMailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header bg-violet-500 text-white">
+            <div class="modal-header bg-main-blue text-white">
                 <h5 class="modal-title" id="sendMailModalLabel">Kontakt</h5>
             </div>
             <div class="modal-body py-5">
@@ -40,8 +40,8 @@
                                         }'></textarea>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
+                                    <button type="submit" class="btn bg-main-blue hover-bg-sky-800">Elküld</button>
                                 </div>
                             </form>
                         </div>
