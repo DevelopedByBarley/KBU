@@ -18,5 +18,6 @@ $r->addRoute('POST', '/pw-compare/{userId}', [UserController::class, 'comparePwF
 // POST útvonalak
 $r->addRoute('POST', '/register', [UserController::class, 'store']);
 $r->addRoute('POST', '/is-exist', [UserController::class, 'checkUserIsExist']);
+$r->addRoute('POST', '/mail', [UserController::class, 'sendMail']);
 //$r->addRoute('POST', '/login', [UserController::class, 'login']);
 //$r->addRoute('POST', '/logout', [UserController::class, 'logout']);

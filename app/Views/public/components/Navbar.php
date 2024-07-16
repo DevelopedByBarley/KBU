@@ -21,30 +21,9 @@
           <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">REGISZTRÁCIÓ</a>
         </li>
         <li class="nav-item">
-          <div class="btn-group dropstart">
-            <button type="button" class="dropdown-toggle nav-link main-blue  hover-blue-900  mx-lg-3 border-0" data-bs-toggle="dropdown" aria-expanded="false">
-              KONTAKT
-            </button>
-
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item sky-500" href="mailto:rita.hiermannrabl@knorr-bremse.com">
-                  <span class="text-white light-text-gray-900">
-                    Hiermann Rita
-                  </span>
-                  <br>
-                  <span class="text-decoration-underline">
-                    rita.hiermannrabl@knorr-bremse.com
-                  </span>
-                  <br>
-                  <div class="text-white light-text-gray-900 mt-2">
-                    +36301505077
-                  </div>
-                </a>
-              </li>
-            </ul>
-
-          </div>
+          <button type="button"   class="nav-link main-blue  hover-blue-900  mx-lg-3 border-0" data-bs-toggle="modal" data-bs-target="#sendMailModal">
+            KONTAKT
+          </button>
         </li>
         <li class="nav-item ">
 
@@ -66,6 +45,8 @@
     </div>
   </div>
 </nav>
+
+<?php include 'app/Views/public/components/SendMailModal.php'?>
 
 
 <?php $csrf = $params['csrf'] ?? null ?>

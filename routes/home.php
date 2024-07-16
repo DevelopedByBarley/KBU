@@ -9,3 +9,4 @@ $r->addRoute('GET', '', [Controller::class, 'index']);
 $r->addRoute('GET', 'cookie-info', [Controller::class, 'cookie']);
 $r->addRoute('GET', 'test', [Controller::class, 'test']);
 $r->addRoute('GET', 'reset', [Controller::class, 'reset']);
+

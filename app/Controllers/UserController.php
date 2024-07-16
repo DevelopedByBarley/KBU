@@ -68,7 +68,7 @@ class UserController extends Controller
   public function store()
   {
     //$this->CSRFToken->check();
-    
+
 
     try {
       $validator = new Validator();
@@ -86,11 +86,11 @@ class UserController extends Controller
 
       $validated = $validator->validate($validators);
       $hasValidateErrors = $this->hasValidateErrors($validated); // Itt már ha vannak gondok kiirja true-val és lehet dobni a sessionbe;
-    
-      if($hasValidateErrors) {
+
+      if ($hasValidateErrors) {
         $this->Toast->set('Regisztráció során hibás adatokat adott meg, kérjük próbája meg újra', 'danger', '/', null);
       }
-    
+
       $last_inserted_id = $this->User->storeUser($_POST, $_FILES);
 
       if (!$last_inserted_id) {
@@ -179,6 +179,23 @@ class UserController extends Controller
       http_response_code(500);
       echo "Internal Server Error" . $e->getMessage();
       exit;
+    }
+  }
+
+  public function sendMail()
+  {
+    $email = $_POST['email'] ?? null;
+    $message = $_POST['message'] ?? null;
+
+    try {
+      $this->Mailer->renderAndSend('MessageMail', [
+        'mail' =>  $email ?? 'problem',
+        'message' => $message ?? 'problem'
+      ], 'arpadsz@max.hu', 'Üzenet!');
+
+      $this->Toast->set('Üzenet sikeresen elküldve!', 'teal-500', '/', null);
+    } catch (\Throwable $th) {
+      $this->Toast->set('Üzenet sikeresen sikertelen!', 'red-500', '/', null);
     }
   }
 }
