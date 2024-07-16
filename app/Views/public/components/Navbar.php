@@ -1,4 +1,4 @@
-<nav class="navbar fixed fixed-top bg-main-gray navbar-expand-lg navbar-light py-3">
+<nav class="navbar fixed fixed-top bg-main-gray navbar-expand-lg navbar-dark  py-3">
   <div class="container-fluid">
     <a class="navbar-brand max-w-200" href="/">
       <img src="/public/assets/images/logo.png" class="img-fluid w-100" alt="">

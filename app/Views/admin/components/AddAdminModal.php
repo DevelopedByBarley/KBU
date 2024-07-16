@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header d-flex justify-content-between  text-white bg-purple-600">
-                <h5 class="modal-title" id="exampleModalLabel">Add admin</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Admin hozzáadása</h5>
                 <button type="button" class="close border-0 rounded-circle" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,7 +11,7 @@
                 <form method="POST" enctype="multipart/form-data" action="/admin/store">
                     <?= $csrf->generate() ?>
                     <div class="form-group my-2">
-                        <label for="exampleInputEmail1">Name</label>
+                        <label for="exampleInputEmail1">Név</label>
                         <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name " required data-validators='{
                             "name": "name",
                             "required": true,
@@ -21,7 +21,7 @@
                         }'>
                     </div>
                     <div class="form-outline">
-                        <label class="form-label" for="form3Example3">Email address</label>
+                        <label class="form-label" for="form3Example3">Email</label>
                         <input name="email" type="email" id="form3Example3" class="form-control" data-validators='{
                                 "name": "email",
                                 "required": true,
@@ -31,25 +31,25 @@
                                 }' />
                     </div>
                     <div class="form-outline">
-                        <label for="exampleInputEmail1">Password</label>
+                        <label for="exampleInputEmail1">Jelszó</label>
                         <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 data-validators='{
                                 "name": "password",
                                 "required": true
                             }' />
-                        <button type="button" class="d-inline btn border pw-generator">Generate</button>
+                        <button type="button" class="d-inline btn border pw-generator">Generálás</button>
                     </div>
 
                     <div class="form-outline my-2">
-                        <label for="exampleInputEmail1">Repeat password</label>
+                        <label for="exampleInputEmail1">Jelszó újra</label>
                         <input type="text" id="repeat" name="repeat" class="form-control" data-validators='{
                                 "name": "repeat",
                                 "comparePw": true
                             }' />
                     </div>
                     <div class="form-group my-2">
-                        <label for="exampleInputPassword1">Level</label>
+                        <label for="exampleInputPassword1">Szint</label>
                         <select class="form-select" name="level" aria-label="Default select example" required>
-                            <option value="" selected>Select admin level</option>
+                            <option value="" selected disabled>Válassza ki az admin szintjét!</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

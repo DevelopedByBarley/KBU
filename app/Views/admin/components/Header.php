@@ -5,7 +5,7 @@
         <div class="container" id="header">
             <div class="row">
                 <div class="col-12 p-5 mb-2">
-                    <h1 class="text-6xl"><span class="mx-3 d-none d-lg-inline"><i class="fa-solid fa-sliders"></i></span>Vezérlőpult</h1>
+                    <h1><span class="mx-3 d-none d-lg-inline"><i class="fa-solid fa-sliders"></i></span>Vezérlőpult</h1>
                 </div> <!-- End col -->
             </div> <!-- End row -->
         </div>
@@ -16,14 +16,14 @@
             <div class="col-12  col-md-8 col-lg-4 col-xl-3 min-h-400 max-h-400 border bg-gray-50 dark-bg-gray-900 shadow-lg rounded d-flex align-items-center justify-content-center flex-column text-center">
                 <div>
                     <h1>Üdvözöllek az admin felületen!</h1>
-                    <p>
+                    <p class="fw-light">
                         Itt követheted nyomon a weboldal bizonyos statisztikáit, és irányíthatod működéseit!
                     </p>
                 </div>
             </div>
             <div class="col-12 col-md-5 col-lg-4 col-xl-3 min-h-400 max-h-400 border bg-gray-50 dark-bg-gray-900 shadow-lg rounded overflow-y-scroll overflow-x-hidden">
                 <div class="bg-gray-100 dark-bg-gray-800">
-                    <h4 class="py-3">Aktivitások</h4>
+                    <h4 class="py-3 fw-light">Aktivitások</h4>
                 </div>
                 <div>
                     <!-- Section: Timeline -->
@@ -43,7 +43,7 @@
                             </ul>
                         </section>
                     <?php else : ?>
-                        <h1>No activities here..</h1>
+                        <h1 class="fw-light">Nincsenek aktivitások</h1>
                     <?php endif ?>
                     <!-- Section: Timeline -->
                 </div>
@@ -51,7 +51,7 @@
             <div class="col-12 col-md-5 col-lg-4 col-xl-3 min-h-400 border bg-gray-50 dark-bg-gray-900 shadow-lg rounded">
                 <div class="w-100">
                     <div class="bg-gray-100 dark-bg-gray-800">
-                        <h4 class="py-3">Összes értékelés: <?= count($feedbacks)?></h4>
+                        <h4 class="py-3 fw-light">Összes értékelés: <?= count($feedbacks)?></h4>
                     </div>
                     <?php foreach ($feedbackPercentages as $key => $percentage) : ?>
                         <div class="mt-3">

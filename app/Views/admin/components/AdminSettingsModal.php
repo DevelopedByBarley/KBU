@@ -10,7 +10,7 @@
                     <?= $csrf->generate() ?>
 
                     <div class="form-group my-2">
-                        <label for="exampleInputEmail1">Name</label>
+                        <label for="exampleInputEmail1">Név</label>
                         <input name="name" type="text" value="<?= $admin['name'] ?? '' ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name " required data-validators='{
                             "name": "name",
                             "required": true,
@@ -20,7 +20,7 @@
                         }'>
                     </div>
                     <div class="form-outline">
-                        <label class="form-label" for="form3Example3">Email address</label>
+                        <label class="form-label" for="form3Example3">Email</label>
                         <input name="email" type="email" id="form3Example3" class="form-control" disabled value="<?= $admin['email'] ?? '' ?>" />
                     </div>
 
@@ -32,23 +32,23 @@
                         </div>
 
                         <div class="form-group my-2">
-                            <label for="exampleInputEmail1">Prev password</label>
+                            <label for="exampleInputEmail1">Előző jelszó</label>
                             <input type="text" id="prev_password" name="prev_password" class="form-control" disabled data-validators='{
                                 "name": "prev_password",
                                 "required": true
                             }' />
                         </div>
                         <div class="form-group my-2">
-                            <label for="exampleInputEmail1">Password</label>
+                            <label for="exampleInputEmail1">Jelszó</label>
                             <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 disabled data-validators='{
                                 "name": "password",
                                 "required": true
                             }' />
-                            <button type="button" class="d-inline btn border pw-generator">Generate</button>
+                            <button type="button" class="d-inline btn border pw-generator">Generálás</button>
                         </div>
 
                         <div class="form-group my-2">
-                            <label for="exampleInputEmail1">Repeat password</label>
+                            <label for="exampleInputEmail1">Jelszó újra</label>
                             <input type="text" id="repeat" name="repeat" class="form-control" disabled data-validators='{
                                 "name": "repeat",
                                 "comparePw": true

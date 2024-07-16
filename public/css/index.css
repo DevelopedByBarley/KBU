@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+.nav-link:focus {
+  color: #004785 !important;
+}
+
 .pr-bg {
   background-color: #14b8a6;
 }
@@ -19,7 +23,8 @@
 
 .visually-hidden {
   position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px); /* Modern böngészők számára */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* Modern böngészők számára */
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   overflow: hidden;
@@ -5428,55 +5433,55 @@
 }
 
 .text-xs {
-  font-size: 0.75rem;
+  font-size: 0.75rem !important;
 }
 
 .text-sm {
-  font-size: 0.875rem;
+  font-size: 0.875rem !important;
 }
 
 .text-base {
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 .text-lg {
-  font-size: 1.125rem;
+  font-size: 1.125rem !important;
 }
 
 .text-xl {
-  font-size: 1.25rem;
+  font-size: 1.25rem !important;
 }
 
 .text-2xl {
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
 .text-3xl {
-  font-size: 1.875rem;
+  font-size: 1.875rem !important;
 }
 
 .text-4xl {
-  font-size: 2.25rem;
+  font-size: 2.25rem !important;
 }
 
 .text-5xl {
-  font-size: 3rem;
+  font-size: 3rem !important;
 }
 
 .text-6xl {
-  font-size: 3.75rem;
+  font-size: 3.75rem !important;
 }
 
 .text-7xl {
-  font-size: 4.5rem;
+  font-size: 4.5rem !important;
 }
 
 .text-8xl {
-  font-size: 6rem;
+  font-size: 6rem !important;
 }
 
 .text-9xl {
-  font-size: 8rem;
+  font-size: 8rem !important;
 }
 
 .leading-xs {
@@ -12268,30 +12273,6 @@
   transform: scale(1.05);
 }
 
-/* #admin-dashboard-header {
-  .timeline {
-    border-left: 1px solid hsl(0, 0%, 90%);
-    position: relative;
-    list-style: none;
-
-    .timeline-item {
-      position: relative;
-
-      &:after {
-        position: absolute;
-        display: block;
-        top: 0;
-        background-color: hsl(0, 0%, 90%);
-        left: -38px;
-        border-radius: 50%;
-        height: 11px;
-        width: 11px;
-        content: "";
-      }
-    }
-  }
-
-} */
 #admin-dashboard-header .timeline {
   border-left: 1px solid hsl(0, 0%, 90%);
   position: relative;

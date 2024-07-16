@@ -1,3 +1,6 @@
+.nav-link:focus {
+  color: map-get($colors, 'main-blue') !important;
+}
 
 .pr-bg {
   background-color: map-get($colors, 'teal-500');
@@ -18,7 +21,8 @@
 
 .visually-hidden {
   position: absolute !important;
-  clip: rect(1px, 1px, 1px, 1px); /* Modern böngészők számára */
+  clip: rect(1px, 1px, 1px, 1px);
+  /* Modern böngészők számára */
   -webkit-clip-path: inset(50%);
   clip-path: inset(50%);
   overflow: hidden;
@@ -116,7 +120,7 @@
 // Generate utility classes
 @each $size, $value in $font-sizes {
   .text-#{$size} {
-    font-size: $value;
+    font-size: $value !important;
   }
 }
 

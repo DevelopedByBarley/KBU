@@ -22,7 +22,7 @@ $csrf = $params['csrf'] ?? null;
             </div>
 
             <div class="d-flex gap-3 align-items-center justify-content-center">
-                <button data-bs-toggle="modal" data-bs-target="#adminSettingsModal" class="btn bg-orange-500 hover-bg-orange-600 text-white  profile-button border-0 py-2" type="button">Update Profile</button>
+                <button data-bs-toggle="modal" data-bs-target="#adminSettingsModal" class="btn bg-orange-500 hover-bg-orange-600 text-white  profile-button border-0 py-2" type="button">Profil frissítése</button>
                 <button <?= (int)$admin['level'] < 3 ? 'disabled' : '' ?> data-bs-toggle="modal" data-bs-target="#addAdminModal" class="btn bg-purple-500 hover-bg-purple-600 text-white  profile-button border-0  py-2" type="button"><span class="px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Admin</span></button>
             </div>
 
@@ -34,10 +34,10 @@ $csrf = $params['csrf'] ?? null;
                         <table class="table align-middle mb-0 rounded shadow ">
                             <thead class="bg-teal-500">
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Level</th>
-                                    <th>Created at</th>
-                                    <th>Actions</th>
+                                    <th>Név</th>
+                                    <th>Szint</th>
+                                    <th>Létrehozva</th>
+                                    <th>Műveletek</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -76,10 +76,10 @@ $csrf = $params['csrf'] ?? null;
                                             <td><?= htmlspecialchars($current_admin['created_at']) ?></td>
                                             <td>
                                                 <div class="btn-group gap-2">
-                                                    <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white" data-bs-toggle="modal" data-bs-target="#showAdminModal-<?= $current_admin['id'] ?>">Show</button>
+                                                    <button type="button" class="btn btn-rounded btn-sm fw-bold bg-sky-500 text-white" data-bs-toggle="modal" data-bs-target="#showAdminModal-<?= $current_admin['id'] ?>">Megtekintés</button>
                                                     <?php if ((int)$current_admin['level'] !== 3) : ?>
-                                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white" data-bs-toggle="modal" data-bs-target="#updateAdminModal-<?= $current_admin['id'] ?>">Edit</button>
-                                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteAdminModal-<?= $current_admin['id'] ?>">Delete</button>
+                                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-yellow-500 text-white" data-bs-toggle="modal" data-bs-target="#updateAdminModal-<?= $current_admin['id'] ?>">Frissítés</button>
+                                                        <button type="button" class="btn btn-rounded btn-sm fw-bold bg-red-500 text-white" data-bs-toggle="modal" data-bs-target="#deleteAdminModal-<?= $current_admin['id'] ?>">Törlés</button>
                                                     <?php endif ?>
                                                 </div>
                                             </td>

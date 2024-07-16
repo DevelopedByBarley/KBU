@@ -100,12 +100,12 @@ $barColors = [
       <div id="visitors-data" data-visitors="<?= htmlspecialchars(json_encode($visitors)) ?>"></div>
       <div class="row">
         <div class="col-12 col-md-10 mx-auto mb-3 col-xl-6  my-5" id="">
-          <h4>Registrations chart in line</h4>
+          <h4 class="fw-light">Regisztrációk hónapokra leosztva</h4>
           <canvas id="myChart"></canvas>
         </div>
 
         <div class="col-12 col-md-10 mx-auto mb-3 col-xl-4  my-5">
-          <h4>Registrations chart in donut</h4>
+          <h4 class="fw-light">Regisztrációk és látogatók aránya</h4>
           <canvas id="myChart_2"></canvas>
         </div>
       </div>

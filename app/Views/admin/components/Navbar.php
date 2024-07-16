@@ -12,7 +12,7 @@ $currentUrl = $_SERVER['REQUEST_URI'];
             <div class="w-100 d-flex justify-content-end align-items-center px-2">
                 <form action="/admin/logout" method="POST">
                     <?= $csrf->generate() ?>
-                    <button type="submit" class="btn btn-outline-danger">Logout</button>
+                    <button type="submit" class="btn btn-outline-danger">Kijelentkezés</button>
                 </form>
                 <div class="form-check form-switch theme-switcher p-0 mx-3">
                     <input type="checkbox" class="form-check-input checkbox text-2xl" role="switch" id="theme-toggle">
