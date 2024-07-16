@@ -21,12 +21,12 @@
 	</div>
 </header>
 
-<div class="side-nav d-none d-xl-flex align-items-center justify-content-around">
+<!-- <div class="side-nav d-none d-xl-flex align-items-center justify-content-around">
 	<a href="#register" class="text-decoration-none main-blue dark-text-gray-50">Regisztráció</a>
 	<a href="#rule-tiles" class="text-decoration-none main-blue dark-text-gray-50">Szabályzat</a>
 	<a href="#programs" class="text-decoration-none main-blue dark-text-gray-50">Program</a>
 </div>
-
+ -->
 
 
 <div class="container mt-5 mt-lg-0" id="programs">
@@ -129,8 +129,7 @@
 	<div class="row mt-10 mb-5">
 		<div class="col-12">
 			<h1 class="text-center display-5 fw-bolder main-blue dark-text-gray-50">
-				Sportbajnokságok lebonyolítási
-				rendje és szabályzata
+				Sportbajnokságok szabályzata
 			</h1>
 		</div>
 	</div>
@@ -248,10 +247,16 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between  my-3">
-			<img class="my-4 mx-2 dark-bg-gray-50 p-3" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
-			<a href="https://max.hu/" target="_blank">
-				<img src="/public/assets/images/Max_Logo_White.png" class="bg-dark p-3 max-h-200 max-w-200" alt="">
-			</a>
+			<img class="my-4 dark-bg-gray-50 p-3" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
+			<div class="bg-danger w-100 text-center">
+
+			</div>
+			<div>
+				<p class="m-0 text-center" style="font-style: italic;">Szervező cég:</p>
+				<a href="https://max.hu/" target="_blank">
+					<img src="/public/assets/images/Max_Logo_White.png" class="bg-dark p-3 max-h-200 max-w-200" alt="">
+				</a>
+			</div>
 		</div>
 	</div>
 </div>

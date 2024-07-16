@@ -408,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function renderSelectsByTeamSports(teamSports) {
 		let temp = `
-        <option value="" selected>Válassza ki a csapat sportot</option>
+        <option value="" selected disabled>Válassza ki a csapat sportot!</option>
         <option value="0">Nem jelentkezem</option>
     `;
 
@@ -429,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function renderSelectsByDuelSports(teamSports) {
 		let temp = `
-        <option value="" selected>Válassza ki a csapat sportot</option>
+        <option value="" selected disabled>Válassza ki a csapat sportot!</option>
         <option value="0">Nem jelentkezem</option>
     `;
 

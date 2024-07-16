@@ -33,7 +33,7 @@ $main_teams = $params['main_teams'] ?? []
 									A sportnapon való részvétel regisztrációjával egyben kinyilvánításra kerül, hogy nincs olyan ismert megbetegedésed, amely az általad választott sportágban, az intenzívebb mozgás által, annak következményeként az egészségi állapotodban rosszabbodást okozna.
 									A sportbajnokságokra és minden regisztrációhoz kötött programra a jelentkezéseket érkezési sorrendben fogadjuk.
 									A rendezvényre csak egy alkalommal van lehetőség regisztrálni, módosításra nincs lehetőség.
-									Minden munkavállaló maximum 2 sportbajnokságra jelentkezhet - 1 csapatsport és 1 páros sport vagy sakk.
+									Minden munkavállaló maximum 2 sportbajnokságra jelentkezhet - 1 csapatsport és 1 páros sport.
 									A csoportos órákra a helyszínen lehet majd jelentkezni, érkezési sorrendben.
 									Előfordulhat, hogy a céges levelezési rendszerünk a regisztráció visszaigazolását automatikusan karanténba helyezi, ezért azokat néhány órás késéssel kapjátok meg a karanténoldalon keresztül.</p>
 								<p class="green-500">
@@ -79,7 +79,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="class" id="form6Example2" class="form-control" data-validators='{"name": "class", "required": true, "minLength": 5}' required />
+								<input type="text" name="class" id="form6Example2" class="form-control" data-validators='{"name": "class", "required": true, "minLength": 3}' required />
 							</div>
 						</div>
 
@@ -119,7 +119,7 @@ $main_teams = $params['main_teams'] ?? []
 								<select class="form-select" aria-label="Select main team" id="main-team" name="main-team" required disabled>
 
 
-									<option value="" selected disabled>Válassza ki a főcsapatot</option>
+									<option value="" selected disabled>Válassza ki a főcsapatot!</option>
 									<?php foreach ($main_teams as $team) : ?>
 										<?php
 										$free_spots = $team['max'];
@@ -187,7 +187,7 @@ $main_teams = $params['main_teams'] ?? []
 							<?php include 'app/Views/public/components/Spinner.php' ?>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="choose-pair">
-									Válassza ki a párt
+									Válaszd ki a párt az eddig jelentkezett résztvevők közül!
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -206,15 +206,15 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="select-pair-eligibility-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Ki jelölhet önt párnak?
+									Ki jelölheti meg önt párnak?
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
 								<select class="form-select" aria-label="Select pair eligibility" id="pair-eligibility" name="pair-eligibility" required disabled>
-									<option value="" selected>Jelölje be ki jelölheti önt párnak!</option>
+									<option value="" selected disabled>Jelölje be ki jelölheti önt párnak!</option>
 									<option value="1">Bárki megjelölhet</option>
-									<option value="2">Jelszót adok meg amivel megjelölhetnek</option>
+									<option value="2">Jelszó megadása vagy automatikus generálása</option>
 								</select>
 							</div>
 						</div>
@@ -222,7 +222,7 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="pairing-password-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Jelszót megadása
+									Jelszó megadása vagy automatikus generálása!
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -247,7 +247,7 @@ $main_teams = $params['main_teams'] ?? []
 									</button>
 								</label>
 								<select class="form-select" aria-label="Default select example" name="transfer">
-									<option value="" selected disabled>Transzferigény kiválasztása</option>
+									<option value="" selected disabled>Transzferigény kiválasztása!</option>
 									<?php foreach (TRANSFERS as $index => $transfer) : ?>
 										<option value="<?= $index ?>">
 											<?= $transfer ?>

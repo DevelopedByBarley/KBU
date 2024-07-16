@@ -1,66 +1,28 @@
+A jelentkezési útmutatóban szerepel, hogy sakk bajnokság, onnan kérem törölni, lesz sakk de bajnokság nem, -----------–> done
 
-pair status -> Van-e párja? 
-  1 ->van
-  2 ->Párnak jelentkezem ,
+Regisztrációkor a költséghely min.3 karakter legyen, az a legkevesebb, (például nekem is V07), -----------------> DONE
 
-pair-eligibility ->
- Ki jelölhet párnak? Bárkki megjelölhet, jelszót megadok
+A gombok, feliratok magyar nyelven szerepeljenek,  -----------------> DONE PUBLICON
 
-- Ha jelszavas userre kattintunk akkor meg kell jeleniteni egy inputot amibe ki renderel egy containerrt amiben van
- - Input,
- - Elküldő gomb
- - Kilépő gomb
-- Ha a jelszavas input látszódik akkor requirednek kell lennie 
+80 fő lesz a tervezett létszám / csapat,  -----------------> DONE TÖKMINDEGY
 
-Amig ez a folyamat zajlik meg kell gátolnunk hogy el tudja küldeni a user a formot
+Regisztrációkor következőképpen szeretnénk megfogalmazni: „Ki jelölheti meg önt párnak?”, „Jelszó megadása vagy automatikus generálása!”, „Válaszd ki a párt az eddig jelentkezett résztvevők közül!”.   -----------------> DONE
 
 
+Regisztrációnál legyen kérlek feltüntetve, hogy vegetáriánus, vegán ebédet kér-e?  -----------------> DONE
 
-// Email kiküldés és lemondás
-
-Email kiküldés amivel le tudja mondani a teljes regisztrációját
-Vagy ki tudja törölni a párját
-
-// Ha mindenki által elérhetővé akar várni kérje az adminokat
-
-Email ki küldése
-  - Token expiressel generálása
-  - A token legyen jó mondjuk 1 hétig
-  - Küldjük ki az emaillel 
-  
-  - Ha rákattint az emailre megnézzük a tokeneket hogy létezik-e
-  - Átirányitjuk egy oldalra ahol megkérdezzük hogy mit akar törölni a regisztrációját vagy a párját ha van
-  - Ha vége töröljük a tokent vagy az expirest minuszba rakjuk
+Egyelőre helyszíntérképünk nincs, de javasoljuk a Sport11 alap helyszínrajza szerepeljen addig amíg fel nem tudjuk tölteni a sportnapra berendezett térképet,
+ ----------------->  --> Az mi?
 
 
+A felület bal oldalsó 3 eleme törlésre kerüljön, ne legyen semmilyen felirat oldalt,  -----------------> DONE
 
-// Mivan akkor ha megjelöltem egy párt, de közben törlődik vagy a regisztráció vagy a párosodás
-Ezt hogy lehet megkülömböztetni?
-  - ha pár státuszom 1 a törlés pillanatában akkor:
+Fent az Impresszum felirat törlésre kerüljön, helyette: Kontakt címszó legyen és az én elérhetőségem, illetve egy szövegdoboz, amibe beleírja az email címét nevét a szöveget és én kapom meg,  -----------------> Másképpen lett megoldva
 
-    - A pár státuszom legyen 2 
-    - És az eligiblity pedig legyen 1
+A fenti „menüsor” a következő legyen: Program ( itt legyen benne a helyszíntérkép), Transzfer( ha rákattintunk oda irányítson ahol lentebb le van írva az info a transzferről),Pontozás, Regisztráció, Kontakt,  -----------------> DONE
 
+Az oldalon mikor görgetünk lefele a bajnokságokhoz a következő címe legyen: „Sportbajnokságok szabályzata” --> DONE
 
+A sorverseny opciónál majd ne gyerekek legyenek a fotón,  --> AKKOR MI?
 
-  // ADMIN TUDJA MÉGIS ÁLLÍTANI A LEVELT HA 3-as
-
-  // Mit tudjon még az admin csinálni a userrel?
-  - Meg tudja tekinteni
-  - Frissitse bármilyét,
-     - viszont a fő csapatok és a csapat sportokból való áthelyezést csak akkor engedélyezze, ha van bennük hely
-     -
-
-
-Style update
-  Mobile:
-    - Navbar stilus update
-    - Header gomb mérete túl nagy
-    - Header h1 lehetne kicsit nagyobb
-    - Max logo nem jelenik meg
-    - Knorr bremse logo nem jelenik meg
-
-  -Regisztráció:
-    - Ellenörzés gomb padding probléma
-    - Generálás btn stílus update
-    - close submit btn stilus update
+Az oldal alján a Max&Future logóhoz kérjük írjátok oda, hogy szervező cég, hogy mindenki tudja miért van ott a logó. - -----------------> DONE

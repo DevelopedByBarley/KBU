@@ -9,24 +9,47 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-xl-flex w-100 align-items-xl-center justify-content-end">
         <li class="nav-item ">
-          <a class="nav-link main-blue hover-blue-900 mx-lg-3" href="/">MENEKÜLÉSI ÚTVONAL</a>
+          <a class="nav-link main-blue hover-blue-900 mx-lg-3" href="/">PROGRAM</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">HELYSZÍNTÉRKÉP</a>
+          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">TRANSZFER</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">PONTOZÁS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">JELENTKEZÉS</a>
+          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">REGISZTRÁCIÓ</a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900 mx-xl-3 mx-lg-0" href="/">IMPRESSZUM</a>
+        <li class="nav-item">
+          <div class="btn-group dropstart">
+            <button type="button" class="dropdown-toggle nav-link main-blue  hover-blue-900  mx-lg-3 border-0" data-bs-toggle="dropdown" aria-expanded="false">
+              KONTAKT
+            </button>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item sky-500" href="mailto:rita.hiermannrabl@knorr-bremse.com">
+                  <span class="text-white light-text-gray-900">
+                    Hiermann Rita
+                  </span>
+                  <br>
+                  <span class="text-decoration-underline">
+                    rita.hiermannrabl@knorr-bremse.com
+                  </span>
+                  <br>
+                  <div class="text-white light-text-gray-900 mt-2">
+                    +36301505077
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+          </div>
         </li>
         <li class="nav-item ">
 
           <div class="w-100 d-flex justify-content-xl-end align-items-center px-2">
-        
+
             <div class="form-check form-switch theme-switcher p-0 mx-xl-3 mt-2 mt-xl-0">
               <input type="checkbox" class="form-check-input checkbox text-2xl" role="switch" id="theme-toggle">
               <label for="theme-toggle" class="dark-bg-sky-700 bg-gray-300 checkbox-label">
