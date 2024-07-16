@@ -20,6 +20,7 @@
   <script src="/public/bootstrap/js/bootstrap.bundle.js"></script>
   <script type="module" src="/public/js/getCookie.js?v=<?= time() ?>"></script>
   <script type="module" src="/public/js/uuid.js?v=<?= time() ?>"></script>
+  <script type="module" src="/public/js/popover.js?v=<?= time() ?>"></script>
   <script src="/public/js/colorTheme.js?v=<?= time() ?>"></script>
 
 
@@ -37,7 +38,7 @@
   <?php if (SKELETON_PERM) : ?>
     <?php include 'app/Views/templates/skeletons/card.skeleton.php' ?>
     <script src="/public/js/skeleton.js?v=<?= time() ?>"></script>
-  <?php endif ?>
+    <?php endif ?>
 
 </body>
 

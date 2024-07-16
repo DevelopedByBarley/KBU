@@ -152,6 +152,9 @@ function find_team_by_id($teams, $id)
                       <button type=" button" class="btn text-white bg-violet-500 hover-bg-violet-600">
                         Token küldése
                       </button>
+                      <button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="A 'Token küldése' gombra kattinttva ennek a felhasználónak új változtató Tokent küldhet, amellyel törölheti párját vagy regisztrációját. Egy Token egy hétig érvényes és max egyszer használható fel. Utána deaktiválódik biztonsági okokból!">
+                        <i class="fa-solid fa-circle-info text-2xl"></i>
+                      </button>
                     </form>
                   </div>
                 </td>
