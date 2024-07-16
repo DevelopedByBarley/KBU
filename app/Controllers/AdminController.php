@@ -62,16 +62,38 @@ class AdminController extends Controller
   {
     try {
       $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
-      $users = $this->Model->all('users');
+      $usersData = $this->Model->all('users');
       $this->Activity->store([
         'content' => "Kiexportálta a regisztráltakat",
         'contentInEn' => null,
         'adminRefId' => $adminId
       ],  $adminId);
+
+      $users = self::createUserDataByNumsForExportExcel($usersData);
       $this->XLSX->write($users);
     } catch (Exception $e) {
       echo $e->getMessage();
     }
+  }
+
+  public function createUserDataByNumsForExportExcel($users)
+  {
+
+    foreach ($users as $index => $user) {
+      $users[$index]['main_teamRef_id'] = $this->Model->selectByRecord('main_teams', 'id', $user['main_teamRef_id'], PDO::PARAM_INT)['name'];
+      $users[$index]['team_sportRef_id'] = $this->Model->selectByRecord('team_sports', 'id', $user['team_sportRef_id'], PDO::PARAM_INT)['name']  ?? 'Nem jelentkezett';
+      $users[$index]['duel_sportRef_id'] = $this->Model->selectByRecord('duel_sports', 'id', $user['duel_sportRef_id'], PDO::PARAM_INT)['name']  ?? 'Nem jelentkezett';
+      $users[$index]['transfer'] = TRANSFERS[(int)$user['transfer']];
+      $users[$index]['vegetarian'] =  (int)$users[$index]['vegetarian']  === 0 ? 'Nem' : 'Igen';
+      $users[$index]['actimo'] =  (int)$users[$index]['actimo']  === 0 ? 'Nem' : 'Igen';
+      $users[$index]['pair_status'] = (int)$users[$index]['pair_status'] === 1 ? 'Van párja' : ((int)$users[$index]['pair_status'] === 0 ? 'Nincs' : 'Párnak jelentkezett');
+      $users[$index]['pair_eligibility'] = (int)$users[$index]['pair_eligibility'] === 1 ? 'Bárki megjelölheti' : ((int)$users[$index]['pair_eligibility'] === 0 ? 'Nincs' : 'Jelszóval ellátott');
+
+      $users[$index]['pair_password'] =  $user['pair_password']  === '' ? 'Nincs' : $user['pair_password'];
+      $users[$index]['pairRef_id'] =  $user['pairRef_id']  === null ? 'Nincs' :  $this->Model->selectByRecord('users', 'pairRef_id', $user['id'], PDO::PARAM_INT)['name'];
+    }
+
+    return $users;
   }
 
 

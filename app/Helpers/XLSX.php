@@ -26,10 +26,21 @@ class XLSX
     // Fejlécek definiálása
     $headers = [
       "id",
-      "name",
+      "név",
+      "költséghely",
       "email",
-      "pw",
-      "create_at"
+      "törzsszám",
+      "fő csapat",
+      "csapat sport",
+      "páros sport",
+      "transzfer",
+      "vegetáriánus ebéd",
+      "actimo",
+      "pár státusz",
+      "pár engedély",
+      "jelszó",
+      "pár",
+      "létrehozva"
     ];
 
     // Beírjuk a fejléceket
