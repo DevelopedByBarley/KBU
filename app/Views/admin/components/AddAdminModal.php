@@ -12,7 +12,7 @@
                     <?= $csrf->generate() ?>
                     <div class="form-group my-2">
                         <label for="exampleInputEmail1">Név</label>
-                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name " required data-validators='{
+                        <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name " required validators='{
                             "name": "name",
                             "required": true,
                             "minLength": 12,
@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-outline">
                         <label class="form-label" for="form3Example3">Email</label>
-                        <input name="email" type="email" id="form3Example3" class="form-control" data-validators='{
+                        <input name="email" type="email" id="form3Example3" class="form-control" validators='{
                                 "name": "email",
                                 "required": true,
                                 "email": true,
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-outline">
                         <label for="exampleInputEmail1">Jelszó</label>
-                        <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 data-validators='{
+                        <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 validators='{
                                 "name": "password",
                                 "required": true
                             }' />
@@ -41,7 +41,7 @@
 
                     <div class="form-outline my-2">
                         <label for="exampleInputEmail1">Jelszó újra</label>
-                        <input type="text" id="repeat" name="repeat" class="form-control" data-validators='{
+                        <input type="text" id="repeat" name="repeat" class="form-control" validators='{
                                 "name": "repeat",
                                 "comparePw": true
                             }' />

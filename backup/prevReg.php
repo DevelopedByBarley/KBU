@@ -55,7 +55,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input name="name" type="text" id="form6Example1" class="form-control" data-validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' />
+								<input name="name" type="text" id="form6Example1" class="form-control" validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' />
 							</div>
 						</div>
 
@@ -67,7 +67,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="class" id="form6Example2" class="form-control" data-validators='{"name": "class", "required": true, "minLength": 5}' />
+								<input type="text" name="class" id="form6Example2" class="form-control" validators='{"name": "class", "required": true, "minLength": 5}' />
 							</div>
 						</div>
 
@@ -79,7 +79,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="email" name="email" id="form6Example3" class="form-control" data-validators='{"name": "email", "required": true, "email": true, "minLength": 7}' />
+								<input type="email" name="email" id="form6Example3" class="form-control" validators='{"name": "email", "required": true, "email": true, "minLength": 7}' />
 							</div>
 						</div>
 
@@ -91,7 +91,7 @@
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="alt_id" id="form6Example5" class="form-control" data-validators='{"name": "alt_id", "required": true, "minLength": 5}' />
+								<input type="text" name="alt_id" id="form6Example5" class="form-control" validators='{"name": "alt_id", "required": true, "minLength": 5}' />
 							</div>
 						</div>
 

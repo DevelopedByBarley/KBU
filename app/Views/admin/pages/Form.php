@@ -29,7 +29,7 @@
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="form3Example1">First name</label>
-                                                    <input name="first_name" type="text" id="form3Example1" class="form-control" data-validators='{
+                                                    <input name="first_name" type="text" id="form3Example1" class="form-control" validators='{
                                                         "name": "first_name",
                                                         "required": true,
                                                         "minLength": 12,
@@ -41,7 +41,7 @@
                                             <div class="col-md-6 mb-4">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="form3Example2">Last name</label>
-                                                    <input name="last_name" type="text" id="form3Example2" class="form-control" data-validators='{
+                                                    <input name="last_name" type="text" id="form3Example2" class="form-control" validators='{
                                                         "name": "last_name",
                                                         "required": true,
                                                         "minLength": 12,
@@ -55,7 +55,7 @@
                                         <!-- Email input -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="form3Example3">Email address</label>
-                                            <input name="email" type="email" id="form3Example3" class="form-control" data-validators='{
+                                            <input name="email" type="email" id="form3Example3" class="form-control" validators='{
                                                 "name": "email",
                                                 "required": true,
                                                 "email": true,
@@ -67,7 +67,7 @@
                                         <!-- Password input -->
                                         <div class="form-outline mb-4">
                                             <label class="form-label" for="form3Example4">Password</label>
-                                            <input name="password" type="password" id="form3Example4" class="form-control" data-validators='{
+                                            <input name="password" type="password" id="form3Example4" class="form-control" validators='{
                                                 "name": "password",
                                                 "required": true,
                                                  "password": true

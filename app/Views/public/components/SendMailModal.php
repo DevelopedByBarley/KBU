@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1" class="mb-2">Email cím</label>
-                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" data-validators='{
+                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" validators='{
                                         "name": "email",
                                         "required": true,
                                         "email": true,
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group mt-3">
                                     <label for="exampleFormControlTextarea1" class="mb-2">Üzenet</label>
-                                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" data-validators='{
+                                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3" validators='{
                                         "name": "message",
                                         "required": true,
                                         "minLength": 30,

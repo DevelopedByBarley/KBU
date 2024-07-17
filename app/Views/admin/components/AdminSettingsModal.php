@@ -11,7 +11,7 @@
 
                     <div class="form-group my-2">
                         <label for="exampleInputEmail1">Név</label>
-                        <input name="name" type="text" value="<?= $admin['name'] ?? '' ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name " required data-validators='{
+                        <input name="name" type="text" value="<?= $admin['name'] ?? '' ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name " required validators='{
                             "name": "name",
                             "required": true,
                             "minLength": 12,
@@ -33,14 +33,14 @@
 
                         <div class="form-group my-2">
                             <label for="exampleInputEmail1">Előző jelszó</label>
-                            <input type="text" id="prev_password" name="prev_password" class="form-control" disabled data-validators='{
+                            <input type="text" id="prev_password" name="prev_password" class="form-control" disabled validators='{
                                 "name": "prev_password",
                                 "required": true
                             }' />
                         </div>
                         <div class="form-group my-2">
                             <label for="exampleInputEmail1">Jelszó</label>
-                            <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 disabled data-validators='{
+                            <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 disabled validators='{
                                 "name": "password",
                                 "required": true
                             }' />
@@ -49,7 +49,7 @@
 
                         <div class="form-group my-2">
                             <label for="exampleInputEmail1">Jelszó újra</label>
-                            <input type="text" id="repeat" name="repeat" class="form-control" disabled data-validators='{
+                            <input type="text" id="repeat" name="repeat" class="form-control" disabled validators='{
                                 "name": "repeat",
                                 "comparePw": true
                             }' />

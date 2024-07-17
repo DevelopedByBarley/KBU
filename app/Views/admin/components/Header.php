@@ -51,13 +51,13 @@
             <div class="col-12 col-md-5 col-lg-4 col-xl-3 min-h-400 border bg-gray-50 dark-bg-gray-900 shadow-lg rounded">
                 <div class="w-100">
                     <div class="bg-gray-100 dark-bg-gray-800">
-                        <h4 class="py-3 fw-light">Összes értékelés: <?= count($feedbacks)?></h4>
+                        <h4 class="py-3 fw-light">Összes értékelés: <?= count($feedbacks) ?></h4>
                     </div>
                     <?php foreach ($feedbackPercentages as $key => $percentage) : ?>
                         <div class="mt-3">
                             <label class="text-xl"><?= $smileys[$key] ?></label>
                             <div class="progress">
-                                <div class="progress-bar <?= $barColors[$key] ?> opacity-75" role="progressbar" style="width: <?= $percentage ?>%" aria-valuenow="<?= $percentage ?>" aria-valuemin="0" aria-valuemax="100"><?= $percentage ?>%</div>
+                                <div class="progress-bar <?= $barColors[$key] ?> opacity-75" role="progressbar" style="width: <?= round($percentage, 0) ?>%" aria-valuenow="<?= round($percentage, 0) ?>" aria-valuemin="0" aria-valuemax="100"><?= round($percentage, 0) ?>%</div>
                             </div>
                         </div>
                     <?php endforeach; ?>

@@ -6,7 +6,7 @@ import { getCookie } from '/public/js/getCookie.js';
  *  
  *    <div class="form-outline">
  *        <label class="form-label" for="form3Example3">Email address</label>
- *        <input name="email" type="email" id="form3Example3" class="form-control" data-validators='{
+ *        <input name="email" type="email" id="form3Example3" class="form-control" validators='{
  *           "name": "email",
  *            "required": true,
  *            "email": true,
@@ -242,10 +242,10 @@ function checkValidators(options, inputValue, targetElement) {
 
 const forms = document.querySelectorAll('form');
 forms.forEach(form => {
-  let inputElements = form.querySelectorAll("[data-validators]");
+  let inputElements = form.querySelectorAll("[validators]");
 
   inputElements.forEach(inputElement => {
-    let options = JSON.parse(inputElement.getAttribute("data-validators"));
+    let options = JSON.parse(inputElement.getAttribute("validators"));
     let name = options.name;
     let targetElement = inputElement.parentElement.querySelector(`[name="${name}"]`);
 

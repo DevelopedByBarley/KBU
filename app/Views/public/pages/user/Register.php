@@ -15,7 +15,7 @@
                 <p class="mb-5">Please enter your login and password!</p>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" data-validators='{
+                  <input type="email" name="email" class="form-control" id="exampleInputEmail1" validators='{
                     "name": "email",
                     "required": true,
                     "email": true,
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="password" name="password" data-validators='{
+                  <input type="password" name="password" validators='{
                     "name": "password",
                     "required": true,
                     "password": true

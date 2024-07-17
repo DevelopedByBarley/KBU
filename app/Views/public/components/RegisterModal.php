@@ -67,7 +67,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input name="name" type="text" id="form6Example1" class="form-control" data-validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' required />
+								<input name="name" type="text" id="form6Example1" class="form-control" validators='{"name": "name", "required": true, "minLength": 6, "maxLength": 50, "split": true}' required />
 							</div>
 						</div>
 
@@ -79,7 +79,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="text" name="class" id="form6Example2" class="form-control" data-validators='{"name": "class", "required": true, "minLength": 3}' required />
+								<input type="text" name="class" id="form6Example2" class="form-control" validators='{"name": "class", "required": true, "minLength": 3}' required />
 							</div>
 						</div>
 
@@ -91,7 +91,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="email" name="email" id="form6Example3" class="form-control" data-validators='{"name": "email", "required": true, "email": true, "minLength": 7}' required />
+								<input type="email" name="email" id="form6Example3" class="form-control" validators='{"name": "email", "required": true, "email": true, "minLength": 7}' required />
 							</div>
 						</div>
 
@@ -103,7 +103,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="number" name="ident-number" id="ident-number" class="form-control" data-validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
+								<input type="number" name="ident-number" id="ident-number" class="form-control" validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
 								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white" style="min-width: 100px;">Ellenörzés</button>
 							</div>
 						</div>
