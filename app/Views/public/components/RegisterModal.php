@@ -145,7 +145,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Csapat sport kiválasztása
-									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható sport nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
@@ -158,7 +158,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
 									Páros sport kiválasztása
-									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható sport nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
@@ -171,7 +171,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-status">
 									Jelölje meg hogy van-e párja!
-									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, válassza ki hogy rendelkezik-e párral , ez esetben megkapja az adott sportra már regisztrált szabad felhasználók listáját, vagy jelentkezzen párnak és válassza ki hogy ki jelölheti be önt párnak.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
@@ -188,7 +188,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="choose-pair">
 									Válaszd ki a párt az eddig jelentkezett résztvevők közül!
-									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, válassza ki a párját a résztvevők közül , a kékkel jelöltek azonnal jelölhetőek, a sárga kulcsal ellátott felhasznáók bejelöléséhez jelszó szükséges.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
@@ -207,7 +207,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
 									Ki jelölheti meg önt párnak?
-									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, jelölje be ki jelölheti be önt párnak, itt beállíthatja hogy bárki által jelölhető legyen a későbbiekben vagy adhat meg jelszót , amelyet a regisztrációt követően az ön e-mail címére fogunk küldeni.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
@@ -223,13 +223,13 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
 									Jelszó megadása vagy automatikus generálása!
-									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
+									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük , adja meg jelszavát amelyel önt később bejelölhetik.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
 								<div class="d-flex gap-3">
 									<input name="password" type="text" id="password" class="form-control" required disabled />
-									<button type="button" class="btn  bg-violet-500 hover-bg-violet-600" id="pw-generator-btn">Generálás</button>
+									<button type="button" class="btn  bg-violet-500 hover-bg-violet-600 text-white" id="pw-generator-btn">Generálás</button>
 								</div>
 
 							</div>
