@@ -27,8 +27,10 @@ require_once 'config/app/langs.php';
 require_once 'config/app/app.php';
 require_once 'config/app/database.php';
 
-$visitor = new Visitor();
-SAVING_VISITOR_PERM   ?  $visitor->addVisitor() : null;
+if(isset($_COOKIE['cookieConsentLevel']) && (int)$_COOKIE['cookieConsentLevel'] !== 0) {
+    $visitor = new Visitor();
+    SAVING_VISITOR_PERM   ?  $visitor->addVisitor() : null;
+}
 
 
 
