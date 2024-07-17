@@ -41,19 +41,13 @@
 
                         <div class="form-group my-2">
                             <label for="exampleInputEmail1">Jelszó</label>
-                            <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 disabled validators='{
-        "name": "password",
-        "required": true
-    }' />
+                            <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 disabled validators='{ "name": "password", "required": true, "password": true}' />
                             <button type="button" class="d-inline btn border pw-generator">Generálás</button>
                         </div>
 
                         <div class="form-group my-2">
                             <label for="exampleInputEmail1">Jelszó újra</label>
-                            <input type="text" id="repeat" name="repeat" class="form-control" disabled validators='{
-        "name": "repeat",
-        "comparePw": true
-    }' />
+                            <input type="text" id="repeat" name="repeat" class="form-control" disabled validators='{"name": "repeat","comparePw": true}' required/>
                         </div>
                     </div>
                 

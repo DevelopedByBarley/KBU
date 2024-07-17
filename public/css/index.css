@@ -12338,7 +12338,8 @@
 }
 
 .radio-input {
-  display: none;
+  opacity: 0;
+  position: absolute;
 }
 
 .radio-label {
@@ -12348,10 +12349,10 @@
   margin-right: 10px;
   transition: all 0.2s ease-in-out;
   outline: 0px solid purple;
-  padding-inline: 5px;
+  padding-inline: 3px;
 }
 
 .radio-input:checked + .radio-label {
   outline: 3px solid purple;
-  padding-inline: 5px;
+  padding-inline: 3px;
 }/*# sourceMappingURL=index.css.map */

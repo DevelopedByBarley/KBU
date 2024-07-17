@@ -12,7 +12,7 @@
         <div class="modal-body">
           <div class="mb-3">
             <label for="name" class="form-label">Név</label>
-            <input type="text" class="form-control" id="name" name="name" required>
+            <input type="text" class="form-control" id="name" name="name" required validators='{"name": "name", "required": true, "minLength":  3}'>
           </div>
           <div class="mb-3 form-outline">
             <label for="color" class="form-label">Szín</label>
@@ -36,7 +36,7 @@
           </div>
           <div class="mb-3">
             <label for="max" class="form-label">Maximum férőhely</label>
-            <input type="number" class="form-control" id="max" name="max" required>
+            <input type="number" class="form-control" id="max" name="max" min="1" max="100" required>
           </div>
         </div>
         <div class="modal-footer">

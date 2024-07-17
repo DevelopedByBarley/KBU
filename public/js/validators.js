@@ -125,7 +125,7 @@ function checkValidators(options, inputValue, targetElement) {
         if (typeof value === "boolean" && value === true) {
           const nameParts = inputValue.split(" ");
 
-          if (inputValue !== "" && nameParts.length < 2) {
+          if ((inputValue !== "" && nameParts.length < 2) || (nameParts.length >= 2 && nameParts[1].length === 0)) {
             errors.push("Az mező értékének minimum 2 szóból kell állnia");
             targetElement.setCustomValidity("Az mező értékének minimum 2 szóból kell állnia");
           }
@@ -137,6 +137,7 @@ function checkValidators(options, inputValue, targetElement) {
           const hasUpperCase = /[A-Z]/.test(passwordValue);
           const hasLowerCase = /[a-z]/.test(passwordValue);
           const hasNumber = /\d/.test(passwordValue);
+          const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(passwordValue); // Speciális karakter ellenőrzés
           const isLengthValid = passwordValue.length >= 8;
 
           if (inputValue.trim() === "") {
@@ -167,6 +168,13 @@ function checkValidators(options, inputValue, targetElement) {
             targetElement.setCustomValidity("");
           }
 
+          if (!hasSpecialChar) {
+            errors.push("A jelszónak tartalmaznia kell legalább egy speciális karaktert!");
+            targetElement.setCustomValidity("A jelszónak tartalmaznia kell legalább egy speciális karaktert!");
+          } else {
+            targetElement.setCustomValidity("");
+          }
+
           if (!isLengthValid) {
             errors.push("A jelszónak legalább 8 karakter hosszúnak kell lennie!");
             targetElement.setCustomValidity("A jelszónak legalább 8 karakter hosszúnak kell lennie!");
@@ -175,6 +183,7 @@ function checkValidators(options, inputValue, targetElement) {
           }
         }
         break;
+
       case "comparePw":
         if (typeof value === "boolean" && value === true) {
           const password = targetElement.parentElement.parentElement.querySelector('[data-password-compare]');

@@ -3,9 +3,7 @@
         <div class="modal-content">
             <div class="modal-header d-flex justify-content-between  text-white bg-purple-600">
                 <h5 class="modal-title" id="exampleModalLabel">Admin hozzáadása</h5>
-                <button type="button" class="close border-0 rounded-circle" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form method="POST" enctype="multipart/form-data" action="/admin/store">
@@ -34,6 +32,7 @@
                         <label for="exampleInputEmail1">Jelszó</label>
                         <input type="text" id="password" name="password" class="password form-control" data-password-compare=1 validators='{
                                 "name": "password",
+                                "password": true,
                                 "required": true
                             }' />
                         <button type="button" class="d-inline btn border pw-generator">Generálás</button>

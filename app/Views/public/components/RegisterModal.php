@@ -103,7 +103,7 @@ $main_teams = $params['main_teams'] ?? []
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
-								<input type="number" name="ident-number" id="ident-number" class="form-control" validators='{"name": "ident-number", "required": true, "minLength": 5}' required />
+								<input type="number" name="ident-number" id="ident-number" class="form-control" validators='{"name": "ident-number", "required": true, "minLength": 6, "maxLength": 8}' required />
 								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white" style="min-width: 100px;">Ellenörzés</button>
 							</div>
 						</div>
