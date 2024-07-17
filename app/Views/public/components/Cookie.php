@@ -1,7 +1,7 @@
-<div id="cookie-consent" class="container cookie-banner_wrapper cookie-banner_bottomright zone-hidden p-5 d-flex pr-bg">
+<div id="cookie-consent" class="container cookie-banner_wrapper cookie-banner_bottomright zone-hidden p-5 d-flex bg-main-blue">
   <div class="row">
     <div class="col-12 col-lg-9 d-flex align-items-center justify-content-center">
-      <p class="pr-font-200 text-lg text-center text-lg-start">A weboldalon "cookie-kat" ("sütiket") használunk a legjobb felhasználói élmény biztosítására. A honlap további
+      <p class="pr-font-200 text-lg text-center text-lg-start fw-light">A weboldalon "cookie-kat" ("sütiket") használunk a legjobb felhasználói élmény biztosítására. A honlap további
         használatához a sütik használatát el kell fogadni, mely beállítás bármikor megváltoztatható a böngésző
         beállításaiban. <a class="important text-warning" href="/cookie-info" id="fom">További információ </a>
       </p>

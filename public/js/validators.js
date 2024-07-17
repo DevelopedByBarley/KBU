@@ -241,9 +241,9 @@ function checkValidators(options, inputValue, targetElement) {
 
   // Border szín beállítása
   if (errors.length > 0) {
-    targetElement.style.border = "2px solid red";
+    targetElement.style.border = "2px solid salmon";
   } else {
-    targetElement.style.border = "2px solid green";
+    targetElement.style.border = "2px solid lightgreen";
   }
 
   return errors;

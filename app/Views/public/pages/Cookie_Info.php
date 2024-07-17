@@ -1,6 +1,6 @@
-<div class="container text-light mb-10" >
+<div class="container text-gray-900 mb-10">
     <div class="row">
-        <div class="col text-light-50 mt-8">
+        <div class="col text-light-50 mt-10 mb-10">
             <p><strong class="important pr-font-400">Mik a cookie-k?</strong></p>
             <p class="pr-font-200">A cookie, vagyis süti egy olyan fájl, (egy adatsor,) amit a weboldal látogatójának számítógépén,
                 mobiltelefonján vagy egyéb, internetes hozzáférést biztosító eszközén hozhat létre a weboldalt

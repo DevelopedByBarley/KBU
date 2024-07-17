@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 						},
 						{
 							textColor: 'white',
-							background: 'cyan-500'
+							background: 'lime-500'
 						}
 					);
 				}, 1500);
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
 											},
 											{
 												textColor: 'white',
-												background: 'cyan-500'
+												background: 'lime-500'
 											}
 										);
 										freeUserListItem.style.border = '3px solid lightgreen';
@@ -682,7 +682,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					},
 					{
 						textColor: 'white',
-						background: 'cyan-500'
+						background: 'lime-500'
 					}
 				);
 			});
