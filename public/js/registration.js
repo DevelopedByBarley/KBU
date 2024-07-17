@@ -583,17 +583,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				const freeUserListItem = e.currentTarget;
 				// A kattintott elem kapja meg a border-t
-				freeUserListItem.style.border = '2px solid blue';
-
-				// Az userId beállítása a kattintott elem data-id attribútumából
 				const userId = Number(freeUserListItem.getAttribute('data-id'));
 				const eligibility = Number(freeUserListItem.getAttribute('data-eligibility'));
+				let comparePwContainer = document.querySelector('.compare-pw-container');
+				freeUserListItem.style.border = eligibility === 2 ? '2px solid blue' : '2px solid lightgreen';
+
+				// Az userId beállítása a kattintott elem data-id attribútumából
+
+				comparePwContainer && eligibility === 1 ? comparePwContainer.remove() : '';
+
 
 				if (eligibility === 2) {
 					hiddenChoosePairInput.value = '';
 
 					// Ellenőrizzük, hogy a comparePwContainer már létezik-e
-					let comparePwContainer = document.querySelector('.compare-pw-container');
 					if (!comparePwContainer) {
 						comparePwContainer = generateComparePwContainer(userId);
 						freeUserListItem.parentElement.appendChild(comparePwContainer);
@@ -710,7 +713,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	checkboxes.forEach(function (checkbox) {
 		checkbox.addEventListener('change', function () {
 			if (this.checked) {
-			  this.value = 1
+				this.value = 1
 			} else {
 				this.value = 0
 			}
