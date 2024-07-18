@@ -208,6 +208,41 @@ class Model
     }
   }
 
+  public function allBySearch($table, $search, $entities)
+  {
+      try {
+          // Alap SQL lekérdezés
+          $sql = "SELECT * FROM `$table`";
+  
+          // Ha van keresési paraméter és van megadva keresési entitások tömb
+          if (!empty($search) && !empty($entities)) {
+              $conditions = [];
+              foreach ($entities as $entity) {
+                  $conditions[] = "`$entity` LIKE :search";
+              }
+              $sql .= " WHERE " . implode(" OR ", $conditions);
+          }
+  
+          $stmt = $this->Pdo->prepare($sql);
+  
+          if (!empty($search)) {
+              $searchParam = "%" . $search . "%";
+              $stmt->bindValue(":search", $searchParam);
+          }
+  
+          $stmt->execute();
+          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+          return $results;
+      } catch (PDOException $e) {
+          throw new Exception("An error occurred during the database operation in the allBySearch method: " . $e->getMessage());
+          return false;
+      }
+  }
+  
+
+
+
 
   public function selectByRecord($table, $column, $value, $param)
   {

@@ -5,26 +5,30 @@ define('COLORS', [
         "symbol" => '⚪'
     ],
     2 => [
+        "color" => 'gray-950',
+        "symbol" => '⚫'
+    ],
+    3 => [
         "color" => 'red-500',
         "symbol" => '🔴'
     ],
-    3 => [
+    4 => [
         "color" => 'sky-500',
         "symbol" => '🔵'
     ],
-    4 => [
+    5 => [
         "color" => 'cyan-500',
         "symbol" => '🟢'
     ],
-    5 => [
+    6 => [
         "color" => 'yellow-500',
         "symbol" => '🟡'
     ],
-    6 => [
+    7 => [
         "color" => 'orange-500',
         "symbol" => '🟠'
     ],
-    7 => [
+    8 => [
         "color" => 'purple-500',
         "symbol" => '🟣'
     ],

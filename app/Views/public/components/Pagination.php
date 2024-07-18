@@ -3,7 +3,7 @@ $data = $params['data'] ?? [];
 $currentPage = $_GET['offset'] ?? 1; // az aktuális oldalszám
 
 $totalPages = (int)$data['numOfPage'] ?? 1; // összes oldalszám
-$searchParameter = isset($_GET['date']) ? '?date=' . $_GET['date'] : '';
+$searchParameter = isset($_GET['search']) ? '?search=' . $_GET['search'] : '';
 
 ?>
 

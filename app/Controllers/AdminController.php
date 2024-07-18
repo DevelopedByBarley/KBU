@@ -36,7 +36,7 @@ class AdminController extends Controller
       $reset_url = $this->createResetUrl($tokenData);
       $email = $userId ? $this->Model->selectByRecord('users', 'id', $userId, PDO::PARAM_INT)['email'] : null;
 
-      if(!$email) {
+      if (!$email) {
         $this->Toast->set('Token  elküldése sikertelen!', 'danger', '/admin/table', null);
       }
 
@@ -358,13 +358,22 @@ class AdminController extends Controller
 
   public function table()
   {
+    $search_param = $_GET['search'] ?? null;
+
     $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
-    $users = $this->Model->all('users');
-    $data = $this->Model->paginate($users, 10, '', null);
+    $users = $this->Model->allBySearch('users', $search_param, ['name', 'email', 'ident_number']);
+    $data = $this->Model->paginate($users, 10, $search_param, function ($offset, $numOfPage, $search) {
+      if($offset > (int)$numOfPage) {
+        header('Location: /admin/table');
+        exit;
+      }
+    });
     $main_teams = $this->MainTeam->getAllMainTeamsWithUsers();
     $team_sports = $this->Model->all('team_sports');
     $duel_sports = $this->Model->all('duel_sports');
+
+
 
     echo $this->Render->write("admin/Layout.php", [
       "csrf" => $this->CSRFToken,

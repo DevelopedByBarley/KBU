@@ -16,45 +16,44 @@ function find_team_by_id($teams, $id)
   }
   return null;
 }
-
 ?>
 
-<?php if (count($users) === 0) : ?>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 min-h-95 d-flex align-items-center justify-content-center">
-        <h2>
-
-          Jelenleg nincs egyetlen regisztráció sem
-        </h2>
-      </div>
-    </div>
-  </div>
-  <?php return; ?>
-<?php endif ?>
 
 
-<div class="container-fluid min-h-95 d-flex p-5 my-5 align-items-start justify-content-center flex-column-reverse gap-5">
+
+<div class="container-fluid min-h-95 d-flex my-5 p-lg-5 align-items-start justify-content-center flex-column-reverse gap-5">
   <div class="row w-100">
     <div class="col-12">
-      <div class="table-responsive min-h-700 w-100">
+      <div class="table-responsive min-h-500 w-100">
         <table class="table align-middle mb-0 rounded rounded-lg shadow">
           <thead class="bg-teal-500">
-            <tr>
-              <th>Név</th>
-              <th>Törzsszám és osztály</th>
-              <th>Transzfer</th>
-              <th>Vegetáriánus</th>
-              <th>Actimo</th>
-              <th>Fő csapat</th>
-              <th>Csapat sport</th>
-              <th>Páros sport</th>
-              <th>Pár státusz</th>
-              <th>Van jelszava?</th>
-              <th>Van párja?</th>
-              <th>Regisztrált</th>
-              <th>Műveletek</th>
-            </tr>
+            <?php if (count($users) === 0) : ?>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12 d-flex align-items-center justify-content-center">
+                    <h2>
+
+                      Jelenleg nincs egyetlen regisztráció sem
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            <?php else : ?>
+              <tr>
+                <th>Név</th>
+                <th>Törzsszám és osztály</th>
+                <th>Transzfer</th>
+                <th>Vegetáriánus</th>
+                <th>Actimo</th>
+                <th>Fő csapat</th>
+                <th>Csapat sport</th>
+                <th>Páros sport</th>
+                <th>Pár státusz</th>
+                <th>Van jelszava?</th>
+                <th>Van párja?</th>
+                <th>Regisztrált</th>
+                <th>Műveletek</th>
+              </tr>
           </thead>
           <tbody>
             <?php foreach ($users as $user) : ?>
@@ -161,13 +160,29 @@ function find_team_by_id($teams, $id)
               </tr>
             <?php endforeach; ?>
           </tbody>
+        <?php endif ?>
         </table>
       </div>
     </div>
   </div>
-  <div class="text-center mt-3">
+  <div class="text-center mt-3 d-flex flex-column-reverse flex-lg-row align-items-center  justify-content-between w-100">
     <?php include 'app/Views/public/components/Pagination.php'; ?>
-    <a href="/admin/export-registers" class="btn btn-success">Exportálás Excel-be</a>
+    <div class="row my-4">
+      <div class="col-12 my-2">
+        <a href="/admin/export-registers" class="btn btn-success">Exportálás Excel-be</a>
+      </div>
+      <div class="col-12 my-2">
+        <div class="d-flex align-items-center justify-content-start m-0 p-0">
+          <small>A keresés a név, email és törzsszámra érvényes</small>
+        </div>
+        <form action="/admin/table<?= isset($_GET['offset']) ? '?offset=' . $_GET['offset'] : '' ?>">
+          <div class="d-flex gap-3">
+            <input type="search" class="form-control rounded" placeholder="Keresés" aria-label="Search" aria-describedby="search-addon" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>" />
+            <button type="submit" class="btn btn-outline-dark" data-mdb-ripple-init>Keresés</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
