@@ -191,7 +191,7 @@ class UserController extends Controller
       $this->Mailer->renderAndSend('MessageMail', [
         'mail' =>  $email ?? 'problem',
         'message' => $message ?? 'problem'
-      ], 'arpadsz@max.hu', 'Üzenet!');
+      ], $_SERVER['MESSAGE_MAIL_ADDRESS'], 'Üzenet!');
 
       $this->Toast->set('Üzenet sikeresen elküldve!', 'teal-500', '/', null);
     } catch (\Throwable $th) {

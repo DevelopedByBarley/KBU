@@ -1,7 +1,7 @@
 document.addEventListener("mousemove", parallax);
 
 function parallax(event) {
-    this.querySelectorAll(".parallax-wrap img").forEach((shift) => {
+    this.querySelectorAll(".parallax-wrap [parallax]").forEach((shift) => {
         const position = shift.getAttribute("parallax");
         console.log(position);
         const x = (window.innerWidth - event.pageX * position) / 90;

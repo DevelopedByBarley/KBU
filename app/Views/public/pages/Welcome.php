@@ -4,17 +4,19 @@
 <header>
 	<div class="container-fluid px-lg-5  mt-5 mb-10">
 		<div class="row d-flex align-items-center justify-content-center" id="header">
-			<div class="col-12 col-xl-6 offset-xl-1 col-xxl-6 px-5 mt-5 d-flex align-items-center justify-content-center">
+			<div class="col-12 col-xl-6 offset-xl-4 col-xxl-3 px-5 mt-5 d-flex align-items-center justify-content-center z-2 parallax-wrap">
 				<div class="mt-5 text-center text-xl-start">
 					<h1 class="fw-bolder text-nowrap m-0">KNORR BREMSE</h1>
-					<h2 class="fw-bolder mt-0">Sportnap</h2>
-					<p class="fw-normal ">2023. Május 12.</p>
-					<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1 text-white">Regisztráció</button>
+					<div class="px-2">
+						<h2 class="fw-bolder mt-0">Sportnap</h2>
+						<p class="fw-normal ">2023. Május 12.</p>
+						<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1 text-white">Regisztráció</button>
+					</div>
 				</div>
 			</div>
-			<div class="col-12 col-xl-5 col-xxl-5 text-center mt-5">
+			<div class="col-12 col-xl-5 col-xxl-5 text-center mt-5  z-1">
 				<div class="blur-load parallax-wrap">
-					<img parallax="1" class="img-fluid rounded-5" id="runner" loading="lazy" src="/public/assets/images/running.png" alt="..." />
+					<img parallax="1.2" class="img-fluid rounded-5" id="runner" loading="lazy" src="/public/assets/images/running.png" alt="..." />
 				</div>
 			</div>
 		</div>
@@ -72,7 +74,7 @@
 			</section>
 			<!-- Section: Timeline -->
 		</div>
-		<div class="col-12 col-lg-6"  id="timeline-images">
+		<div class="col-12 col-lg-6" id="timeline-images">
 			<div class="row">
 				<div class="col-12 col-md-6 my-4">
 					<div class="blur-load">
