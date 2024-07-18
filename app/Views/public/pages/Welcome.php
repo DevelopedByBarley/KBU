@@ -9,7 +9,7 @@
 					<h1 class="fw-bolder text-nowrap m-0">KNORR BREMSE</h1>
 					<h2 class="fw-bolder mt-0">Sportnap</h2>
 					<p class="fw-normal ">2023. Május 12.</p>
-					<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1">Regisztráció</button>
+					<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1 text-white">Regisztráció</button>
 				</div>
 			</div>
 			<div class="col-12 col-xl-5 col-xxl-5 text-center mt-5">

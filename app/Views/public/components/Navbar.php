@@ -9,19 +9,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-xl-flex w-100 align-items-xl-center justify-content-end">
         <li class="nav-item ">
-          <a class="nav-link main-blue hover-blue-900 mx-lg-3" href="/">PROGRAM</a>
+          <a class="nav-link main-blue hover-blue-400 mx-lg-3" href="/">PROGRAM</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="#transfer-info">TRANSZFER</a>
+          <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="#transfer-info">TRANSZFER</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">PONTOZÁS</a>
+          <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="/">PONTOZÁS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-900  mx-lg-3" href="/">REGISZTRÁCIÓ</a>
+          <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="/">REGISZTRÁCIÓ</a>
         </li>
         <li class="nav-item">
-          <button type="button"   class="nav-link main-blue  hover-blue-900  mx-lg-3 border-0" data-bs-toggle="modal" data-bs-target="#sendMailModal">
+          <button type="button"   class="nav-link main-blue  hover-blue-400  mx-lg-3 border-0 " data-bs-toggle="modal" data-bs-target="#sendMailModal">
             KONTAKT
           </button>
         </li>

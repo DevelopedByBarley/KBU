@@ -178,7 +178,7 @@ function find_team_by_id($teams, $id)
         <form action="/admin/table<?= isset($_GET['offset']) ? '?offset=' . $_GET['offset'] : '' ?>">
           <div class="d-flex gap-3">
             <input type="search" class="form-control rounded" placeholder="Keresés" aria-label="Search" aria-describedby="search-addon" name="search" value="<?= isset($_GET['search']) ? $_GET['search'] : '' ?>" />
-            <button type="submit" class="btn btn-outline-dark" data-mdb-ripple-init>Keresés</button>
+            <button type="submit" class="btn bg-violet-500 text-white" data-mdb-ripple-init>Keresés</button>
           </div>
         </form>
       </div>
