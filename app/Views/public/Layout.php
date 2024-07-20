@@ -16,7 +16,10 @@
   <?php include 'app/Views/public/components/Alert.php' ?>
   <?php if (FEEDBACK_PERM) : ?><?php include 'app/Views/public/components/RatingModal.php' ?><?php endif ?>
   <?php if (TOAST_PERM) : ?><?php include 'app/Views/public/components/Toast.php' ?><?php endif ?>
-    <?php if (COOKIE_MODAL_PERM) : ?><?php include 'app/Views/public/components/Cookie.php' ?><?php endif ?>
+  <?php if (COOKIE_MODAL_PERM) : ?>
+    <?php include 'app/Views/public/components/Cookie.php' ?>
+    <script type="module" src="/public/js/cookie.js?v=<?= time() ?>"></script>
+  <?php endif ?>
 
 
 
@@ -34,7 +37,7 @@
   <?php if (VALIDATORS_PERM) : ?><script type="module" src="/public/js/validators.js?v=<?= time() ?>"></script><?php endif ?>
   <?php if (TOAST_PERM) : ?><script src="/public/js/toast.js?v=<?= time() ?>"></script><?php endif ?>
   <?php if (FEEDBACK_PERM) : ?><script type="module" src="/public/js/ratingModal.js?v=<?= time() ?>"></script><?php endif ?>
-    <?php if (IMG_LOADER_PERM) : ?><script src="/public/js/imgLoader.js?v=<?= time() ?>"></script><?php endif ?>
+  <?php if (IMG_LOADER_PERM) : ?><script src="/public/js/imgLoader.js?v=<?= time() ?>"></script><?php endif ?>
   <script type="module" src="/public/js/registration.js?v<?= time() ?>"></script>
   <script type="module" src="/public/js/uuid.js?v=<?= time() ?>"></script>
   <script type="module" src="/public/js/getCookie.js?v=<?= time() ?>"></script>

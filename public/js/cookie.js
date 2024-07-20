@@ -1,240 +1,142 @@
-(function () {
-  'use strict'
 
-  const cookieName = 'cookieConsentLevel' // The cookie name
-  const cookieLifetime = 365 // Cookie expiry in days
+import { getCookie, setCookie } from '/public/js/getCookie.js';
 
-  const bannerElement = document.getElementById('cookie-consent')
 
-  const AcceptAllElement = document.getElementById('cookie-consent-accept-all')
-  const DeclineAllElement = document.getElementById('cookie-consent-decline-all')
-  const ClearAllCookiesElement = document.getElementById('cookie-consent-clear-all-cookies')
-  
-  const configuration = {
-    gtag: {
-      enabled: true,
-      measurement_id: "" //G-SRV1QJGMQX
-    },
-    meta_pixel: {
-      enabled: false,
-      pixel_id: "{your-pixel-id-goes-here}"
-    },
-    hotjar: {
-      enabled: false,
-      hjid: ""
-    }
+const cookieBannerCon = document.getElementById('cookie-banner-container');
+const analyticalCheckbox = document.getElementById('analytical-checkbox');
+const marketingCheckbox = document.getElementById('marketing-checkbox');
+
+const bannerAcceptNecessaryBtn = document.getElementById('banner-cookie-consent-accept-necessary');
+const bannerAcceptAllBtn = document.getElementById('banner-cookie-consent-accept-all');
+const submitCookeConsentModalBtn = document.getElementById('submit-consent-modal');
+const  cookieModal = new bootstrap.Modal(document.getElementById('cookie-modal'));
+
+submitCookeConsentModalBtn.addEventListener('click', function (e) {
+  e.preventDefault();
+  const cookieLevel = getConsentLevel();
+  setCookie('cookie-consent', cookieLevel, 30)
+
+  cookieModal.hide();
+  cookieBannerCon.classList.add('d-none');
+
+})
+
+bannerAcceptNecessaryBtn.addEventListener('click', () => {
+  setCookie('cookie-consent', 1, 30);
+  cookieBannerCon.classList.add('d-none');
+  console.log('Elfogadva: Szükséges sütik');
+});
+
+bannerAcceptAllBtn.addEventListener('click', () => {
+  setCookie('cookie-consent', 9, 30);
+  cookieBannerCon.classList.add('d-none');
+
+  startAnalyticsCookies();
+  startMarketingCookies();
+  console.log('Elfogadva: Összes sütik');
+});
+
+analyticalCheckbox.addEventListener('change', function () {
+  const consentLevel = getConsentLevel();
+  console.log('Marketing cookies state:', this.checked);
+  console.log(consentLevel);
+});
+
+marketingCheckbox.addEventListener('change', function () {
+  const consentLevel = getConsentLevel();
+  console.log('Marketing cookies state:', this.checked);
+  console.log(consentLevel);
+});
+
+
+function getConsentLevel() {
+  let level = 1; // Necessary cookies
+
+  if (analyticalCheckbox.checked) {
+    level += 3; // Add Analytical cookies
   }
-
-  const Permissions = {
-    Necessary: 1,       //  000001
-    Functional: 1 << 1,  //  000010
-    Analytics: 1 << 2,  //  000100
-    Advertisement: 1 << 3,  //  001000
+  if (marketingCheckbox.checked) {
+    level += 5; // Add Marketing cookies
   }
+  return level;
+}
 
-  /**
-   * Set a cookie
-   * @param cname - cookie name
-   * @param cvalue - cookie value
-   * @param exdays - expiry in days
-   */
-  const _setCookie = function (cname, cvalue, exdays) {
-    const d = new Date()
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
-    const expires = 'expires=' + d.toUTCString()
-    document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
+function startAnalyticsCookies() {
+  console.log('Analytics cookies started');
+
+  // Google Analytics script betöltése, ha nincs betöltve
+  if (!window.ga) {
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-';
+    script.async = true; // Aszinkron betöltés
+    document.head.appendChild(script);
+
+    script.onload = () => {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', '');
+      console.log('Google Analytics script loaded and configured');
+    };
+  } else {
+    console.log('Google Analytics is already loaded');
   }
+}
 
-  /**
-   * Get a cookie
-   * @param cname - cookie name
-   * @returns string
-   */
-  const _getCookie = function (cname) {
-    const name = cname + '='
-    const ca = document.cookie.split(';')
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i]
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1)
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length)
-      }
-    }
-    return ''
+
+function startMarketingCookies() {
+  console.log('Marketing cookies started');
+}
+
+
+const runCookiesByLevel = (cookieLevel) => {
+  switch (cookieLevel) {
+    case 1:
+      console.log('Necessary consent approved!');
+      break;
+
+    case 4:
+      console.log('Necessary and Analytical consent approved!');
+      startAnalyticsCookies();
+      break;
+
+    case 6:
+      console.log('Necessary and Marketing consent approved!');
+      startMarketingCookies();
+      break;
+
+    case 9:
+      console.log('Necessary, Analytical, and Marketing consent approved!');
+      startAnalyticsCookies();
+      startMarketingCookies();
+      break;
+
+    default:
+      console.log('No or invalid cookie consent.');
+      break;
   }
+}
 
-  const clearCookies = (wildcardDomain = false, primaryDomain = true, path = null) => {
-    const pathSegment = path ? '; path=' + path : ''
-    const expSegment = "=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
-    document.cookie
-      .split(';')
-      .forEach(
-        (c) => {
-          primaryDomain && (document.cookie = c.replace(/^ +/, "").replace(/=.*/, expSegment + pathSegment))
-          wildcardDomain && (document.cookie = c.replace(/^ +/, "").replace(/=.*/, expSegment + pathSegment + '; domain=' + document.domain))
-        }
-      )
+document.addEventListener('DOMContentLoaded', () => {
+  const cookieLevel = parseInt(getCookie('cookie-consent'), 10);
+  if(isNaN(cookieLevel)) {
+    cookieBannerCon.classList.remove('d-none');
+    return;
   }
-
-  /**
-   * Should the cookie banner be shown?
-   */
-  const _shouldShowPopup = () => {
-    let consentLevel = _getCookie(cookieName)
-    if (consentLevel !== '') {
-      consentLevel = parseInt(consentLevel)
-      OnDecide(consentLevel)
-      return false
-    } else {
-      return true
-    }
-  }
-
-  const hasClass = (ele, cls) => {
-    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-  }
-
-  const addClass = (ele, cls) => {
-    if (!hasClass(ele, cls)) ele.className += " " + cls;
-  }
-
-  const removeClass = (ele, cls) => {
-    if (hasClass(ele, cls)) {
-      const reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-      ele.className = ele.className.replace(reg, ' ');
-    }
-  }
+  runCookiesByLevel(cookieLevel);
+});
 
 
-  const OnDecide = (userPermission) => {
-    // 0b01111 is the full level
-    _setCookie(
-      cookieName,
-      userPermission,
-      cookieLifetime)
-
-    addClass(bannerElement, 'zone-hidden')
-
-    !!ClearAllCookiesElement && ClearAllCookiesElement.classList.remove('d-none')
-
-    const preventCallbacks = !!document.querySelector('script#cookie-consent-required-necessary-prevent-callbacks')
-    if (!preventCallbacks) {
-      if (userPermission & Permissions.Necessary) {
-        console.info('Necessary permission level accepted.')
-        // Callback comes here
-      }
-      if (userPermission & Permissions.Functional) {
-        console.info('Functional permission level accepted.')
-        // Callback comes here
-      }
-      if (userPermission & Permissions.Analytics) {
-        console.info('Analytics permission level accepted.')
-        // Callback comes here
-        if (configuration.meta_pixel && configuration.meta_pixel.enabled) {
-          console.log('Meta Pixel start')
-          !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-              n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-          }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', configuration.meta_pixel.pixel_id);
-          fbq('track', 'PageView');
-          console.log('Meta Pixel end')
-        }
-
-        if (configuration.gtag && configuration.gtag.enabled) {
-          console.log('GTAG start')
-          window.dataLayer = window.dataLayer || [];
-
-          function gtag() {
-            window.dataLayer.push(arguments);
-          }
-
-          gtag('js', new Date());
-
-          gtag('config', configuration.gtag.measurement_id, { 'anonymize_ip': true });
-
-          const gJsSource = document.createElement('script')
-          gJsSource.async = !0;
-          gJsSource.src = "https://www.googletagmanager.com/gtag/js?id=" + configuration.gtag.measurement_id
-          document.body.appendChild(gJsSource);
-          console.log('GTAG end')
-        }
-        if (configuration.hotjar && configuration.hotjar.enabled) {
-          (function (h, o, t, j, a, r) {
-            h.hj = h.hj || function () {
-              (h.hj.q = h.hj.q || []).push(arguments)
-            };
-            h._hjSettings = { hjid: configuration.hotjar.hjid, hjsv: 6 };
-            a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script');
-            r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-          })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-        }
-
-      }
-      if (userPermission & Permissions.Advertisement) {
-        console.info('Advertisement permission level accepted.')
-        // Callback comes here
-      }
-    }
-  }
 
 
-  // Show the cookie banner on load if not previously accepted
-  const showCookieBanner = () => {
-    removeClass(bannerElement, 'zone-hidden')
 
-    AcceptAllElement.addEventListener("click", (event) => {
-      event.preventDefault()
-      OnDecide(Permissions.Advertisement +
-        Permissions.Necessary +
-        Permissions.Analytics +
-        Permissions.Functional)
-    })
+// Consent levels
+// Necessary => 1
+// Analytical => 3
+// Marketing => 5
 
-    DeclineAllElement.addEventListener("click", (event) => {
-      event.preventDefault()
-      OnDecide(0)
-    })
-
-    document
-      .querySelectorAll('.cookie-preference-group .group-heading')
-      .forEach(groupHeading =>
-        groupHeading.addEventListener("click", () => {
-          groupHeading.nextElementSibling.classList.toggle("zone-hidden")
-          !hasClass(groupHeading, 'open')
-            ? addClass(groupHeading, 'open')
-            : removeClass(groupHeading, 'open')
-        })
-      )
-
-  }
-
-  !!ClearAllCookiesElement && ClearAllCookiesElement.addEventListener("click", (event) => {
-    event.preventDefault()
-    clearCookies()
-    showCookieBanner()
-  })
-
-  // Show the cookie banner on load if not previously accepted
-  if (_shouldShowPopup()) showCookieBanner()
-
-})()
+/**
+ * Necessary + Analytical = 1 + 3 = 4
+ * Necessary + Marketing =  1 + 5 = 6
+ * Necessary + Marketing + Analytical = 1 + 3 + 5 = 9
+ */
