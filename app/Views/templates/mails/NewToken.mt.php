@@ -332,7 +332,8 @@
                                 <br>
 
                                 <div>
-                                    <p style="margin-top: 2rem;">Sok szerencsét! 😄.</p>
+                                    <p style="margin-top: 2rem;">Sok szerencsét! 😊.</p>
+                                    <p style="margin-top: 2rem;">Üdvözlettel, a KBU program csapata!</p>
                                 </div>
 
                                 <!-- END MAIN CONTENT AREA -->

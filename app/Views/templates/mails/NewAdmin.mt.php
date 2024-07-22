@@ -338,7 +338,7 @@
                 </span>
 
                 <div>
-                  <p style="margin-top: 2rem;">Sok szerencsét! Reméljük működik 😄.</p>
+                  <p style="margin-top: 2rem;">Sok szerencsét! Reméljük működik 😊.</p>
                 </div>
 
                 <!-- END MAIN CONTENT AREA -->

@@ -324,18 +324,15 @@
                         <!-- START MAIN CONTENT AREA -->
                         <tr>
                             <td class="wrapper">
-                                <h3>Szia , <?= $user_name ?></h3>
-                                <h5>Üdvözlünk a KBU program regisztráltjai között</h5>
+                                <h3>Kedves felhasználó</h3>
+                    
                                 <br>
                                 <br>
                                 <span>
-                                    <h3> A regisztrációd leadása sikeresen megtörtént</h3>
+                                    <h3> <?= $message ?></h3>
 
                                 </span>
-                                <span>
-                                    <h3>A regisztrációd vagy párod ezen a linken keresztül törölheted</h3> <?= $reset_url ?>
-                                </span>
-                                <?= $pair_password ? "<h3>A pár megjelöléséhez megadott jelszó: <span style='color: red'> $pair_password</span></h3>" : "" ?>
+
 
 
 

@@ -332,7 +332,7 @@
                                 <br>
                 
                                 <div>
-                                    <p style="margin-top: 2rem;">Sok szerencsét! 😄.</p>
+                                    <p style="margin-top: 2rem;">Sok szerencsét! 😊.</p>
                                 </div>
 
                                 <!-- END MAIN CONTENT AREA -->

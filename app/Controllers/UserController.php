@@ -131,6 +131,15 @@ class UserController extends Controller
       }
       $user_id  = $token_data['ref_id'];
       $token = $token_data['token'];
+
+      $user_mail = $this->Model->selectByRecord('users', 'id', $user_id, PDO::PARAM_INT)['email'];
+      $pair_mail = $this->Model->selectByRecord('users', 'pairRef_id', $user_id, PDO::PARAM_INT)['email'];
+
+      $this->Mailer->renderAndSend('UserNotify', [
+        'message' => $message ?? "Ezúton tájékoztatunk hogy a $user_mail e-mail címmel rendelkező felhasználó törölt a párjai közül. emiatt a pár státuszodat szabaddá tettük. Ha változtatni szeretnél akkor kérd az adminok segítségét"
+      ], $pair_mail, 'Üzenet!');
+
+      
       $this->Model->deletePairRefIdIfItExist($user_id);
       $this->User->deleteUser($user_id);
 
@@ -155,6 +164,14 @@ class UserController extends Controller
     try {
       $token_data = $this->Model->checkResetToken();
       $user_id  = $token_data['ref_id'];
+      $user_mail = $this->Model->selectByRecord('users', 'id', $user_id, PDO::PARAM_INT)['email'];
+      $pair_mail = $this->Model->selectByRecord('users', 'pairRef_id', $user_id, PDO::PARAM_INT)['email'];
+
+      $this->Mailer->renderAndSend('UserNotify', [
+        'message' => $message ?? "Ezúton tájékoztatunk hogy a $user_mail e-mail címmel rendelkező felhasználó törölte a regisztrációt, vagy téged párjai közül. ezért a pár státuszodat szabaddá tettük. Ha változtatni szeretnél akkor kérd az adminok segítségét"
+      ], $pair_mail, 'Üzenet!');
+
+
       $token = $token_data['token'];
       $this->User->deletePairRefIdIfItExist($user_id);
       $this->Model->deactivateResetToken($token);
