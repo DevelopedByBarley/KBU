@@ -208,6 +208,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		const duelTeam = Number(e.target.value);
 		const comparePwContainer = document.querySelector('.compare-pw-container');
 
+		let selectedOption = e.target.options[e.target.selectedIndex];
+
+		// Get max attribute from option 
+		let max = selectedOption.getAttribute('max');
+		
+		// And disable "Párnak jelentkezem" option if max = 1, cause we have 1 free spot only
+		if (max <= 1) {
+			pairStatusSelect.options[2].disabled = true;
+		} else {
+			pairStatusSelect.options[2].disabled = false;
+		}
+
 		if (comparePwContainer) comparePwContainer.remove();
 
 		disableElements([
@@ -429,9 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function renderSelectsByDuelSports(teamSports) {
 		let temp = `
-        <option value="" selected disabled>Válassza ki a csapat sportot!</option>
-        <option value="0">Nem jelentkezem</option>
-    `;
+		<option value="" selected disabled>Válassza ki a csapat sportot!</option>
+		<option value="0">Nem jelentkezem</option>
+	`;
 
 		teamSports.forEach(sport => {
 			const freeSpots = sport.max;
@@ -439,10 +451,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			const teamId = sport.id;
 
 			temp += `
-            <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
-                ${teamName} - (${freeSpots} szabad hely)
-            </option>
-        `;
+			<option max="${freeSpots}" value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
+				${teamName} - (${freeSpots} szabad hely)
+			</option>
+		`;
 		});
 
 		return temp;
@@ -723,6 +735,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
+
+
+
+
 
 
 
