@@ -317,6 +317,7 @@ class AdminController extends Controller
     ];
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "admin" => $admin,
       "csrf" => $this->CSRFToken,
       "content" => $this->Render->write("admin/pages/Dashboard.php", [
@@ -348,6 +349,7 @@ class AdminController extends Controller
     }
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       "content" => $this->Render->write("admin/pages/Login.php", [
         "csrf" => $this->CSRFToken
@@ -364,7 +366,7 @@ class AdminController extends Controller
     $admin = $this->Model->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
     $users = $this->Model->allBySearch('users', $search_param, ['name', 'email', 'ident_number']);
     $data = $this->Model->paginate($users, 10, $search_param, function ($offset, $numOfPage, $search) {
-      if($offset > (int)$numOfPage) {
+      if ($offset > (int)$numOfPage) {
         header('Location: /admin/table');
         exit;
       }
@@ -376,6 +378,7 @@ class AdminController extends Controller
 
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       "admin" => $admin,
       "content" => $this->Render->write("admin/pages/Table.php", [
@@ -398,6 +401,7 @@ class AdminController extends Controller
     ];
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       "admin" => $admin,
       "content" => $this->Render->write("admin/pages/Form.php", [
@@ -429,6 +433,7 @@ class AdminController extends Controller
     });
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/Settings.php", [
@@ -451,6 +456,7 @@ class AdminController extends Controller
     ];
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/MailBox.php", [
@@ -469,6 +475,7 @@ class AdminController extends Controller
 
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/Sports.php", [])
@@ -495,6 +502,7 @@ class AdminController extends Controller
     });
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/MainTeams.php", [
@@ -519,6 +527,7 @@ class AdminController extends Controller
 
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/TeamSports.php", [
@@ -541,6 +550,7 @@ class AdminController extends Controller
 
 
     echo $this->Render->write("admin/Layout.php", [
+      "meta_tags" => ADMIN_META,
       "csrf" => $this->CSRFToken,
       'admin' => $admin,
       "content" => $this->Render->write("admin/pages/DuelSports.php", [

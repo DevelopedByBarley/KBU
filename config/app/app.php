@@ -38,5 +38,5 @@ define('PW_GENERATOR_PERM', 1);
 
 
 
-define('APP_NAME', 'PHP-MVC');
-define('APP_ADMIN_NAME', 'PHP-MVC-ADMIN');
+define('APP_NAME', 'KBU Program');
+define('APP_ADMIN_NAME', 'KBU PROGRAM ADMIN');
