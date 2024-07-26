@@ -3,20 +3,37 @@
 
 <header>
 	<div class="container-fluid px-lg-5  mt-5 mb-10">
-		<div class="row d-flex align-items-center justify-content-center" id="header">
-			<div class="col-12 col-xl-6 offset-xl-4 col-xxl-3 px-5 mt-5 d-flex align-items-center justify-content-center z-2 parallax-wrap">
-				<div class="mt-5 text-center text-xl-start">
-					<h1 class="fw-bolder text-nowrap m-0">KNORR BREMSE</h1>
+		<div class="row d-flex align-items-center justify-content-center position-relative" id="header">
+			<div class="col-12 px-5 mt-5 d-flex align-items-center justify-content-center z-2 parallax-wrap min-h-80">
+				<div class="mt-5 text-center">
+					<h1 class="fw-bolder text-nowrap m-0" style="text-shadow: 1px 1px white;">KNORR BREMSE</h1>
 					<div class="px-2">
-						<h2 class="fw-bolder mt-0">Sportnap</h2>
-						<p class="fw-normal ">2023. Május 12.</p>
+						<h2 class="fw-bolder mt-0" style="text-shadow: 2px 2px white;">Sportnap</h2>
+						<p class="fw-normal">2024. Szeptember 21.</p>
 						<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1 text-white">Regisztráció</button>
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-xl-5 col-xxl-5 text-center mt-5  z-1">
-				<div class="blur-load parallax-wrap">
-					<img parallax="1.2" class="img-fluid rounded-5" id="runner" loading="lazy" src="/public/assets/images/running.png" alt="..." />
+			<div class="col-12 text-center mt-5 z-1 position-absolute top-0 parallax-wrap">
+				<div class="row">
+					<div parallax="-.6" class="col-6 col-md-6 offset-md-1 offset-xl-1 col-xl-2">
+						<img src="/public/assets/images/banner/bicikli.png" class="img-fluid" alt="">
+					</div>
+					<div parallax=".6" class="col-6 col-md-3 offset-xl-2 col-xl-2">
+						<img src="/public/assets/images/banner/boldog.png" class="img-fluid" alt="">
+					</div>
+					<div parallax="-.6" class="col-6 offset-2 invisible d-md-none col-md-4 col-xl-2">
+						<img src="/public/assets/images/banner/masszazs.png" class="img-fluid" alt="">
+					</div>
+					<div parallax=".8" class="col-6 d-none d-md-block col-md-4 col-xl-2 offset-xl-2 ">
+						<img src="/public/assets/images/banner/masszazs.png" class="img-fluid" alt="">
+					</div>
+					<div parallax="-.4" class="col-6 col-md-5 col-xl-3 offset-xl-2">
+						<img src="/public/assets/images/banner/csapat.png" class="img-fluid" alt="">
+					</div>
+					<div parallax="-.6" class="col-6 col-md-3 col-xl-3 offset-xl-3 ">
+						<img src="/public/assets/images/banner/joga.png" class="img-fluid" alt="">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -105,6 +122,8 @@
 <div id="first-info" class="gray-50 bg-main-blue dark-bg-light-blue min-h-400 mt-8">
 	<div class="container">
 		<div class="row">
+
+
 			<div class="col-12" id="transfer-info">
 				<div class="min-h-400 d-flex align-items-center justify-content-center flex-column p-3 py-5">
 					<p class="text-xl fw-bold">
@@ -119,6 +138,7 @@
 						a helyszínre: 41-es villamos, vagy 187-es busz Kelenföldről (Őrmező felőli oldal)
 					</p>
 				</div>
+
 
 				<div class="min-h-200 bg-main-blue dark-bg-light-blue border-0  skew" style="clip-path: polygon(0 0, 0 53%, 100% 0);">
 				</div>
@@ -250,9 +270,6 @@
 	<div class="row">
 		<div class="col-12 d-flex flex-column flex-md-row align-items-center justify-content-between  my-3">
 			<img class="my-4 dark-bg-gray-50 p-3" style="width: 300px;" src="/public/assets/images/logo.png" alt="">
-			<div class="bg-danger w-100 text-center">
-
-			</div>
 			<div>
 				<p class="m-0 text-center" style="font-style: italic;">Szervező cég:</p>
 				<a href="https://max.hu/" target="_blank">

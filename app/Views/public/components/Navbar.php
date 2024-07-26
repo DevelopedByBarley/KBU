@@ -18,7 +18,7 @@
           <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="/">PONTOZÁS</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="/">REGISZTRÁCIÓ</a>
+          <a role="button" class="nav-link main-blue  hover-blue-400  mx-lg-3" data-bs-toggle="modal" data-bs-target="#formModal" href="#">REGISZTRÁCIÓ</a>
         </li>
         <li class="nav-item">
           <button type="button"   class="nav-link main-blue  hover-blue-400  mx-lg-3 border-0 " data-bs-toggle="modal" data-bs-target="#sendMailModal">
