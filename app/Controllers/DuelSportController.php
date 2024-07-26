@@ -18,14 +18,13 @@ class DuelSportController extends Controller
         parent::__construct();
         $this->DuelSport = new DuelSport();
         $this->Activity = new AdminActivity();
-
     }
     public function storeDuelSport()
     {
         $adminId = $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
 
         try {
-           $sport = $this->DuelSport->store($_POST);
+            $sport = $this->DuelSport->store($_POST);
             http_response_code(200);
             $this->Activity->store([
                 'content' => "Hozzá adott egy új páros sportot: $sport csapat.",
@@ -46,8 +45,9 @@ class DuelSportController extends Controller
         try {
             $duel_sports = $this->Model->selectAllByRecord('duel_sports', 'main_teamRef_id', $vars['team-refId'], PDO::PARAM_INT);
             foreach ($duel_sports as $index => $duel_sport) {
+                $max =  (int)$duel_sports[$index]['max'];
                 $users = $this->Model->selectAllByRecord('users', 'duel_sportRef_id', $duel_sport['id'], PDO::PARAM_INT);
-                (int)$duel_sports[$index]['max'] -= count($users);
+                $duel_sports[$index]['currentMax']  = $max -= count($users);
                 $duel_sports[$index]['users'][] = $users;
             }
 

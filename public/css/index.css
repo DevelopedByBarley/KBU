@@ -12040,10 +12040,16 @@
   flex-grow: 1;
 }
 
-@media (min-width: 1200px) {
-  #runner {
+@media (min-width: 1366px) {
+  .happy {
     position: relative;
-    right: 150px;
+    bottom: 20px;
+  }
+}
+@media (min-width: 1600px) {
+  .happy {
+    position: relative;
+    bottom: 40px;
   }
 }
 .side-nav {

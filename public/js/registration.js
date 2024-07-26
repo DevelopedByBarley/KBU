@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// Get max attribute from option 
 		let max = selectedOption.getAttribute('max');
-		
+
 		// And disable "Párnak jelentkezem" option if max = 1, cause we have 1 free spot only
 		if (max <= 1) {
 			pairStatusSelect.options[2].disabled = true;
@@ -425,36 +425,62 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
 		teamSports.forEach(sport => {
-			const freeSpots = sport.max;
+			const max = sport.max;
+			const freeSpots = sport.currentMax
 			const teamName = sport.name;
 			const teamId = sport.id;
 
+			console.log(teamName);
+			const isOptionFootball = teamName.includes('Foci') || teamName.includes('foci');
+			console.log(isOptionFootball);
 			temp += `
             <option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
-                ${teamName} - (${freeSpots} szabad hely)
-            </option>
-        `;
+               ${teamName} - (${freeSpots} szabad hely | Max ${max} fő ${isOptionFootball ? '/ ebből 4 fő csere' : ''})
+            </option >
+				`;
 		});
 
 		return temp;
 	}
 
-	function renderSelectsByDuelSports(teamSports) {
-		let temp = `
-		<option value="" selected disabled>Válassza ki a csapat sportot!</option>
-		<option value="0">Nem jelentkezem</option>
-	`;
 
-		teamSports.forEach(sport => {
-			const freeSpots = sport.max;
+	/**
+	 * 
+	 * @param {	const max = sport.max;
+			const freeSpots = sport.currentMax
 			const teamName = sport.name;
 			const teamId = sport.id;
 
+			console.log(teamName);
+			const isOptionFootball = teamName.includes('Foci') || teamName.includes('foci');
+			console.log(isOptionFootball);
+			temp += `
+			<option value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
+			   ${teamName} - (${freeSpots} szabad hely | Max ${max} fő ${isOptionFootball ? '/ ebből 4 f csere' : ''})
+			</option >} duelSports 
+	 * @returns 
+	 */
+
+	function renderSelectsByDuelSports(duelSports) {
+		let temp = `
+				<option value="" selected disabled> Válassza ki a páros sportot!</>
+				<option value="0">Nem jelentkezem</option>
+			`;
+
+
+
+		duelSports.forEach(sport => {
+			const max = sport.max;
+			const freeSpots = sport.currentMax
+			const teamName = sport.name;
+			const teamId = sport.id;
+
+
 			temp += `
 			<option max="${freeSpots}" value="${teamId}" ${freeSpots > 0 ? '' : 'disabled'}>
-				${teamName} - (${freeSpots} szabad hely)
-			</option>
-		`;
+               ${teamName} - (${freeSpots} szabad hely | Max ${max} fő)
+            </option >} duelSports 
+			`;
 		});
 
 		return temp;
@@ -519,10 +545,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (usersForPairing.length === 0) {
 			temp += `
-            <div>
-                <h5 class="text-center">Ennél a sportnál nincs egyetlen választható pár sem</h5>
+			<div>
+				<h5 class="text-center">Ennél a sportnál nincs egyetlen választható pár sem</h5>
             </div>
-        `;
+			`;
 			choosePairList.innerHTML = temp;
 			return;
 		}
@@ -532,12 +558,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			console.log(user)
 			let userEligibility = Number(user.pair_eligibility);
 			temp += `
-            <div">
-                <li role="button" data-id="${user.id}" data-eligibility="${userEligibility}" class="text-center rounded-4 pointer mt-1 free-user list-group-item ${userEligibility === 1 ? 'bg-sky-500' : 'bg-amber-500'} text-white">
-                   <span class="text-xl"> ${user.name} ${userEligibility === 1 ? '' : '<i class="fa-solid fa-key"></i>'}</span>
+			<div>
+				<li role = "button" data-id="${user.id}" data-eligibility="${userEligibility}" class="text-center rounded-4 pointer mt-1 free-user list-group-item ${userEligibility === 1 ? 'bg-sky-500' : 'bg-amber-500'} text-white" >
+					<span class="text-xl"> ${user.name} ${userEligibility === 1 ? '' : '<i class="fa-solid fa-key"></i>'}</span>
                 </li>
-            </div>
-        `;
+            </div >
+			`;
 		});
 
 		choosePairList.innerHTML = temp;
@@ -549,7 +575,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	async function getFreeUsersByDuelSportsId(duelTeamId) {
 		try {
-			const res = await axios.get(`/user/${duelTeamId}`);
+			const res = await axios.get(`/user/${duelTeamId} `);
 			const freeUsers = res.data;
 			return freeUsers;
 		} catch (err) {
@@ -639,7 +665,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 							try {
 								comparePwContainer.innerHTML = spinner("m-5");
-								response = await axios.post(`/user/pw-compare/${userId}`, {
+								response = await axios.post(`/user/pw-compare/${userId} `, {
 									pairing_pw: pairingPwInput
 								});
 							} catch (error) {
@@ -709,10 +735,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		const container = document.createElement('div');
 		container.className = 'compare-pw-container d-md-flex gap-3 mb-3 mt-1'; // Adjunk neki egy osztályt az azonosításhoz
 		container.innerHTML = `
-                <input type="password" autocomplete="off" placeholder="Jelszó beírása..." class="form-control border-2 w-75 my-2 my-md-0" name="pairing-pw" id="pairing-pw" required/>
+			<input type="password" autocomplete="off" placeholder="Jelszó beírása..." class="form-control border-2 w-75 my-2 my-md-0" name="pairing-pw" id="pairing-pw" required />
                 <button class="btn bg-green-500 text-white" id="send">Elküld</button>
                 <button class="btn bg-red-500 text-white" id="close">Bezár</button>
-        `;
+		`;
 		return container;
 	}
 

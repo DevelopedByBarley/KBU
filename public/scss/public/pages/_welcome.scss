@@ -1,9 +1,17 @@
-@media (min-width: 1200px) {
-  #runner {
+
+@media (min-width: 1366px) {
+  .happy {
     position: relative;
-    right: 150px;
+    bottom: 20px;
   }
 }
+
+@media (min-width: 1600px) {
+  .happy {
+    position: relative;
+    bottom: 40px;
+  }
+} 
 
 
 
@@ -210,6 +218,8 @@
     box-shadow: #292c35;
   }
 }
+
+
 
 .timeline-img-1 {
   transform: rotate(-5deg);

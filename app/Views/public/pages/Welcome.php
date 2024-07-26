@@ -4,7 +4,7 @@
 <header>
 	<div class="container-fluid px-lg-5  mt-5 mb-10">
 		<div class="row d-flex align-items-center justify-content-center position-relative" id="header">
-			<div class="col-12 px-5 mt-5 d-flex align-items-center justify-content-center z-2 parallax-wrap min-h-80">
+			<div class="col-12 px-5 mt-5 d-flex align-items-center justify-content-center z-2 parallax-wrap min-h-95">
 				<div class="mt-5 text-center">
 					<h1 class="fw-bolder text-nowrap m-0" style="text-shadow: 1px 1px white;">KNORR BREMSE</h1>
 					<div class="px-2">
@@ -19,8 +19,8 @@
 					<div parallax="-.6" class="col-6 col-md-6 offset-md-1 offset-xl-1 col-xl-2">
 						<img src="/public/assets/images/banner/bicikli.png" class="img-fluid" alt="">
 					</div>
-					<div parallax=".6" class="col-6 col-md-3 offset-xl-2 col-xl-2">
-						<img src="/public/assets/images/banner/boldog.png" class="img-fluid" alt="">
+					<div parallax=".6" class="col-6 col-md-3 offset-xl-2 col-xl-2 position-relative bottom-5">
+						<img src="/public/assets/images/banner/boldog.png" class="img-fluid happy" alt="">
 					</div>
 					<div parallax="-.6" class="col-6 offset-2 invisible d-md-none col-md-4 col-xl-2">
 						<img src="/public/assets/images/banner/masszazs.png" class="img-fluid" alt="">
