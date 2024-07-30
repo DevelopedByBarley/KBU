@@ -86,6 +86,7 @@ class Controller
 
   public function reset()
   {
+    session_start();
     $userId = $this->Model->checkResetToken()['ref_id'];
     $user = $this->Model->selectByRecord('users', 'id', $userId, PDO::PARAM_INT);
     echo $this->Render->write("public/Layout.php", [

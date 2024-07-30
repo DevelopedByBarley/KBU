@@ -127,9 +127,10 @@
 			<div class="col-12" id="transfer-info">
 				<div class="min-h-400 d-flex align-items-center justify-content-center flex-column p-3 py-5">
 					<p class="text-xl fw-bold">
-						Transzfer lehetőség: A Knorr-Bremse telephelyről (1238 Budapest, Helsinki út 105.) a
-						Sport11-hez indítunk igény szerint buszjáratot. A buszok 7:00-kor indulnak a telephelyről a
-						Sportnap helyszínére, majd 14:45-kor visszafele. Kérjük, aki a regisztráció során igényelt transzfert, pontosan érkezzen.
+						A Knorr-Bremse telephelyről (1238 Budapest, Helsinki út 105.) és a Kelenföldi pályaudvar Őrmezői oldaláról a Sport11-hez indítunk igény szerint buszjáratot.
+						A buszok 7:00-kor indulnak a telephelyről a Sportnap helyszínére,
+						07:30-kor a Kelenföldi pályaudvar Őrmezői oldaláról,
+						majd 14:45-kor visszafele mindkét irányba. Kérjük, aki a regisztráció során igényelt transzfert, pontosan érkezzen
 					</p>
 					<p class="text-xl red-500 fw-bold">
 						Kérünk mindenkit, használjátok a transzfer lehetőséget,

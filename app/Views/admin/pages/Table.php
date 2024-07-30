@@ -62,7 +62,7 @@ function find_team_by_id($teams, $id)
                   <div class="d-flex align-items-center">
                     <img src="/public/assets/images/avatars/<?= AVATARS[array_rand(AVATARS)]; ?>.png" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
                     <div class="ms-3">
-                      <p class="fw-bold mb-1"><?= htmlspecialchars($user['name']); ?></p>
+                      <p class="fw-bold mb-1 text-nowrap"><?= htmlspecialchars($user['name']); ?></p>
                       <p class="text-muted mb-0"><?= htmlspecialchars($user['email']); ?></p>
                     </div>
                   </div>
@@ -71,7 +71,7 @@ function find_team_by_id($teams, $id)
                   <p class="fw-Nemrmal mb-1"><?= htmlspecialchars($user['ident_number']); ?></p>
                   <p class="text-muted mb-0"><?= htmlspecialchars($user['class']); ?></p>
                 </td>
-                <td>
+                <td class="text-nowrap">
                   <?php foreach (TRANSFERS as $index => $transfer) : ?>
                     <?php if ((int)$user['transfer'] === (int)$index) : ?>
                       <?= $transfer ?>

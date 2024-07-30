@@ -19,6 +19,26 @@ class UserController extends Controller
     parent::__construct();
   }
 
+  public function updatePairByToken($vars)
+  {
+    $user_id = (int)$vars['userId'] ?? null;
+    $pair_id = (int)$_POST['pair-id'] ?? null;
+
+    if (!$user_id || !$pair_id) {
+      var_dump($_SERVER['HTTP_REFERER']);
+      $this->Toast->set('Pár lefoglalása sikertelen ha szükséges kérjük adjon meg jelszót vagy próbálja meg újra!', 'red-500', $_SERVER['HTTP_REFERER'], null);
+    }
+
+    try {
+      $this->User->updatePair($user_id, $pair_id);
+      $this->Toast->set('Pár lefoglalása sikeres!', 'cyan-400', '/', null);
+    } catch (Exception $e) {
+      http_response_code(500);
+      echo "Internal Server Error" . $e->getMessage();
+      exit;
+    }
+  }
+
   public function comparePwForPairingUsers($vars)
   {
     $userId = $vars['userId'] ?? null;
@@ -38,8 +58,11 @@ class UserController extends Controller
   public function getAllUsersWhoFreeByDuelId($vars)
   {
 
+    $userId = $vars['userId'] ?? null;
+    $duel_sport_id = $vars['duel-sportId'] ?? null;
+
     try {
-      $users = $this->User->getAllUsersByDuelSportId($vars['duel-sportId']);
+      $users = $this->User->getAllUsersByDuelSportId($duel_sport_id, $userId);
       http_response_code(200);
       echo json_encode($users);
     } catch (Exception $e) {
@@ -57,13 +80,9 @@ class UserController extends Controller
       "csrf" => $this->CSRFToken,
       "content" => $this->Render->write("public/pages/user/Dashboard.php", [
         "user" => $this->Model->show('users', $userId)
-
       ])
     ]);
   }
-
-
-
 
   public function store()
   {
@@ -99,15 +118,15 @@ class UserController extends Controller
 
       $tokenData = $this->generateExpiresTokenByDays(10);
       $reset_url = $this->createResetUrl($tokenData);
-
-
-
       $this->Model->storeToken($tokenData['token'], $tokenData['expires'], '/reset', $last_inserted_id);
+
       $this->Mailer->renderAndSend('newUser', [
         'user_name' => $_POST['name'] ?? 'problem',
         'reset_url' => $reset_url  ?? 'problem',
         'pair_password' => $_POST['password'] ?? null
       ], $_POST['email'], 'Visszaigazolás a regisztrációról.');
+
+
       $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
     } catch (Exception $e) {
       http_response_code(500);
@@ -139,7 +158,7 @@ class UserController extends Controller
         'message' => $message ?? "Ezúton tájékoztatunk hogy a $user_mail e-mail címmel rendelkező felhasználó törölt a párjai közül. emiatt a pár státuszodat szabaddá tettük. Ha változtatni szeretnél akkor kérd az adminok segítségét"
       ], $pair_mail, 'Üzenet!');
 
-      
+
       $this->Model->deletePairRefIdIfItExist($user_id);
       $this->User->deleteUser($user_id);
 

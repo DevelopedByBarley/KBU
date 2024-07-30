@@ -10,7 +10,24 @@ use PDOException;
 class User extends Model
 {
 
+  public function updatePair($user_id, $pair_id)
+  {
 
+    try {
+      $stmt = $this->Pdo->prepare("UPDATE `users` SET `pairRef_id` = :pair_id WHERE `users`.`id` = :userId");
+      $stmt->bindParam(':pair_id', $pair_id, PDO::PARAM_INT);
+      $stmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
+      $stmt->execute();
+
+      $stmt = $this->Pdo->prepare("UPDATE `users` SET `pairRef_id` = :pair_id WHERE `users`.`id` = :userId");
+      $stmt->bindParam(':pair_id', $user_id, PDO::PARAM_INT);
+      $stmt->bindParam(':userId', $pair_id, PDO::PARAM_INT);
+      $stmt->execute();
+    } catch (Exception $e) {
+      throw new  Exception("An error occurred during the database operation in updatePair method: " . $e->getMessage(), 1);
+      exit;
+    }
+  }
 
   public function deleteUser($user_id)
   {
@@ -19,8 +36,6 @@ class User extends Model
       http_response_code(400);
       exit("Hiányzó userId.");
     }
-
-
     try {
       $stmt = $this->Pdo->prepare("DELETE FROM users WHERE id = :userId");
       $stmt->bindParam(':userId', $user_id, PDO::PARAM_INT);
@@ -32,15 +47,11 @@ class User extends Model
         http_response_code(404);
         exit("A felhasználó nem található.");
       }
-    } catch (\Throwable $th) {
-      error_log("Adatbázis hiba: " . $th->getMessage());
-      http_response_code(500);
-      exit("Belső szerver hiba.");
+    } catch (Exception $e) {
+      throw new  Exception("An error occurred during the database operation in deleteUser method: " . $e->getMessage(), 1);
+      exit;
     }
   }
-
-
-
 
 
   public function compare($body, $userId)
@@ -61,9 +72,21 @@ class User extends Model
     }
   }
 
-  public function getAllUsersByDuelSportId($duel_sport_id)
+  public function getAllUsersByDuelSportId($duel_sport_id, $user_id)
   {
     try {
+
+      if ($user_id) {
+        $stmt = $this->Pdo->prepare("SELECT * FROM `users` WHERE `duel_sportRef_id` = :duel_sportRefId AND pairRef_id IS NULL  AND pair_status = 2 AND id != :userId");
+        $stmt->bindParam(":duel_sportRefId", $duel_sport_id, PDO::PARAM_INT);
+        $stmt->bindParam(":userId", $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $users;
+      }
+
       $stmt = $this->Pdo->prepare("SELECT * FROM `users` WHERE `duel_sportRef_id` = :duel_sportRefId AND pairRef_id IS NULL  AND pair_status = 2");
       $stmt->bindParam(":duel_sportRefId", $duel_sport_id, PDO::PARAM_INT);
       $stmt->execute();
@@ -104,7 +127,7 @@ class User extends Model
     }
 
     // Want to select pair but that one had a pair :D 
-    if($pairRef_id && $pairHaveRefId) {
+    if ($pairRef_id && $pairHaveRefId) {
       return false;
     }
 

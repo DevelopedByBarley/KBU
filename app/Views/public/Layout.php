@@ -53,6 +53,7 @@ $title = isset($params['title']) ? '- ' . $params['title'] : '';
   <?php if (FEEDBACK_PERM) : ?><script type="module" src="/public/js/ratingModal.js?v=<?= time() ?>"></script><?php endif ?>
   <?php if (IMG_LOADER_PERM) : ?><script src="/public/js/imgLoader.js?v=<?= time() ?>"></script><?php endif ?>
   <script type="module" src="/public/js/registration.js?v<?= time() ?>"></script>
+  <script type="module" src="/public/js/reset.js?v<?= time() ?>"></script>
   <script type="module" src="/public/js/uuid.js?v=<?= time() ?>"></script>
   <script type="module" src="/public/js/getCookie.js?v=<?= time() ?>"></script>
   <script type="module" src="/public/js/popover.js?v=<?= time() ?>"></script>

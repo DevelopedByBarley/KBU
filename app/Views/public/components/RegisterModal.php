@@ -18,26 +18,61 @@ $main_teams = $params['main_teams'] ?? []
 				<div class="accordion accordion-flush border" id="accordionFlushExample">
 					<div class="accordion-item">
 						<h2 class="accordion-header">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+							<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="true" aria-controls="flush-collapseThree">
 								Jelentkezési útmutató<i class="fa-solid fa-circle-exclamation text-3xl mx-2 amber-500"></i>
 							</button>
-
 						</h2>
-						<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+						<h1 class="fw-bolder m-3">
+							Kedves Kollégák,
+						</h1>
+						<div id="flush-collapseThree" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
 							<div class="accordion-body">
-								<p class="fw-bolder text-xl">
-									Kedves Kollégák,
-								</p>
+								<h3 class="text-danger">
+									Fontos tudnivalók a regisztráció kitöltéséhez:
+								</h3>
+
+								<ul>
+									<li>
+										A fő csapat kiválasztásához a törzsszám ellenőtzése kötelező, ezt az lila ellenőrzés gombbal lehet megtenni, ezután lehet csak kiválasztani a főcsapatot, és az alcsapatokat.
+									</li>
+									<li>
+										Fő csapatok kiválasztása után lehetőségetek van választani 1 csapat sportot és egy páros sportot
+									</li>
+									<li>
+										Páros sport kiválasztása után választható opciók a "Már van párom és kiválasztom a listából" és a "Nincs párom de szeretnék" opciókat.
+									</li>
+									<ul>
+										<li class="my-2">
+											<b>Nincs párom de szeretnék</b>: <br>
+											Ennél az opciónál beregisztrálhatsz párként, ezután megadhatod hogy bárki bejelölhessen téged, vagy pedíg megadhatsz egy jelszót amit később megoszthatsz azzal a párral akivel együtt szeretnél lenni,
+										</li>
+										<li class="my-2">
+											<b>Van párom és kiválasztom a listából </b>: <br>Ilyenkor az <span class="text-danger">"EDDIG MÁR EBBE A CSAPATBA REGISZTRÁLT"</span> felhasználók közül választhatsz,
+											<br>
+											<span class="bg-orange-600 text-white p-1">
+												Azok a párok, akik együtt akarnak lenni előre beszéljék meg hogy ki osztja meg jelszavát a másikkal.
+											</span>
+
+										</li>
+									</ul>
+
+								</ul>
+
 								<p>
 									Szeretnénk felhívni figyelmeteket, hogy a sportnapon való részvételnél az egészségi állapototoknak megfelelő aktivitást válasszatok.
 									A sportnapon való részvétel regisztrációjával egyben kinyilvánításra kerül, hogy nincs olyan ismert megbetegedésed, amely az általad választott sportágban, az intenzívebb mozgás által, annak következményeként az egészségi állapotodban rosszabbodást okozna.
 									A sportbajnokságokra és minden regisztrációhoz kötött programra a jelentkezéseket érkezési sorrendben fogadjuk.
 									A rendezvényre csak egy alkalommal van lehetőség regisztrálni, módosításra nincs lehetőség.
 									Minden munkavállaló maximum 2 sportbajnokságra jelentkezhet - 1 csapatsport és 1 páros sport.
+								</p>
+
+
+
+								<p>
+
 									A csoportos órákra a helyszínen lehet majd jelentkezni, érkezési sorrendben.
-									Előfordulhat, hogy a céges levelezési rendszerünk a regisztráció visszaigazolását automatikusan karanténba helyezi, ezért azokat néhány órás késéssel kapjátok meg a karanténoldalon keresztül.</p>
-								<p class="green-500">
-									Szeretnénk felhívni figyelmeteket, hogy a sportnapon való részvételnél az egészségi állapototoknak megfelelő aktivitást válasszatok. A sportnapon való részvétel regisztrációjával egyben kinyilvánításra kerül, hogy nincs olyan ismert megbetegedésed, amely az általad választott sportágban, az intenzívebb mozgás által, annak következményeként az egészségi állapotodban rosszabbodást okozna.
+									Előfordulhat, hogy a céges levelezési rendszerünk a regisztráció visszaigazolását automatikusan karanténba helyezi, ezért azokat néhány órás késéssel kapjátok meg a karanténoldalon keresztül.
+
 								</p>
 
 							</div>
@@ -45,9 +80,10 @@ $main_teams = $params['main_teams'] ?? []
 					</div>
 				</div>
 
+
 				<div class="alert alert-danger mt-2">
 					<i class="fa-solid fa-triangle-exclamation text-xl mx-2"></i>
-					Figyelem, a jelentkezés folytatásához a törzsszám ellenörzése kötelező!
+					Figyelem, a fő és alcsapatok kiválasztásához a törzsszám ellenörzése kötelező!
 				</div>
 
 
@@ -62,7 +98,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline">
 
 								<label class="form-label" for="form6Example1">
-									Név
+									Név <small><i>(Teljes név)</i></small>
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, hogy a teljes nevedet írd be, elöl legyen a vezetéknév, mögötte a keresztnév.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -74,7 +110,7 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 col-lg-6 my-2">
 							<div class="form-outline">
 								<label class="form-label" for="form6Example2">
-									Költséghely
+									Költséghely <small><i>(Amennyiben nem ismered, kérj segítséget a felettesedtől.)</i></small>
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Amennyiben nem ismered, kérj segítséget a felettesedtől.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -98,20 +134,24 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 col-lg-6 my-2">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example5">
-									<span class="red-500"></span>Törzsszám <i class="red-500 fa-solid fa-triangle-exclamation text-xl"></i>
+									<span class="red-500"></span>Törzsszám <small><i>(Írd be az érvényes törzsszámod és kattints az ellenörzés gombra)</i> </small>
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="A belépőkártyádon található 6 vagy 8 jegyű szám. Figyelem! A jelentkezés folytatásához az ellenörzése kötelező">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
 								<input type="number" name="ident-number" id="ident-number" class="form-control" validators='{"name": "ident-number", "required": true, "minLength": 6, "maxLength": 8}' required />
-								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white" style="min-width: 100px;">Ellenörzés</button>
+
+								<button id="check-ident-num" class="btn bg-violet-500 hover-bg-violet-600 text-white d-flex align-items-center justify-content-center" style="min-width: 100px;">
+									Ellenörzés
+									<i class="red-500 fa-solid fa-triangle-exclamation text-xl mx-1"></i>
+								</button>
 							</div>
 						</div>
 
 						<div class="col-12">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Főcsapat kiválasztása
+									Főcsapat kiválasztása <small><i>(Törzsszám ellenőrzése után válaszd ki a főcsapatot)</i></small>
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható csapat nevét, melyben megtalálod a csapat színét és a csapatkapitány nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -144,7 +184,7 @@ $main_teams = $params['main_teams'] ?? []
 
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Csapat sport kiválasztása
+									Csapat sport kiválasztása <small><i>(Főcsapat kiválasztása után válaszd ki a csapat sportot)</i> </small>
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható sport nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -157,7 +197,7 @@ $main_teams = $params['main_teams'] ?? []
 							<?php include 'app/Views/public/components/Spinner.php' ?>
 							<div class="form-outline mb-4">
 								<label class="form-label" for="form6Example6">
-									Páros sport kiválasztása
+									Páros sport kiválasztása <small><i>(Főcsapat kiválasztása után válaszd ki a páros sportot)</i> </small>
 									<button type="button" class="btn p-1  m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, figyelmesen olvasd el az összes választható sport nevét.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -170,7 +210,7 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="select-pair-status-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-status">
-									Jelölje meg hogy van-e párja!
+									Jelölje meg hogy van-e párja! <small><i>(Páros sport kiválasztása után válaszd ki hogy van-e párod vagy nincs!)</i> </small>
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, válassza ki hogy rendelkezik-e párral , ez esetben megkapja az adott sportra már regisztrált szabad felhasználók listáját, vagy jelentkezzen párnak és válassza ki hogy ki jelölheti be önt párnak.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -188,6 +228,7 @@ $main_teams = $params['main_teams'] ?? []
 							<div class="form-outline mb-4">
 								<label class="form-label" for="choose-pair">
 									Válaszd ki a párt az eddig jelentkezett résztvevők közül!
+									<p class="bg-orange-500  p-1 text-white">Párt a már erre a csapatra regisztrált felhasználók közül választhatsz, ha nincsa listában a párod akkor egyeztessetek hogy ki regisztráljon be előbb</p>
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, válassza ki a párját a résztvevők közül , a kékkel jelöltek azonnal jelölhetőek, a sárga kulcsal ellátott felhasznáók bejelöléséhez jelszó szükséges.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
@@ -206,15 +247,15 @@ $main_teams = $params['main_teams'] ?? []
 						<div class="col-12 d-none" id="select-pair-eligibility-container">
 							<div class="form-outline mb-4">
 								<label class="form-label" for="pair-eligibility">
-									Ki jelölheti meg önt párnak?
+									Ki jelölheti meg önt párnak? <small><i>(Ha a párnak jelentkezem opciót választotta, jelölje be hogy ki jelölheti be önt párnak)</i> </small>
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük, jelölje be ki jelölheti be önt párnak, itt beállíthatja hogy bárki által jelölhető legyen a későbbiekben vagy adhat meg jelszót , amelyet a regisztrációt követően az ön e-mail címére fogunk küldeni.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
 								</label>
 								<select class="form-select" aria-label="Select pair eligibility" id="pair-eligibility" name="pair-eligibility" required disabled>
 									<option value="" selected disabled>Jelölje be ki jelölheti önt párnak!</option>
-									<option value="1">Bárki megjelölhet</option>
-									<option value="2">Jelszó megadása vagy automatikus generálása</option>
+									<option value="1">Bárki megjelölhet ebben a csapatban párnak</option>
+									<option value="2">Megadok vagy generálok jelszót amivel a párom majd megjelölhet</option>
 								</select>
 							</div>
 						</div>
@@ -226,6 +267,9 @@ $main_teams = $params['main_teams'] ?? []
 									<button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="Kérjük , adja meg jelszavát amelyel önt később bejelölhetik.">
 										<i class="fa-solid fa-circle-info text-2xl"></i>
 									</button>
+									<p class="bg-orange-500 text-white p-1 fw-bold">
+										(Adjon meg jelszót vagy generáljon egyet, ezt a jelszót a visszaigazoló e-mailben megtalálja, és ossza meg párjával!)
+									</p>
 								</label>
 								<div class="d-flex gap-3">
 									<input name="password" type="text" id="password" class="form-control" required disabled />

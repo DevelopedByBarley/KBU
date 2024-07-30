@@ -28,11 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
 	const pwGeneratorBtn = document.getElementById('pw-generator-btn');
 
 
+
+	// Delete first option when it's focused (client req)
+	document.querySelectorAll('select').forEach(function (select) {
+		select.addEventListener('focus', function () {
+			if (select.options.length > 0) {
+				select.options[0].style.display = 'none';
+			}
+		});
+
+		select.addEventListener('blur', function () {
+			if (select.options.length > 0) {
+				select.options[0].style.display = 'block';
+			}
+		});
+	});
+
+
+
 	identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenörzése kötlező!');
-
-
 	identNumberInput.oninput = (e) => {
-
 		identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenörzése kötlező!');
 		disableElements([
 			mainTeamSelect,
@@ -52,9 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			choosePairCon
 		])
 	}
-
-
-
 
 	checkIdentNumberBtn.addEventListener('click', (e) => {
 		e.preventDefault();
@@ -97,11 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			.then(res => {
 				isExist = res.data ? true : false;
 				checkIdentNumberBtn.innerHTML = spinner();
-
-
-
-
-
 			})
 			.catch(err => {
 				console.error('Hiba történt a kérés során:', err);
