@@ -143,8 +143,12 @@ class CSRFToken
   private function isSafeOrigin()
   {
     // Az elfogadható eredetek listája
-    $safeOrigins = array('http://localhost:8080', 'http://localhost:9090', 'http://localhost:3000', 'https://kbuprogram.max.hu');
-
+    $safeOrigins = array('https://kbuprogram.hu', 'https://www.kbuprogram.hu', 'http://localhost:8080');
+    $origin = strtolower($_SERVER['HTTP_ORIGIN']);
+    if (in_array($origin, $safeOrigins)) {
+        // Engedélyezett origin
+    }
+    
     // Ellenőrizzük az Origin fejlécet
     if (isset($_SERVER['HTTP_ORIGIN'])) {
       $origin = rtrim($_SERVER['HTTP_ORIGIN'], '/');

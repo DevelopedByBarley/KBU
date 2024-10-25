@@ -51,33 +51,42 @@ class Mailer
     }
 
 
+
     public function send($address, $body, $subject)
     {
-
         try {
-            $mail = new PHPMailer();
-            $mail->isSMTP();
-           //$mail->SMTPDebug = 3;
-            $mail->setFrom($_SERVER['MAILER_SET_FROM'], $_SERVER['MAILER_SET_TO']);
-            $mail->addAddress($address);
-            $mail->Username = $_SERVER['MAILER_USERNAME'];
-            $mail->Password = $_SERVER['MAILER_PASSWORD'];
-            $mail->Host = $_SERVER['MAILER_HOST'];
-            $mail->CharSet = 'UTF-8';
-            $mail->Subject = $subject;
-            $mail->Body = $body;
-            $mail->SMTPAuth = true;
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            $mail->Port = 465;
-            $mail->SMTPOptions = [
-                'ssl' => [
+            $mail = new PHPMailer(true);
+
+            $mail->SMTPOptions = array(
+                'ssl' => array(
                     'verify_peer' => false,
                     'verify_peer_name' => false,
                     'allow_self_signed' => true
-                ]
-            ];
+                )
+            );
+            // $mail->SMTPDebug = 3;
+
+            $mail->CharSet = 'UTF-8';
+            $mail->IsSMTP();
+            $mail->SMTPAuth = false;
+
+            $mail->Host = $_SERVER['MAILER_HOST'];
+
+            // Setting the sender's email address
+            $mail->setFrom($_SERVER['MAILER_SET_FROM'], $_SERVER['MAILER_SET_TO']);
+            $mail->addBCC('kbuprogram@max.hu');                           // Titkos másolat (BCC)
+
+            // Adding the recipient's email address
+            $mail->addAddress($address);
+
             $mail->isHTML(true);
-            return $mail->send();
+            $mail->WordWrap = 50;
+
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+            $mail->AltBody = strip_tags($body);
+
+            $mail->send();
         } catch (Exception $e) {
             var_dump($e);
             return false;

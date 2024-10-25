@@ -32,7 +32,7 @@ define('COLORS', [
         "color" => 'purple-500',
         "symbol" => '🟣'
     ],
-    8 => [
+    9 => [
         "color" => 'amer-800',
         "symbol" => '🟤'
     ],

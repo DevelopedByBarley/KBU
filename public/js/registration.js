@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-	identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenörzése kötlező!');
+	identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenőrzése kötlező!');
 	identNumberInput.oninput = (e) => {
-		identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenörzése kötlező!');
+		identNumberInput.setCustomValidity('A törzsszám kitöltése és ellenőrzése kötlező!');
 		disableElements([
 			mainTeamSelect,
 			duelTeamsSelect,
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				setTimeout(() => {
 					if (isExist) {
-						checkIdentNumberBtn.innerHTML = 'Ellenörzés';
+						checkIdentNumberBtn.innerHTML = 'Ellenőrzés';
 						return toast(
 							{
 								title: 'KBU program üzenete!',
@@ -252,12 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	}
 
-	pwGeneratorBtn.addEventListener('click', (e) => {
+/* 	pwGeneratorBtn.addEventListener('click', (e) => {
 		e.preventDefault();
 		let pwInput = e.target.previousElementSibling;
 		pwInput.value = generatePassword();
 	})
-
+ */
 
 
 
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function renderSelectsByTeamSports(teamSports) {
 		let temp = `
-        <option value="" selected disabled>Válassza ki a csapat sportot!</option>
+        <option value="" selected disabled>Válaszd ki a csapat sportot!</option>
         <option value="0">Nem jelentkezem</option>
     `;
 
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function renderSelectsByDuelSports(duelSports) {
 		let temp = `
-				<option value="" selected disabled> Válassza ki a páros sportot!</>
+				<option value="" selected disabled> Válaszd ki a páros sportot!</>
 				<option value="0">Nem jelentkezem</option>
 			`;
 
@@ -743,7 +743,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		container.className = 'compare-pw-container d-md-flex gap-3 mb-3 mt-1'; // Adjunk neki egy osztályt az azonosításhoz
 		container.innerHTML = `
 			<input type="password" autocomplete="off" placeholder="Jelszó beírása..." class="form-control border-2 w-75 my-2 my-md-0" name="pairing-pw" id="pairing-pw" required />
-                <button class="btn bg-green-500 text-white" id="send">Elküld</button>
+                <button class="btn bg-green-500 text-white" id="send">Jelszó elkdüldése</button>
                 <button class="btn bg-red-500 text-white" id="close">Bezár</button>
 		`;
 		return container;

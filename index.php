@@ -1,6 +1,5 @@
-<?php
 
-use App\Models\Visitor;
+<?php
 use App\Services\LanguageService;
 
 
@@ -27,12 +26,6 @@ require_once 'config/variables/transfers.php';
 require_once 'config/app/langs.php';
 require_once 'config/app/app.php';
 require_once 'config/app/database.php';
-
-if (isset($_COOKIE['cookieConsentLevel']) && (int)$_COOKIE['cookieConsentLevel'] !== 0) {
-    $visitor = new Visitor();
-    SAVING_VISITOR_PERM   ?  $visitor->addVisitor() : null;
-}
-
 
 
 require_once 'config/app/router.php';

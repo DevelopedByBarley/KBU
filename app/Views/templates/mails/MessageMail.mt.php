@@ -330,7 +330,7 @@
 
                                 <p> <?= $message ?></p>
                                 <br>
-                
+
                                 <div>
                                     <p style="margin-top: 2rem;">Sok szerencsét! 😊.</p>
                                 </div>

@@ -8,9 +8,9 @@ class Alert
   public function set($message, $bg, $location, $messageInEng = null)
   {
 
-    if (session_id() == '') {
+    if (session_status() === PHP_SESSION_NONE) {
       session_start();
-    }
+  }
 
     $lang = isset($_COOKIE["lang"]) ? $_COOKIE["lang"] : null;
 

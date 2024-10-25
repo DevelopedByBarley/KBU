@@ -28,7 +28,7 @@ class AdminController extends Controller
     parent::__construct();
   }
 
-  public function sendNewTokenForUser($vars)
+/*   public function sendNewTokenForUser($vars)
   {
     try {
       $userId = $vars['id'] ?? null;
@@ -53,11 +53,12 @@ class AdminController extends Controller
       $this->Toast->set('Token  elküldése sikertelen!!', 'danger', '/admin/table', null); //code...
 
     }
-  }
+  } */
 
   public function deleteUserById($vars)
   {
     try {
+      $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
 
       if (!isset($vars['id']) || !is_numeric($vars['id'])) {
         throw new InvalidArgumentException('Invalid user ID');
@@ -102,7 +103,7 @@ class AdminController extends Controller
 
   public function createUserDataByNumsForExportExcel($users)
   {
-
+    $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     foreach ($users as $index => $user) {
       $users[$index]['main_teamRef_id'] = $this->Model->selectByRecord('main_teams', 'id', $user['main_teamRef_id'], PDO::PARAM_INT)['name'];
       $users[$index]['team_sportRef_id'] = $this->Model->selectByRecord('team_sports', 'id', $user['team_sportRef_id'], PDO::PARAM_INT)['name']  ?? 'Nem jelentkezett';
@@ -135,13 +136,6 @@ class AdminController extends Controller
           'adminRefId' => $_SESSION['adminId']
         ], $_SESSION['adminId']);
 
-        /* 
-        $this->Mailer->renderAndSend('NewAdmin', [
-          'admin_name' => $admin['name'] ?? 'problem',
-          'site_url' => 'http://localhost:8080' ?? 'problem',
-          'admin_password' => $_POST['password'] ?? 'problem'
-        ], $admin['email'], 'Hello');
-         */
 
         $this->Mailer->renderAndSend('NewAdmin', [
           'admin_name' => $_POST['name'] ?? 'problem',
@@ -164,6 +158,7 @@ class AdminController extends Controller
   public function update()
   {
     $this->CSRFToken->check();
+    $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
     $child_admin_id = isset($_POST['current_admin_id']) ? $_POST['current_admin_id']  : null;
     $loggedAdmin =  $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');;
     $adminId = $child_admin_id ?? $loggedAdmin;
@@ -222,6 +217,7 @@ class AdminController extends Controller
   {
     try {
       $this->CSRFToken->check();
+      $this->Auth::checkUserIsLoggedInOrRedirect('adminId', '/admin');
       session_start();
       session_destroy();
       session_regenerate_id(true);

@@ -6,10 +6,10 @@
 		<div class="row d-flex align-items-center justify-content-center position-relative" id="header">
 			<div class="col-12 px-5 mt-5 d-flex align-items-center justify-content-center z-2 parallax-wrap min-h-95">
 				<div class="mt-5 text-center">
-					<h1 class="fw-bolder text-nowrap m-0" style="text-shadow: 1px 1px white;">KNORR BREMSE</h1>
+					<h1 class="fw-bolder text-nowrap m-0" style="text-shadow: 1px 1px white;">KNORR-BREMSE</h1>
 					<div class="px-2">
 						<h2 class="fw-bolder mt-0" style="text-shadow: 2px 2px white;">Sportnap</h2>
-						<p class="fw-normal">2024. Szeptember 21.</p>
+						<p class="fw-normal">2024. szeptember 21.</p>
 						<button data-bs-toggle="modal" data-bs-target="#formModal" class="btn btn-lg shadow gray-50 bg-main-blue dark-bg-gray-50 dark-text-main-blue rounded-0 mt-1 text-white">Regisztráció</button>
 					</div>
 				</div>
@@ -58,40 +58,49 @@
 			<section class="py-5">
 				<ul class="timeline">
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">07:30 - 08:30</h5>
-						<p class="mb-2 fw-bold">Helyszíni regisztráció, reggeli</p>
+						<h5 class="fw-bold main-blue dark-text-main-orange">07:00 - 08:00</h5>
+						<p class="mb-2 fw-bold">Helyszíni regisztráció</p>
 					</li>
 
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">08:00 - 08:30</h5>
-						<p class="mb-2 fw-bold">Megnyitó, bajnokságok menetének ismertetése</p>
+						<h5 class="fw-bold main-blue dark-text-main-orange">07:00 - 08:30</h5>
+						<p class="mb-2 fw-bold">Reggeli kuponos rendszerben</p>
 					</li>
 
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">08:30 - 13:45</h5>
-						<p class="mb-2 fw-bold">Sportbajnokságok és egyéb programok</p>
+						<h5 class="fw-bold main-blue dark-text-main-orange">08:00 - 08:10</h5>
+						<p class="mb-2 fw-bold">Megnyitó, közös bemelegítés</p>
+					</li>
+
+					<li class="timeline-item mb-5">
+						<h5 class="fw-bold main-blue dark-text-main-orange">08:10 - 08:30</h5>
+						<p class="mb-2 fw-bold">Közös dobolás</p>
+					</li>
+
+					<li class="timeline-item mb-5">
+						<h5 class="fw-bold main-blue dark-text-main-orange">08:30 - 12:00</h5>
+						<p class="mb-2 fw-bold">Sportbajnokságok és további programok</p>
 						<p class="text-muted">
-							(csoportos órák a Fitness termekben, futás,ergométer,
-							mini sportpályák, bringa park, cornhole, focikapu sebességmérővel,
-							óriás csocsóasztal,interaktív aréna, kinect, logikai játékok, kézműves foglalkozás és textilzsák festés)
-
+							<b>Bajnokságok</b>: foci, csocsó, ping-pong, sorverseny<br>
+							<b>Egyéb programok</b>: kick-boksz, goldsprint, TRX, gerincjóga, zumba, masszázs, VR, PS, kézműves foglalkozás, közösségi festés, jóslás, sakk, logikai játékok, gasztro program, henna, uszoda, szauna, jacuzzi.
 						</p>
 					</li>
+
 					<li class="timeline-item mb-5">
-						<h5 class="fw-bold main-blue dark-text-main-orange">11:30 - 13:30</h5>
+						<h5 class="fw-bold main-blue dark-text-main-orange">12:00 - 14:00</h5>
 						<p class="mb-2 fw-bold">Ebéd kuponos rendszerben</p>
 					</li>
 
 					<li class="timeline-item mb-5">
 						<h5 class="fw-bold main-blue dark-text-main-orange">14:00 - 14:30</h5>
-						<p class="tmb-2 fw-bold">Eredményhirdetés és programzárás</p>
-
+						<p class="mb-2 fw-bold">Eredményhirdetés és programzárás</p>
 					</li>
 				</ul>
 			</section>
 			<!-- Section: Timeline -->
+
 		</div>
-		<div class="col-12 col-lg-6" id="timeline-images">
+		<div class="col-12 col-lg-6  d-flex align-items-center justify-content-center" id="timeline-images">
 			<div class="row">
 				<div class="col-12 col-md-6 my-4">
 					<div class="blur-load">
@@ -119,24 +128,19 @@
 </div>
 
 
-<div id="first-info" class="gray-50 bg-main-blue dark-bg-light-blue min-h-400 mt-8">
+<div id="first-info" class="gray-50 bg-main-blue dark-bg-light-blue min-h-400">
 	<div class="container">
 		<div class="row">
 
 
 			<div class="col-12" id="transfer-info">
 				<div class="min-h-400 d-flex align-items-center justify-content-center flex-column p-3 py-5">
+					<h1 class="fw-bolder  display-5 mb-4">Transzfer</h1>
 					<p class="text-xl fw-bold">
-						A Knorr-Bremse telephelyről (1238 Budapest, Helsinki út 105.) és a Kelenföldi pályaudvar Őrmezői oldaláról a Sport11-hez indítunk igény szerint buszjáratot.
-						A buszok 7:00-kor indulnak a telephelyről a Sportnap helyszínére,
-						07:30-kor a Kelenföldi pályaudvar Őrmezői oldaláról,
-						majd 14:45-kor visszafele mindkét irányba. Kérjük, aki a regisztráció során igényelt transzfert, pontosan érkezzen
+						A Knorr-Bremse telephelyről (1238 Budapest, Helsinki út 105.) és a Kelenföldi pályaudvar Őrmezői oldaláról a Sport11-hez indítunk igény szerint buszjáratot. A buszok 7:00-kor indulnak a telephelyről a Sportnap helyszínére, 07:30-kor a Kelenföldi pályaudvar Őrmezői oldaláról a Sportnap helyszínére, majd 14:45-kor visszafele mindkét irányba. Kérjük, aki a regisztráció során igényelt transzfert, pontosan érkezzen!
 					</p>
-					<p class="text-xl red-500 fw-bold">
-						Kérünk mindenkit, használjátok a transzfer lehetőséget,
-						a tömegközlekedést, vagy érkezzetek egy autóval többen,
-						mert erősen korlátozott a parkolóhelyek száma. Tömegközlekedési lehetőség
-						a helyszínre: 41-es villamos, vagy 187-es busz Kelenföldről (Őrmező felőli oldal)
+					<p class="text-xl orange-500 fw-bold">
+						Kérjük használjátok a transzfer lehetőséget, a tömegközlekedést, vagy érkezzetek egy autóval többen, mert erősen korlátozott a parkolóhelyek száma. Tömegközlekedési lehetőség a helyszínre: 41-es villamos vagy 187-es busz Kelenföldről (Őrmező felőli oldal).
 					</p>
 				</div>
 
@@ -169,11 +173,11 @@
 					perces meccsekkel (a jelentkező csapatok
 					számától függően több csoportban körmérkőzést
 					szervezünk, majd a legjobb 8 csapat kieséses
-					rendszerben játszik tovább egészen a döntőkig)
+					rendszerben játszik tovább egészen a döntőkig).
 				</p>
-				<div class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
+				<a href="/public/assets/docs/foci-szabalyzat.pdf" class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
 					Játékszabály
-				</div>
+				</a>
 			</div>
 		</div>
 		<div class="col-12 col-lg-5 tile p-0  rounded-4 shadow">
@@ -186,11 +190,11 @@
 				<p class="text-white">
 					Csocsó – 2 fő/csapat, 10 gól vagy 10 perc/meccs
 					, amelyik előbb bekövetkezik,
-					egyenes kieséssel
+					egyenes kieséssel.
 				</p>
-				<div class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
+				<a href="/public/assets/docs/csocso-szabalyzat.pdf" class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
 					Játékszabály
-				</div>
+				</a>
 			</div>
 		</div>
 		<div class="col-12 col-lg-5 tile p-0  rounded-4 shadow">
@@ -201,15 +205,11 @@
 			<div class="content w-75">
 				<h1 class="text-white text-center py-3">Sorverseny</h1>
 				<p class="text-white">
-					Lorem ipsum dolor sit amet, consectetur adipiscing
-					elit. Fusce pretium auctor quam,
-					ut pharetra justo tristique eu.
-					Praesent elit sem, vulputate
-					sit amet ultrices eget, accumsan ac ligula.
+					Minden csapatból 10 fő küzd meg egymással a pontokért. Igazi retro sorverseny, izgalmas, ügyességi feladatokkal.
 				</p>
-				<div class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
+				<a href="/public/assets/docs/sorverseny-szabalyzat.pdf" class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
 					Játékszabály
-				</div>
+				</a>
 			</div>
 		</div>
 		<div class="col-12 col-lg-5 tile p-0 rounded-4 shadow">
@@ -218,17 +218,17 @@
 			</div>
 			<div class="wrapper  h-100 bg-main-blue opacity-50"></div>
 			<div class="content w-75">
-				<h1 class="text-white text-center py-3">Ping Pong</h1>
+				<h1 class="text-white text-center py-3">Ping-Pong</h1>
 				<p class="text-white">
 					Ping-pong – 2 fő/csapat, egyenes kieséses
 					rendszerben, 1 nyert szettig (21 pont) vagy
 					15 percig, amelyik előbb bekövetkezik,
 					az elődöntők, a bronzmeccs és a döntő
-					két nyert szettig tartanak
+					két nyert szettig tartanak.
 				</p>
-				<div class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
+				<a href="/public/assets/docs/asztalitenisz-szabalyzat.pdf" class="btn btn-outline-warning rounded-0 btn-xl-lg mb-2">
 					Játékszabály
-				</div>
+				</a>
 			</div>
 		</div>
 	</div>

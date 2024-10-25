@@ -118,7 +118,8 @@ class User extends Model
     $pair_eligibility = filter_var($body["pair-eligibility"] ?? '', FILTER_VALIDATE_INT);
     $pair_password = filter_var($body["password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
     $pairRef_id = isset($body["pair-id"]) ? (int) $body["pair-id"] : null;
-    $pairHaveRefId = $this->selectByRecord('users', 'id', $pairRef_id, PDO::PARAM_INT)['pairRef_id'];
+    $pairHaveRefId = isset($pairRef_id) ? $this->selectByRecord('users', 'id', $pairRef_id, PDO::PARAM_INT)['pairRef_id'] : '';
+   
 
 
 

@@ -86,10 +86,16 @@ class UserController extends Controller
 
   public function store()
   {
-    $this->CSRFToken->check();
-
-
+    //$this->CSRFToken->check();
     try {
+      $main_team_id  = filter_var($_POST['main-team'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);
+      $team_sport_id  = filter_var($_POST['team-sport'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);
+      $duel_sport_id  = filter_var($_POST['duel-sport'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);
+
+      $main_team = $this->Model->selectByRecord('main_teams', 'id', $main_team_id, PDO::PARAM_INT);
+      $team_sport = $this->Model->selectByRecord('team_sports', 'id', $team_sport_id, PDO::PARAM_INT);
+      $duel_sport = $this->Model->selectByRecord('duel_sports', 'id', $duel_sport_id, PDO::PARAM_INT);
+
       $validator = new Validator();
       $validators  = [
         'ident_number' => [
@@ -108,23 +114,28 @@ class UserController extends Controller
 
       if ($hasValidateErrors) {
         $this->Toast->set('Regisztráció során hibás adatokat adott meg, kérjük próbája meg újra', 'danger', '/', null);
+        exit;
       }
 
       $last_inserted_id = $this->User->storeUser($_POST, $_FILES);
 
       if (!$last_inserted_id) {
         $this->Alert->set('Regisztráció sikertelen, próbálja meg más adatokkal!', 'red-500', '/', null);
+        exit;
       }
 
-      $tokenData = $this->generateExpiresTokenByDays(10);
+      /*       $tokenData = $this->generateExpiresTokenByDays(10);
       $reset_url = $this->createResetUrl($tokenData);
-      $this->Model->storeToken($tokenData['token'], $tokenData['expires'], '/reset', $last_inserted_id);
+      $this->Model->storeToken($tokenData['token'], $tokenData['expires'], '/reset', $last_inserted_id); */
 
       $this->Mailer->renderAndSend('newUser', [
         'user_name' => $_POST['name'] ?? 'problem',
-        'reset_url' => $reset_url  ?? 'problem',
-        'pair_password' => $_POST['password'] ?? null
+        'pair_password' => $_POST['password'] ?? null,
+        'main_team' => $main_team,
+        'team_sport' => $team_sport,
+        'duel_sport' => $duel_sport,
       ], $_POST['email'], 'Visszaigazolás a regisztrációról.');
+
 
 
       $this->Alert->set('Regisztráció sikeres, az e-mail címedre visszaigazoló levelet küldtünk!', 'green-500', '/', null);
@@ -222,6 +233,7 @@ class UserController extends Controller
   {
     $email = $_POST['email'] ?? null;
     $message = $_POST['message'] ?? null;
+
 
     try {
       $this->Mailer->renderAndSend('MessageMail', [

@@ -5,7 +5,9 @@ namespace App\Models;
 use App\Helpers\Debug;
 use App\Helpers\FileSaver;
 use App\Helpers\Mailer;
+use Database;
 use Exception;
+use InvalidArgumentException;
 use PDO;
 use PDOException;
 
@@ -19,10 +21,7 @@ class Model
 
   public function __construct()
   {
-    DATABASE_PERM === 1 ? $this->Pdo = getConnect() : null;
-    $this->Debug = new Debug();
-    $this->Mailer = new Mailer();
-    $this->FileSaver = new FileSaver();
+    DATABASE_PERM === 1 ? $this->Pdo = Database::getInstance() : null;
   }
 
   public function sendMail()
@@ -210,36 +209,36 @@ class Model
 
   public function allBySearch($table, $search, $entities)
   {
-      try {
-          // Alap SQL lekérdezés
-          $sql = "SELECT * FROM `$table`";
-  
-          // Ha van keresési paraméter és van megadva keresési entitások tömb
-          if (!empty($search) && !empty($entities)) {
-              $conditions = [];
-              foreach ($entities as $entity) {
-                  $conditions[] = "`$entity` LIKE :search";
-              }
-              $sql .= " WHERE " . implode(" OR ", $conditions);
-          }
-  
-          $stmt = $this->Pdo->prepare($sql);
-  
-          if (!empty($search)) {
-              $searchParam = "%" . $search . "%";
-              $stmt->bindValue(":search", $searchParam);
-          }
-  
-          $stmt->execute();
-          $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  
-          return $results;
-      } catch (PDOException $e) {
-          throw new Exception("An error occurred during the database operation in the allBySearch method: " . $e->getMessage());
-          return false;
+    try {
+      // Alap SQL lekérdezés
+      $sql = "SELECT * FROM `$table`";
+
+      // Ha van keresési paraméter és van megadva keresési entitások tömb
+      if (!empty($search) && !empty($entities)) {
+        $conditions = [];
+        foreach ($entities as $entity) {
+          $conditions[] = "`$entity` LIKE :search";
+        }
+        $sql .= " WHERE " . implode(" OR ", $conditions);
       }
+
+      $stmt = $this->Pdo->prepare($sql);
+
+      if (!empty($search)) {
+        $searchParam = "%" . $search . "%";
+        $stmt->bindValue(":search", $searchParam);
+      }
+
+      $stmt->execute();
+      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $results;
+    } catch (PDOException $e) {
+      throw new Exception("An error occurred during the database operation in the allBySearch method: " . $e->getMessage());
+      return false;
+    }
   }
-  
+
 
 
 
@@ -258,10 +257,22 @@ class Model
     }
   }
 
-  public function selectAllByRecord($table, $entity, $value, $param)
+  public function selectAllByRecord($table, $entity, $value, $param, $orderColumn = 'NAME', $orderDirection = 'ASC')
   {
     try {
-      $stmt = $this->Pdo->prepare("SELECT * FROM $table WHERE  $entity = :entity");
+      // Biztonságosabb megoldás az ORDER BY használatára
+      $orderDirection = strtoupper($orderDirection);
+      if (!in_array($orderDirection, ['ASC', 'DESC'])) {
+        throw new InvalidArgumentException("Invalid order direction parameter: $orderDirection");
+      }
+
+      // Feltételezzük, hogy az $orderColumn érvényes oszlopnév.
+      // Ez egy egyszerű ellenőrzés, de ajánlott lenne egy bővebb ellenőrzés az oszlopnevek érvényességére.
+      if (preg_match('/^[a-zA-Z0-9_]+$/', $orderColumn) !== 1) {
+        throw new InvalidArgumentException("Invalid order column parameter: $orderColumn");
+      }
+
+      $stmt = $this->Pdo->prepare("SELECT * FROM $table WHERE $entity = :entity ORDER BY $orderColumn $orderDirection");
       $stmt->bindParam(':entity', $value, $param);
       $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -270,6 +281,8 @@ class Model
       throw new Exception("An error occurred during the database operation in the selectAllByRecord method: " . $e->getMessage());
     }
   }
+
+
 
 
   public function deleteRecordById($table, $id)

@@ -9,7 +9,7 @@ const marketingCheckbox = document.getElementById('marketing-checkbox');
 const bannerAcceptNecessaryBtn = document.getElementById('banner-cookie-consent-accept-necessary');
 const bannerAcceptAllBtn = document.getElementById('banner-cookie-consent-accept-all');
 const submitCookeConsentModalBtn = document.getElementById('submit-consent-modal');
-const  cookieModal = new bootstrap.Modal(document.getElementById('cookie-modal'));
+const cookieModal = new bootstrap.Modal(document.getElementById('cookie-modal'));
 
 submitCookeConsentModalBtn.addEventListener('click', function (e) {
   e.preventDefault();
@@ -67,7 +67,7 @@ function startAnalyticsCookies() {
   // Google Analytics script betöltése, ha nincs betöltve
   if (!window.ga) {
     const script = document.createElement('script');
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-';
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-K7CVWGWNB1';
     script.async = true; // Aszinkron betöltés
     document.head.appendChild(script);
 
@@ -75,13 +75,16 @@ function startAnalyticsCookies() {
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', '');
+      gtag('config', 'G-K7CVWGWNB1'); // Helyesen konfigurálva
       console.log('Google Analytics script loaded and configured');
     };
   } else {
     console.log('Google Analytics is already loaded');
   }
 }
+
+
+//SRV1QJGMQX
 
 
 function startMarketingCookies() {
@@ -119,7 +122,7 @@ const runCookiesByLevel = (cookieLevel) => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const cookieLevel = parseInt(getCookie('cookie-consent'), 10);
-  if(isNaN(cookieLevel)) {
+  if (isNaN(cookieLevel)) {
     cookieBannerCon.classList.remove('d-none');
     return;
   }

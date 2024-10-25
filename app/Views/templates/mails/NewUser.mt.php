@@ -325,23 +325,33 @@
                         <tr>
                             <td class="wrapper">
                                 <h3>Szia , <?= $user_name ?></h3>
-                                <h5>Üdvözlünk a KBU program regisztráltjai között</h5>
+                                <h4>Üdvözlünk a KBU program regisztráltjai között</h4>
                                 <br>
                                 <br>
                                 <span>
                                     <h3> A regisztrációd leadása sikeresen megtörtént</h3>
 
                                 </span>
-                                <span>
-                                    <h3>A regisztrációd vagy párod ezen a linken keresztül törölheted</h3> <?= $reset_url ?>
-                                </span>
+
+                                <div>
+                                    <h4>
+                                        Te a következő csapatba és sportokba jelentkeztél.
+                                    </h4>
+
+                                    <p><b><?= $main_team['name'] ?></b> csapat melynek csapatkapitánya <b><?= $main_team['leader'] ?></b></p>
+                                    <p><b>Csapat sport</b>: <?= isset($team_sport) && isset($team_sport['name']) ? $team_sport['name'] : 'Nem jelentkeztél'  ?></p>
+                                    <p><b>Páros sport</b>: <?= isset($duel_sport) && isset($duel_sport['name']) ? $duel_sport['name'] : 'Nem jelentkeztél'  ?></p>
+
+                                </div>
+
                                 <?= $pair_password ? "<h3>A pár megjelöléséhez megadott jelszó: <span style='color: red'> $pair_password</span></h3>" : "" ?>
 
 
 
                                 <div>
-                                    <p style="margin-top: 2rem;">Sok szerencsét! 😊</p>
-                                    <p style="margin-top: 2rem;">Üdvözlettel, a KBU program csapata!</p>
+                                    <p style="margin-top: 2rem;">Jó bemelegítést! 😊</p>
+                                    <p style="margin-top: 2rem;">Üdvözlettel,</p>
+                                    <p> a KBU program csapata!</p>
                                 </div>
 
                                 <!-- END MAIN CONTENT AREA -->

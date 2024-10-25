@@ -85,8 +85,8 @@ function find_team_by_id($teams, $id)
                   <?= $user['actimo'] == '0' ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-thumbs-up"></i>'; ?>
                 </td>
                 <td>
-                  <div class="py-0 px-5 rounded-3 text-white text-center bg-<?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['color'] ?? '' ?>">
-                    <p> <?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['leader'] ?? 'Nem jelentkezett' ?></p>
+                  <div class="py-0 px-5 rounded-3 text-white text-center border  bg-<?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['color'] ?? '' ?>">
+                    <p class="gray-900 dark-text-gray-50"> <?= find_team_by_id($main_teams, (int)$user['main_teamRef_id'])['leader'] ?? 'Nem jelentkezett' ?></p>
                   </div>
                 </td>
                 <td>
@@ -148,9 +148,7 @@ function find_team_by_id($teams, $id)
                     <button type=" button" class="btn text-white btn-danger" data-bs-toggle="modal" data-bs-target="#deleteUserModal-<?= $user['id'] ?>">Törlés</button>
                     <form action="/admin/new-token/<?= $user['id'] ?>" method="POST" enctype="multipart/form-data">
                       <?= $csrf->generate() ?>
-                      <button type=" button" class="btn text-white bg-violet-500 hover-bg-violet-600">
-                        Token küldése
-                      </button>
+               
                       <button type="button" class="btn p-1 m-0" data-bs-toggle="popover" title="Segítség" data-bs-content="A 'Token küldése' gombra kattinttva ennek a felhasználónak új változtató Tokent küldhet, amellyel törölheti párját vagy regisztrációját. Egy Token egy hétig érvényes és max egyszer használható fel. Utána deaktiválódik biztonsági okokból!">
                         <i class="fa-solid fa-circle-info text-2xl"></i>
                       </button>

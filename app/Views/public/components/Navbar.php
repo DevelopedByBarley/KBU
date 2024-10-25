@@ -9,19 +9,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-xl-flex w-100 align-items-xl-center justify-content-end">
         <li class="nav-item ">
-          <a class="nav-link main-blue hover-blue-400 mx-lg-3" href="/">PROGRAM</a>
+          <a class="nav-link main-blue hover-blue-400 mx-lg-3" href="#programs">PROGRAM</a>
         </li>
         <li class="nav-item ">
           <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="#transfer-info">TRANSZFER</a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link main-blue  hover-blue-400  mx-lg-3" href="/">PONTOZÁS</a>
+          <a class="nav-link main-blue hover-blue-400 mx-lg-3" href="/public/assets/docs/pontozasi-rendszer.pdf" target="_blank">PONTOZÁS</a>
         </li>
         <li class="nav-item ">
           <a role="button" class="nav-link main-blue  hover-blue-400  mx-lg-3" data-bs-toggle="modal" data-bs-target="#formModal" href="#">REGISZTRÁCIÓ</a>
         </li>
         <li class="nav-item">
-          <button type="button"   class="nav-link main-blue  hover-blue-400  mx-lg-3 border-0 " data-bs-toggle="modal" data-bs-target="#sendMailModal">
+          <button type="button" class="nav-link main-blue  hover-blue-400  mx-lg-3 border-0 " data-bs-toggle="modal" data-bs-target="#sendMailModal">
             KONTAKT
           </button>
         </li>
@@ -46,7 +46,7 @@
   </div>
 </nav>
 
-<?php include 'app/Views/public/components/SendMailModal.php'?>
+<?php include 'app/Views/public/components/SendMailModal.php' ?>
 
 
 <?php $csrf = $params['csrf'] ?? null ?>

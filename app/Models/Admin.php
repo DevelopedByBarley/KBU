@@ -62,9 +62,9 @@ class Admin extends Model
       $hash = password_hash($password, PASSWORD_DEFAULT);
       $prev_password = filter_var($body["prev_password"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
       $avatar = filter_var($body["settings_avatar_radio"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
-      $level = filter_var($body["level"] ?? '', FILTER_SANITIZE_SPECIAL_CHARS);
-
+      
       $prev_admin = $this->selectByRecord('admins', 'id', $adminId, PDO::PARAM_INT);
+      $level = filter_var($body["level"] ?? $prev_admin['level'], FILTER_SANITIZE_SPECIAL_CHARS);
       $current_password = $prev_admin['password'];
       $prev_name = $prev_admin['name'];
 

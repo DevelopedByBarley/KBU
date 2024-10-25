@@ -1,6 +1,11 @@
 {
     "name": "barley/php-mvc",
     "description": "My PHP MVC model",
+    "config": {
+        "platform": {
+            "php": "7.4.1"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Barley\\PhpMvc\\": "src/",
